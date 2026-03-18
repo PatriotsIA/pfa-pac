@@ -1,0 +1,38 @@
+[
+  {
+    "slug": "statewide-kickoff-call",
+    "title": "Statewide Kickoff Call",
+    "summary": "A short call to align on priorities, upcoming events, and how to get involved.",
+    "startsAt": "2026-04-02T00:00:00.000Z",
+    "endsAt": "2026-04-02T01:00:00.000Z",
+    "timezone": "America/Chicago",
+    "isVirtual": true,
+    "virtualUrl": "https://example.com/virtual-event",
+    "registrationUrl": "https://example.com/register",
+    "tags": [
+      { "slug": "virtual", "label": "Virtual" },
+      { "slug": "organizing", "label": "Organizing" }
+    ],
+    "featured": true,
+    "detailsMarkdown": "## What to expect\n\n- Quick updates from around the state\n- A clear list of next actions\n- Time for questions\n\n**Note:** This is a sample event in the default JSON provider. Replace with your real events under `src/data/events.json`."
+  },
+  {
+    "slug": "community-meetup-north",
+    "title": "Community Meetup (North Region)",
+    "summary": "Meet neighbors, hear updates, and get plugged into volunteer roles.",
+    "startsAt": "2026-04-12T18:00:00.000Z",
+    "endsAt": "2026-04-12T20:00:00.000Z",
+    "timezone": "America/Chicago",
+    "locationName": "Community Center",
+    "locationAddress": "123 Main St",
+    "locationCity": "Dallas",
+    "locationRegion": "North Texas (optional)",
+    "registrationUrl": "https://example.com/rsvp",
+    "tags": [
+      { "slug": "in-person", "label": "In person" },
+      { "slug": "meetup", "label": "Meetup" }
+    ],
+    "detailsMarkdown": "## Agenda\n\n- Welcome + introductions\n- Local updates\n- Volunteer opportunities\n\nBring a friend."
+  }
+]
+

@@ -1,0 +1,135 @@
+import { z } from 'zod'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import toast from 'react-hot-toast'
+import { Mail } from 'lucide-react'
+import { Seo } from '../lib/seo/Seo'
+import { PageHeader } from '../components/ui/PageHeader'
+import { Card, CardGlow } from '../components/ui/Card'
+import { Field } from '../components/ui/Field'
+import { Input } from '../components/ui/Input'
+import { Textarea } from '../components/ui/Textarea'
+import { Button } from '../components/ui/Button'
+import { submitNetlifyForm } from '../lib/forms/netlify'
+import { siteConfig } from '../config/site'
+
+const contactSchema = z.object({
+  name: z.string().min(2, 'Please enter your name.'),
+  email: z.string().email('Please enter a valid email address.'),
+  subject: z.string().optional(),
+  countyOrRegion: z.string().optional(),
+  message: z.string().min(10, 'Please enter a message.'),
+  botField: z.string().optional(),
+})
+
+type ContactValues = z.infer<typeof contactSchema>
+
+export function ContactPage() {
+  const form = useForm<ContactValues>({
+    resolver: zodResolver(contactSchema),
+    defaultValues: { name: '', email: '', subject: '', countyOrRegion: '', message: '', botField: '' },
+  })
+
+  async function onSubmit(values: ContactValues) {
+    if (values.botField) return
+    await submitNetlifyForm('contact', {
+      name: values.name,
+      email: values.email,
+      subject: values.subject ?? '',
+      countyOrRegion: values.countyOrRegion ?? '',
+      message: values.message,
+    })
+  }
+
+  return (
+    <>
+      <Seo title="Contact" />
+      <PageHeader
+        eyebrow="Contact"
+        title="Get in touch"
+        subtitle="Have a question, a tip, or an event to share? Send a note and we’ll route it to the right team."
+      />
+
+      <div className="mt-10 grid gap-6 lg:grid-cols-[1fr_0.9fr]">
+        <Card className="lg:order-2">
+          <CardGlow />
+          <div className="relative">
+            <div className="text-xs font-bold uppercase tracking-[0.22em] text-patriot-red">Email</div>
+            <div className="mt-2 font-display text-2xl font-bold tracking-wide text-patriot-navy">
+              {siteConfig.contact.email}
+            </div>
+            <p className="mt-3 text-sm leading-relaxed text-patriot-text">
+              For time-sensitive issues, include a clear subject line and any relevant dates/links.
+            </p>
+            <div className="mt-5">
+              <a
+                className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-patriot-blue px-4 text-sm font-semibold tracking-wide text-patriot-white shadow-glow-blue transition hover:brightness-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-patriot-blue/40 focus-visible:ring-offset-2 focus-visible:ring-offset-patriot-bg"
+                href={`mailto:${siteConfig.contact.email}`}
+              >
+                Email us <Mail className="h-4 w-4" />
+              </a>
+            </div>
+          </div>
+        </Card>
+
+        <Card className="lg:order-1">
+          <CardGlow />
+          <div className="relative">
+            <div className="text-xs font-bold uppercase tracking-[0.22em] text-patriot-red">Contact form</div>
+            <form
+              className="mt-5 grid gap-4 md:grid-cols-2"
+              onSubmit={form.handleSubmit(async (values) => {
+                await toast.promise(onSubmit(values), {
+                  loading: 'Sending…',
+                  success: 'Message sent — thanks.',
+                  error: 'Send failed. Please try again or email us directly.',
+                })
+                form.reset()
+              })}
+              name="contact"
+              method="POST"
+              data-netlify="true"
+              data-netlify-honeypot="botField"
+            >
+              <input type="hidden" name="form-name" value="contact" />
+              <div className="hidden">
+                <label>
+                  Don’t fill this out if you’re human: <input {...form.register('botField')} />
+                </label>
+              </div>
+
+              <Field label="Name" error={form.formState.errors.name?.message}>
+                <Input {...form.register('name')} aria-invalid={!!form.formState.errors.name} autoComplete="name" />
+              </Field>
+              <Field label="Email" error={form.formState.errors.email?.message}>
+                <Input
+                  {...form.register('email')}
+                  aria-invalid={!!form.formState.errors.email}
+                  autoComplete="email"
+                />
+              </Field>
+              <Field label="Subject (optional)">
+                <Input {...form.register('subject')} autoComplete="off" />
+              </Field>
+              <Field label="County/Region (optional)" hint="Free-text (not routed)">
+                <Input {...form.register('countyOrRegion')} placeholder="e.g. Harris, South Texas" />
+              </Field>
+              <div className="md:col-span-2">
+                <Field label="Message" error={form.formState.errors.message?.message}>
+                  <Textarea {...form.register('message')} aria-invalid={!!form.formState.errors.message} />
+                </Field>
+              </div>
+
+              <div className="md:col-span-2 flex items-center justify-end">
+                <Button type="submit" variant="primary">
+                  Send
+                </Button>
+              </div>
+            </form>
+          </div>
+        </Card>
+      </div>
+    </>
+  )
+}
+

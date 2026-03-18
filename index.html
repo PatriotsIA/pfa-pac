@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/brand/PIAPatriot.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Patriots For Action is a statewide PAC focused on local-first, values-driven civic engagement."
+    />
+    <meta name="theme-color" content="#1b2673" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!--app-head-->
+    <title>Patriots For Action PAC</title>
+  </head>
+  <body>
+    <div id="root"><!--app-html--></div>
+    <!-- Netlify form detection (static HTML, required for SPA builds) -->
+    <form name="volunteer" method="POST" data-netlify="true" data-netlify-honeypot="botField" hidden>
+      <input type="text" name="botField" />
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="phone" />
+      <input type="text" name="countyOrRegion" />
+      <input type="text" name="interests" />
+      <textarea name="message"></textarea>
+      <input type="text" name="consentToContact" />
+    </form>
+    <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="botField" hidden>
+      <input type="text" name="botField" />
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="subject" />
+      <input type="text" name="countyOrRegion" />
+      <textarea name="message"></textarea>
+    </form>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
