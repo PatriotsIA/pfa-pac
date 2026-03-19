@@ -10,7 +10,7 @@ import { Field } from '../components/ui/Field'
 import { Input } from '../components/ui/Input'
 import { Textarea } from '../components/ui/Textarea'
 import { Button } from '../components/ui/Button'
-import { submitNetlifyForm } from '../lib/forms/netlify'
+import { submitPlatformForm } from '../lib/platformApi'
 import { LinkButton } from '../components/ui/LinkButton'
 import { ExternalLinkButton } from '../components/ui/ExternalLinkButton'
 import { siteConfig } from '../config/site'
@@ -53,14 +53,14 @@ export function VolunteerPage() {
 
   async function onSubmit(values: VolunteerValues) {
     if (values.botField) return
-    await submitNetlifyForm('volunteer', {
+    await submitPlatformForm('volunteer', {
       name: values.name,
       email: values.email,
-      phone: values.phone ?? '',
-      countyOrRegion: values.countyOrRegion ?? '',
-      interests: values.interests.join(', '),
-      message: values.message ?? '',
-      consentToContact: String(values.consentToContact),
+      ...(values.phone?.trim() ? { phone: values.phone.trim() } : {}),
+      ...(values.countyOrRegion?.trim() ? { countyOrRegion: values.countyOrRegion.trim() } : {}),
+      interests: values.interests,
+      ...(values.message?.trim() ? { message: values.message.trim() } : {}),
+      consentToContact: values.consentToContact,
     })
   }
 
@@ -125,8 +125,8 @@ export function VolunteerPage() {
               <HeartHandshake className="h-4 w-4" /> Volunteer form
             </div>
             <p className="mt-3 max-w-prose text-sm leading-relaxed text-patriot-text">
-              This form uses client-side validation and submits via Netlify Forms by default (with a honeypot).
-              Optional server-side spam verification examples (Turnstile) are included in the repo.
+              Client-side validation; submissions go to the Patriots Platform API (honeypot below). Optional Turnstile
+              examples remain in the repo.
             </p>
 
             <form
@@ -134,17 +134,13 @@ export function VolunteerPage() {
               onSubmit={form.handleSubmit(async (values) => {
                 await toast.promise(onSubmit(values), {
                   loading: 'Submitting…',
-                  success: 'Thanks — we’ll be in touch soon.',
+                  success: 'Thanks — we’ll be in touch soon. Our team receives an email with your signup.',
                   error: 'Submission failed. Please try again or contact us.',
                 })
                 form.reset()
               })}
               name="volunteer"
-              method="POST"
-              data-netlify="true"
-              data-netlify-honeypot="botField"
             >
-              <input type="hidden" name="form-name" value="volunteer" />
               <div className="hidden">
                 <label>
                   Don’t fill this out if you’re human: <input {...form.register('botField')} />

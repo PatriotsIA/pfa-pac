@@ -10,7 +10,7 @@ import { Field } from '../components/ui/Field'
 import { Input } from '../components/ui/Input'
 import { Textarea } from '../components/ui/Textarea'
 import { Button } from '../components/ui/Button'
-import { submitNetlifyForm } from '../lib/forms/netlify'
+import { submitPlatformForm } from '../lib/platformApi'
 import { siteConfig } from '../config/site'
 
 const contactSchema = z.object({
@@ -32,11 +32,11 @@ export function ContactPage() {
 
   async function onSubmit(values: ContactValues) {
     if (values.botField) return
-    await submitNetlifyForm('contact', {
+    await submitPlatformForm('contact', {
       name: values.name,
       email: values.email,
-      subject: values.subject ?? '',
-      countyOrRegion: values.countyOrRegion ?? '',
+      ...(values.subject?.trim() ? { subject: values.subject.trim() } : {}),
+      ...(values.countyOrRegion?.trim() ? { countyOrRegion: values.countyOrRegion.trim() } : {}),
       message: values.message,
     })
   }
@@ -81,17 +81,13 @@ export function ContactPage() {
               onSubmit={form.handleSubmit(async (values) => {
                 await toast.promise(onSubmit(values), {
                   loading: 'Sending…',
-                  success: 'Message sent — thanks.',
+                  success: 'Message sent — thanks. Our team receives an email with your note.',
                   error: 'Send failed. Please try again or email us directly.',
                 })
                 form.reset()
               })}
               name="contact"
-              method="POST"
-              data-netlify="true"
-              data-netlify-honeypot="botField"
             >
-              <input type="hidden" name="form-name" value="contact" />
               <div className="hidden">
                 <label>
                   Don’t fill this out if you’re human: <input {...form.register('botField')} />

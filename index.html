@@ -21,25 +21,6 @@
   </head>
   <body>
     <div id="root"><!--app-html--></div>
-    <!-- Netlify form detection (static HTML, required for SPA builds) -->
-    <form name="volunteer" method="POST" data-netlify="true" data-netlify-honeypot="botField" hidden>
-      <input type="text" name="botField" />
-      <input type="text" name="name" />
-      <input type="email" name="email" />
-      <input type="text" name="phone" />
-      <input type="text" name="countyOrRegion" />
-      <input type="text" name="interests" />
-      <textarea name="message"></textarea>
-      <input type="text" name="consentToContact" />
-    </form>
-    <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="botField" hidden>
-      <input type="text" name="botField" />
-      <input type="text" name="name" />
-      <input type="email" name="email" />
-      <input type="text" name="subject" />
-      <input type="text" name="countyOrRegion" />
-      <textarea name="message"></textarea>
-    </form>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

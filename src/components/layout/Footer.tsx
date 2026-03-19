@@ -45,6 +45,9 @@ export function Footer() {
               <NavLink to="/news" className={linkClass}>
                 News
               </NavLink>
+              <NavLink to="/projects" className={linkClass}>
+                Projects
+              </NavLink>
               <NavLink to="/operation-show-up" className={linkClass}>
                 Operation Show Up
               </NavLink>

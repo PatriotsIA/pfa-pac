@@ -40,6 +40,7 @@ export function NavBar() {
       { to: '/issues', label: 'Issues' },
       { to: '/counties', label: 'Counties' },
       { to: '/news', label: 'News' },
+      { to: '/projects', label: 'Projects' },
       { to: '/volunteer', label: 'Volunteer' },
       { to: '/donate', label: 'Donate' },
       { to: '/contact', label: 'Contact' },

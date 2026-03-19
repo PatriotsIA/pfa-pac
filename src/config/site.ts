@@ -5,7 +5,7 @@ export const siteConfig = {
   description:
     'A statewide PAC committed to the habits of self-government: show up locally, stay informed, speak with restraint, and act with steady responsibility.',
   contact: {
-    email: 'info@patriotsforaction.example',
+    email: 'info@patriotsinaction.com',
     phone: '+1 (000) 000-0000',
   },
   links: {

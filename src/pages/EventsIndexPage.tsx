@@ -16,7 +16,7 @@ import { Button } from '../components/ui/Button'
 import { cms } from '../lib/cms'
 import type { EventItem } from '../lib/models'
 import { formatEventDateRange } from '../lib/datetime'
-import { submitNetlifyForm } from '../lib/forms/netlify'
+import { submitPlatformForm } from '../lib/platformApi'
 
 const eventSubmitSchema = z.object({
   name: z.string().min(2, 'Please enter your name.'),
@@ -61,12 +61,12 @@ export function EventsIndexPage() {
 
   async function onSubmit(values: EventSubmitValues) {
     if (values.botField) return
-    await submitNetlifyForm('event-submit', {
+    await submitPlatformForm('event-submit', {
       name: values.name,
       email: values.email,
       title: values.title,
       startsAt: values.startsAt,
-      location: values.location ?? '',
+      ...(values.location?.trim() ? { location: values.location.trim() } : {}),
       details: values.details,
     })
   }
@@ -156,9 +156,8 @@ export function EventsIndexPage() {
               Share a meetup or action
             </h2>
             <p className="mt-3 max-w-prose text-sm leading-relaxed text-patriot-text">
-              Submissions are reviewed for clarity and compliance before they appear on the site. To reduce spam,
-              we support Netlify Forms + honeypot by default, with optional Turnstile or reCAPTCHA paths documented
-              in the README.
+              Submissions are reviewed before they appear on the site. Posts go to the Patriots Platform API; honeypot
+              below reduces bots. Optional Turnstile paths are documented in the README.
             </p>
 
             <form
@@ -166,17 +165,13 @@ export function EventsIndexPage() {
               onSubmit={form.handleSubmit(async (values) => {
                 await toast.promise(onSubmit(values), {
                   loading: 'Submitting…',
-                  success: 'Thanks — we received your event submission.',
+                  success: 'Thanks — we received your event submission. Our team gets an email to review it.',
                   error: 'Submission failed. Please try again or contact us.',
                 })
                 form.reset()
               })}
               name="event-submit"
-              method="POST"
-              data-netlify="true"
-              data-netlify-honeypot="botField"
             >
-              <input type="hidden" name="form-name" value="event-submit" />
               <div className="hidden">
                 <label>
                   Don’t fill this out if you’re human: <input {...form.register('botField')} />

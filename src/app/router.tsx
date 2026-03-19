@@ -9,6 +9,7 @@ import { NewsIndexPage } from '../pages/NewsIndexPage'
 import { NewsPostPage } from '../pages/NewsPostPage'
 import { VolunteerPage } from '../pages/VolunteerPage'
 import { DonatePage } from '../pages/DonatePage'
+import { PatriotProjectsPage } from '../pages/PatriotProjectsPage'
 import { ContactPage } from '../pages/ContactPage'
 import { PrivacyPage } from '../pages/PrivacyPage'
 import { TermsPage } from '../pages/TermsPage'
@@ -24,6 +25,8 @@ export const routes: RouteObject[] = createRoutesFromElements(
     <Route path="/news" element={<NewsIndexPage />} />
     <Route path="/news/:postSlug" element={<NewsPostPage />} />
     <Route path="/operation-show-up" element={<OperationShowUpPage />} />
+    <Route path="/projects" element={<PatriotProjectsPage />} />
+    <Route path="/patriot-projects" element={<PatriotProjectsPage />} />
     <Route path="/volunteer" element={<VolunteerPage />} />
     <Route path="/donate" element={<DonatePage />} />
     <Route path="/contact" element={<ContactPage />} />
