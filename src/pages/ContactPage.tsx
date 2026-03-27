@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import toast from 'react-hot-toast'
@@ -19,6 +20,9 @@ const contactSchema = z.object({
   subject: z.string().optional(),
   countyOrRegion: z.string().optional(),
   message: z.string().min(10, 'Please enter a message.'),
+  agreePrivacyPolicy: z.boolean().refine((v) => v === true, {
+    message: 'You must accept the privacy policy to continue.',
+  }),
   botField: z.string().optional(),
 })
 
@@ -27,7 +31,15 @@ type ContactValues = z.infer<typeof contactSchema>
 export function ContactPage() {
   const form = useForm<ContactValues>({
     resolver: zodResolver(contactSchema),
-    defaultValues: { name: '', email: '', subject: '', countyOrRegion: '', message: '', botField: '' },
+    defaultValues: {
+      name: '',
+      email: '',
+      subject: '',
+      countyOrRegion: '',
+      message: '',
+      agreePrivacyPolicy: false,
+      botField: '',
+    },
   })
 
   async function onSubmit(values: ContactValues) {
@@ -38,6 +50,7 @@ export function ContactPage() {
       ...(values.subject?.trim() ? { subject: values.subject.trim() } : {}),
       ...(values.countyOrRegion?.trim() ? { countyOrRegion: values.countyOrRegion.trim() } : {}),
       message: values.message,
+      agreePrivacyPolicy: true,
     })
   }
 
@@ -114,6 +127,42 @@ export function ContactPage() {
                 <Field label="Message" error={form.formState.errors.message?.message}>
                   <Textarea {...form.register('message')} aria-invalid={!!form.formState.errors.message} />
                 </Field>
+              </div>
+
+              <div className="md:col-span-2">
+                <label className="flex items-start gap-3 rounded-xl border border-patriot-border bg-patriot-bg-soft px-4 py-3 text-sm text-patriot-text">
+                  <input
+                    type="checkbox"
+                    {...form.register('agreePrivacyPolicy')}
+                    className="mt-1 h-4 w-4 accent-patriot-blue"
+                  />
+                  <span>
+                    I have read and agree to the{' '}
+                    <Link
+                      className="font-semibold text-patriot-blue underline decoration-patriot-blue/30 underline-offset-2 hover:decoration-patriot-blue/60"
+                      to="/privacy"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Privacy Policy
+                    </Link>{' '}
+                    and{' '}
+                    <Link
+                      className="font-semibold text-patriot-blue underline decoration-patriot-blue/30 underline-offset-2 hover:decoration-patriot-blue/60"
+                      to="/terms"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Terms &amp; Conditions
+                    </Link>
+                    .
+                    {form.formState.errors.agreePrivacyPolicy?.message ? (
+                      <span className="ml-2 text-xs font-semibold text-patriot-red">
+                        {form.formState.errors.agreePrivacyPolicy.message}
+                      </span>
+                    ) : null}
+                  </span>
+                </label>
               </div>
 
               <div className="md:col-span-2 flex items-center justify-end">

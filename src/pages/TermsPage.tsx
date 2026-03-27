@@ -1,39 +1,111 @@
+import { Link } from 'react-router-dom'
 import { Seo } from '../lib/seo/Seo'
 import { PageHeader } from '../components/ui/PageHeader'
 import { Card, CardGlow } from '../components/ui/Card'
+import { siteConfig } from '../config/site'
+
+const lastRevised = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
 
 export function TermsPage() {
   return (
     <>
-      <Seo title="Terms" />
+      <Seo title="Terms & conditions" />
       <PageHeader
         eyebrow="Legal"
-        title="Terms of use"
-        subtitle="Placeholder terms structure for counsel review. Replace with finalized language before launch."
+        title="Terms &amp; conditions"
+        subtitle={`Terms for use of ${siteConfig.legalName} online services, including mobile communications disclosures used for political texting program vetting.`}
       />
 
       <div className="mt-10 mx-auto max-w-4xl">
         <Card>
           <CardGlow />
-          <div className="relative space-y-6">
-            <section>
-              <h2 className="font-display text-2xl font-bold tracking-wide text-patriot-navy">Acceptance</h2>
-              <p className="mt-2 text-sm leading-relaxed text-patriot-text">
-                By using this site, you agree to these terms. (TODO: Replace with final legal language.)
+          <div className="relative space-y-8 text-sm leading-relaxed text-patriot-text">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-patriot-muted">Last revised: {lastRevised}</p>
+
+            <p>
+              These Terms and Conditions (&quot;Terms&quot;) apply to your access to and use of the websites and other online
+              services (collectively, the &quot;Services&quot;) provided by {siteConfig.legalName} (&quot;we,&quot; &quot;us,&quot; or
+              &quot;client&quot;). By accessing and using the Services, you agree to these Terms. If you do not agree to these
+              Terms, do not use the Services.
+            </p>
+            <p>
+              We may update these Terms from time to time by revising the &quot;Last revised&quot; date above; when required we
+              may provide additional notice. Continued use after changes constitutes acceptance unless you stop using the
+              Services.
+            </p>
+            <p>
+              Questions:{' '}
+              <a className="font-semibold text-patriot-blue underline" href={`mailto:${siteConfig.contact.email}`}>
+                {siteConfig.contact.email}
+              </a>
+              .
+            </p>
+
+            <section className="space-y-3">
+              <h2 className="font-display text-xl font-bold tracking-wide text-patriot-navy">Privacy policy</h2>
+              <p>
+                For information about how we collect, use, and share information about you, please see our{' '}
+                <Link className="font-semibold text-patriot-blue underline" to="/privacy">
+                  Privacy Policy
+                </Link>
+                .
               </p>
             </section>
-            <section>
-              <h2 className="font-display text-2xl font-bold tracking-wide text-patriot-navy">Donations</h2>
-              <p className="mt-2 text-sm leading-relaxed text-patriot-text">
-                Donations are processed by third-party providers (ActBlue, PayPal, Stripe). We do not collect raw
-                card details on this site. (TODO: confirm refunds and chargeback language.)
+
+            <section className="space-y-3">
+              <h2 className="font-display text-xl font-bold tracking-wide text-patriot-navy">Mobile communications</h2>
+              <p>
+                If you subscribe to receive messages or calls, you consent to receive automated messages from us via your
+                mobile device. Subscribers may receive multiple messages a week from us, depending on the program you join.
+              </p>
+              <p>
+                We do not charge for these services. However, your carrier&apos;s normal messaging, data, and other rates
+                and fees will still apply. You should check with your carrier to find out what plans are available and how
+                much they cost. At any time, you may text STOP to cancel or HELP for customer support information. For all
+                questions about the services provided, you can send an email to{' '}
+                <a className="font-semibold text-patriot-blue underline" href={`mailto:${siteConfig.contact.email}`}>
+                  {siteConfig.contact.email}
+                </a>
+                .
+              </p>
+              <p>Carriers are not liable for delayed or undelivered messages.</p>
+              <p>
+                By entering your phone number and selecting to opt in, you consent to join a recurring SMS/MMS text
+                messaging program that may provide alerts, donation requests, updates, and other important information. By
+                participating, you agree to the terms &amp; privacy policy for auto-dialed messages from us to the phone
+                number you provide. No consent is required to buy goods or services. Msg &amp; data rates may apply. Reply
+                HELP for help or STOP to opt-out at any time. SMS information is not rented, sold, or shared. See our{' '}
+                <Link className="font-semibold text-patriot-blue underline" to="/privacy">
+                  Privacy Policy
+                </Link>{' '}
+                and these Terms.
               </p>
             </section>
-            <section>
-              <h2 className="font-display text-2xl font-bold tracking-wide text-patriot-navy">User submissions</h2>
-              <p className="mt-2 text-sm leading-relaxed text-patriot-text">
-                Event submissions and messages may be edited for clarity before publication. Do not submit
-                confidential information. (TODO: add moderation and takedown language.)
+
+            <section className="space-y-3">
+              <h2 className="font-display text-xl font-bold tracking-wide text-patriot-navy">Donations</h2>
+              <p>
+                Donations may be processed by third-party providers (for example ActBlue, PayPal, or Stripe). We do not
+                collect raw payment-card details on this site. Refunds and chargeback rules are governed by the processor
+                and applicable law.
+              </p>
+            </section>
+
+            <section className="space-y-3">
+              <h2 className="font-display text-xl font-bold tracking-wide text-patriot-navy">User submissions</h2>
+              <p>
+                Event submissions, messages, and other content you provide may be reviewed, edited for clarity, or declined.
+                Do not submit confidential information you are not authorized to share.
+              </p>
+            </section>
+
+            <section className="space-y-3">
+              <h2 className="font-display text-xl font-bold tracking-wide text-patriot-navy">Disclaimer &amp; limitation of liability</h2>
+              <p>
+                THE SERVICES AND CONTENT ARE PROVIDED ON AN &quot;AS IS&quot; AND &quot;AS AVAILABLE&quot; BASIS WITHOUT WARRANTIES OF ANY
+                KIND, EXPRESS OR IMPLIED, TO THE FULLEST EXTENT PERMITTED BY LAW. TO THE FULLEST EXTENT PERMITTED BY LAW,
+                WE WILL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR ANY
+                LOSS OF DATA, PROFITS, OR REVENUE, ARISING OUT OF OR RELATED TO YOUR USE OF THE SERVICES.
               </p>
             </section>
           </div>
@@ -42,4 +114,3 @@ export function TermsPage() {
     </>
   )
 }
-

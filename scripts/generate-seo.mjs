@@ -36,6 +36,7 @@ const staticRoutes = [
   '/volunteer',
   '/donate',
   '/contact',
+  '/messaging',
   '/privacy',
   '/terms',
 ]

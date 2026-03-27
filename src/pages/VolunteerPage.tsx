@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import toast from 'react-hot-toast'
@@ -14,6 +15,7 @@ import { submitPlatformForm } from '../lib/platformApi'
 import { LinkButton } from '../components/ui/LinkButton'
 import { ExternalLinkButton } from '../components/ui/ExternalLinkButton'
 import { siteConfig } from '../config/site'
+import { EnSpotSmsOptInLabel } from '../components/compliance/EnSpotSmsOptInLabel'
 
 const interests = [
   { id: 'events', label: 'Events (setup, check-in, hospitality)' },
@@ -23,16 +25,30 @@ const interests = [
   { id: 'admin', label: 'Operations (scheduling, logistics)' },
 ] as const
 
-const volunteerSchema = z.object({
-  name: z.string().min(2, 'Please enter your name.'),
-  email: z.string().email('Please enter a valid email address.'),
-  phone: z.string().optional(),
-  countyOrRegion: z.string().optional(),
-  interests: z.array(z.string()).min(1, 'Please select at least one interest area.'),
-  message: z.string().optional(),
-  consentToContact: z.boolean().refine((v) => v === true, { message: 'Please confirm consent to be contacted.' }),
-  botField: z.string().optional(),
-})
+const volunteerSchema = z
+  .object({
+    name: z.string().min(2, 'Please enter your name.'),
+    email: z.string().email('Please enter a valid email address.'),
+    phone: z.string().optional(),
+    countyOrRegion: z.string().optional(),
+    interests: z.array(z.string()).min(1, 'Please select at least one interest area.'),
+    message: z.string().optional(),
+    consentToContact: z.boolean().refine((v) => v === true, { message: 'Please confirm consent to be contacted.' }),
+    agreePrivacyPolicy: z.boolean().refine((v) => v === true, {
+      message: 'You must accept the privacy policy to continue.',
+    }),
+    smsConsent: z.boolean().optional(),
+    botField: z.string().optional(),
+  })
+  .superRefine((data, ctx) => {
+    if (data.phone?.trim() && data.smsConsent !== true) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: 'When you add a mobile number, please confirm consent to receive text messages.',
+        path: ['smsConsent'],
+      })
+    }
+  })
 
 type VolunteerValues = z.infer<typeof volunteerSchema>
 
@@ -47,20 +63,25 @@ export function VolunteerPage() {
       interests: [],
       message: '',
       consentToContact: false,
+      agreePrivacyPolicy: false,
+      smsConsent: false,
       botField: '',
     },
   })
+
+  const phoneWatch = form.watch('phone')
 
   async function onSubmit(values: VolunteerValues) {
     if (values.botField) return
     await submitPlatformForm('volunteer', {
       name: values.name,
       email: values.email,
-      ...(values.phone?.trim() ? { phone: values.phone.trim() } : {}),
+      ...(values.phone?.trim() ? { phone: values.phone.trim(), smsConsent: true } : {}),
       ...(values.countyOrRegion?.trim() ? { countyOrRegion: values.countyOrRegion.trim() } : {}),
       interests: values.interests,
       ...(values.message?.trim() ? { message: values.message.trim() } : {}),
-      consentToContact: values.consentToContact,
+      consentToContact: true,
+      agreePrivacyPolicy: true,
     })
   }
 
@@ -208,6 +229,65 @@ export function VolunteerPage() {
                   </span>
                 </label>
               </div>
+
+              <div className="md:col-span-2">
+                <label className="flex items-start gap-3 rounded-xl border border-patriot-border bg-patriot-bg-soft px-4 py-3 text-sm text-patriot-text">
+                  <input
+                    type="checkbox"
+                    {...form.register('agreePrivacyPolicy')}
+                    className="mt-1 h-4 w-4 accent-patriot-blue"
+                  />
+                  <span>
+                    I have read and agree to the{' '}
+                    <Link
+                      className="font-semibold text-patriot-blue underline decoration-patriot-blue/30 underline-offset-2 hover:decoration-patriot-blue/60"
+                      to="/privacy"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Privacy Policy
+                    </Link>{' '}
+                    and{' '}
+                    <Link
+                      className="font-semibold text-patriot-blue underline decoration-patriot-blue/30 underline-offset-2 hover:decoration-patriot-blue/60"
+                      to="/terms"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Terms &amp; Conditions
+                    </Link>
+                    .
+                    {form.formState.errors.agreePrivacyPolicy?.message ? (
+                      <span className="ml-2 text-xs font-semibold text-patriot-red">
+                        {form.formState.errors.agreePrivacyPolicy.message}
+                      </span>
+                    ) : null}
+                  </span>
+                </label>
+              </div>
+
+              {phoneWatch?.trim() ? (
+                <div className="md:col-span-2">
+                  <label className="flex items-start gap-3 rounded-xl border border-patriot-border bg-patriot-bg-soft px-4 py-3 text-sm text-patriot-text">
+                    <input
+                      type="checkbox"
+                      {...form.register('smsConsent')}
+                      className="mt-1 h-4 w-4 accent-patriot-blue"
+                    />
+                    <span>
+                      <EnSpotSmsOptInLabel
+                        organizationName={siteConfig.legalName}
+                        purposePhrase="informational and donation-related"
+                      />
+                      {form.formState.errors.smsConsent?.message ? (
+                        <span className="mt-1 block text-xs font-semibold text-patriot-red">
+                          {form.formState.errors.smsConsent.message}
+                        </span>
+                      ) : null}
+                    </span>
+                  </label>
+                </div>
+              ) : null}
 
               <div className="md:col-span-2 flex items-center justify-end">
                 <Button type="submit" variant="primary">

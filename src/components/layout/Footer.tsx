@@ -60,6 +60,9 @@ export function Footer() {
               <NavLink to="/contact" className={linkClass}>
                 Contact
               </NavLink>
+              <NavLink to="/messaging" className={linkClass}>
+                Messaging &amp; compliance
+              </NavLink>
               <NavLink to="/privacy" className={linkClass}>
                 Privacy
               </NavLink>
@@ -95,12 +98,12 @@ export function Footer() {
 
         <div className="mt-8 rounded-xl border border-white/15 bg-white/10 p-4">
           <div className="text-xs leading-relaxed text-patriot-white/85">
-            <div className="font-semibold tracking-wide text-patriot-white">Compliance disclaimer (placeholder)</div>
+            <div className="font-semibold tracking-wide text-patriot-white">Compliance</div>
             <div className="mt-2 text-patriot-white/80">
-              Paid for by {siteConfig.legalName}. Not authorized by any candidate or candidate&apos;s committee.
-              <span className="ml-2 text-patriot-white/70">
-                (TODO: Replace with exact disclaimer text provided by counsel/compliance.)
-              </span>
+              Paid for by {siteConfig.legalName}. Not authorized by any candidate or candidate&apos;s committee. Website
+              includes on-domain contact, Privacy Policy, Terms &amp; Conditions, and phone opt-in language aligned with common
+              10DLC / campaign vetting worksheet guidance (for example EnSpot Political).
+              <span className="ml-2 text-patriot-white/70">Counsel should finalize all legal text.</span>
             </div>
           </div>
         </div>

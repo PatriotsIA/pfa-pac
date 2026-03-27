@@ -5,7 +5,7 @@ import { pathToFileURL } from 'node:url'
 const distDir = path.join(process.cwd(), 'dist')
 const ssrDir = path.join(process.cwd(), 'dist-ssr')
 
-const routes = ['/', '/about', '/issues', '/operation-show-up', '/donate', '/volunteer']
+const routes = ['/', '/about', '/issues', '/operation-show-up', '/donate', '/volunteer', '/messaging']
 
 async function findEntryServer() {
   const files = await fs.readdir(ssrDir).catch(() => [])

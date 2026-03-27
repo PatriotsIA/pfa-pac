@@ -15,6 +15,7 @@ import { PrivacyPage } from '../pages/PrivacyPage'
 import { TermsPage } from '../pages/TermsPage'
 import { NotFoundPage } from '../pages/NotFoundPage'
 import { OperationShowUpPage } from '../pages/OperationShowUpPage'
+import { MessagingPage } from '../pages/MessagingPage'
 
 export const routes: RouteObject[] = createRoutesFromElements(
   <Route element={<SiteLayout />}>
@@ -30,6 +31,7 @@ export const routes: RouteObject[] = createRoutesFromElements(
     <Route path="/volunteer" element={<VolunteerPage />} />
     <Route path="/donate" element={<DonatePage />} />
     <Route path="/contact" element={<ContactPage />} />
+    <Route path="/messaging" element={<MessagingPage />} />
     <Route path="/privacy" element={<PrivacyPage />} />
     <Route path="/terms" element={<TermsPage />} />
     <Route path="*" element={<NotFoundPage />} />

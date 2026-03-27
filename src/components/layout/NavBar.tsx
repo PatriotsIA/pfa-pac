@@ -44,6 +44,7 @@ export function NavBar() {
       { to: '/volunteer', label: 'Volunteer' },
       { to: '/donate', label: 'Donate' },
       { to: '/contact', label: 'Contact' },
+      { to: '/messaging', label: 'Messaging' },
     ],
     [],
   )

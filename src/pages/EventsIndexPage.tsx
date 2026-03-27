@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useState } from 'react'
 import { z } from 'zod'
+import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import toast from 'react-hot-toast'
-import { Link } from 'react-router-dom'
 import { ArrowRight, CalendarPlus, Filter } from 'lucide-react'
 import { Seo } from '../lib/seo/Seo'
 import { PageHeader } from '../components/ui/PageHeader'
@@ -25,6 +25,9 @@ const eventSubmitSchema = z.object({
   startsAt: z.string().min(4, 'Please include a start date/time.'),
   location: z.string().optional(),
   details: z.string().min(10, 'Please include a few details.'),
+  agreePrivacyPolicy: z.boolean().refine((v) => v === true, {
+    message: 'You must accept the privacy policy to continue.',
+  }),
   botField: z.string().optional(),
 })
 
@@ -56,7 +59,16 @@ export function EventsIndexPage() {
 
   const form = useForm<EventSubmitValues>({
     resolver: zodResolver(eventSubmitSchema),
-    defaultValues: { name: '', email: '', title: '', startsAt: '', location: '', details: '', botField: '' },
+    defaultValues: {
+      name: '',
+      email: '',
+      title: '',
+      startsAt: '',
+      location: '',
+      details: '',
+      agreePrivacyPolicy: false,
+      botField: '',
+    },
   })
 
   async function onSubmit(values: EventSubmitValues) {
@@ -68,6 +80,7 @@ export function EventsIndexPage() {
       startsAt: values.startsAt,
       ...(values.location?.trim() ? { location: values.location.trim() } : {}),
       details: values.details,
+      agreePrivacyPolicy: true,
     })
   }
 
@@ -209,6 +222,42 @@ export function EventsIndexPage() {
                 <Field label="Details" error={form.formState.errors.details?.message}>
                   <Textarea {...form.register('details')} aria-invalid={!!form.formState.errors.details} />
                 </Field>
+              </div>
+
+              <div className="md:col-span-2">
+                <label className="flex items-start gap-3 rounded-xl border border-patriot-border bg-patriot-bg-soft px-4 py-3 text-sm text-patriot-text">
+                  <input
+                    type="checkbox"
+                    {...form.register('agreePrivacyPolicy')}
+                    className="mt-1 h-4 w-4 accent-patriot-blue"
+                  />
+                  <span>
+                    I have read and agree to the{' '}
+                    <Link
+                      className="font-semibold text-patriot-blue underline decoration-patriot-blue/30 underline-offset-2 hover:decoration-patriot-blue/60"
+                      to="/privacy"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Privacy Policy
+                    </Link>{' '}
+                    and{' '}
+                    <Link
+                      className="font-semibold text-patriot-blue underline decoration-patriot-blue/30 underline-offset-2 hover:decoration-patriot-blue/60"
+                      to="/terms"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Terms &amp; Conditions
+                    </Link>{' '}
+                    and confirm I have permission to share this event information.
+                    {form.formState.errors.agreePrivacyPolicy?.message ? (
+                      <span className="ml-2 text-xs font-semibold text-patriot-red">
+                        {form.formState.errors.agreePrivacyPolicy.message}
+                      </span>
+                    ) : null}
+                  </span>
+                </label>
               </div>
 
               <div className="md:col-span-2 flex flex-wrap items-center justify-between gap-3">

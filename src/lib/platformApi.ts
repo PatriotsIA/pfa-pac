@@ -18,7 +18,7 @@ function parseErrorMessage(data: unknown): string {
 }
 
 export async function submitPlatformForm(
-  submissionType: 'contact' | 'volunteer' | 'event-submit',
+  submissionType: 'contact' | 'volunteer' | 'event-submit' | 'messaging-inquiry',
   body: Record<string, unknown>,
 ): Promise<PlatformSubmissionResponse> {
   const url = `${baseUrl}/v1/public/sites/${PLATFORM_SITE_KEY}/submissions/${submissionType}`
