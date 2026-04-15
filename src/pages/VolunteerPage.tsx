@@ -11,7 +11,7 @@ import { Field } from '../components/ui/Field'
 import { Input } from '../components/ui/Input'
 import { Textarea } from '../components/ui/Textarea'
 import { Button } from '../components/ui/Button'
-import { submitPlatformForm } from '../lib/platformApi'
+import { sendSiteFormEmail } from '../lib/emailJsForms'
 import { LinkButton } from '../components/ui/LinkButton'
 import { ExternalLinkButton } from '../components/ui/ExternalLinkButton'
 import { siteConfig } from '../config/site'
@@ -73,15 +73,19 @@ export function VolunteerPage() {
 
   async function onSubmit(values: VolunteerValues) {
     if (values.botField) return
-    await submitPlatformForm('volunteer', {
-      name: values.name,
-      email: values.email,
-      ...(values.phone?.trim() ? { phone: values.phone.trim(), smsConsent: true } : {}),
-      ...(values.countyOrRegion?.trim() ? { countyOrRegion: values.countyOrRegion.trim() } : {}),
-      interests: values.interests,
-      ...(values.message?.trim() ? { message: values.message.trim() } : {}),
-      consentToContact: true,
-      agreePrivacyPolicy: true,
+    await sendSiteFormEmail({
+      formLabel: 'Volunteer',
+      emailSubjectTitle: 'Volunteer signup',
+      data: {
+        name: values.name,
+        email: values.email,
+        ...(values.phone?.trim() ? { phone: values.phone.trim(), smsConsent: true } : {}),
+        ...(values.countyOrRegion?.trim() ? { countyOrRegion: values.countyOrRegion.trim() } : {}),
+        interests: values.interests,
+        ...(values.message?.trim() ? { message: values.message.trim() } : {}),
+        consentToContact: true,
+        agreePrivacyPolicy: true,
+      },
     })
   }
 
@@ -146,7 +150,7 @@ export function VolunteerPage() {
               <HeartHandshake className="h-4 w-4" /> Volunteer form
             </div>
             <p className="mt-3 max-w-prose text-sm leading-relaxed text-patriot-text">
-              Client-side validation; submissions go to the Patriots Platform API (honeypot below). Optional Turnstile
+              Client-side validation; submissions are emailed to our team via EmailJS (honeypot below). Optional Turnstile
               examples remain in the repo.
             </p>
 

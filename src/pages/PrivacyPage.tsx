@@ -132,8 +132,12 @@ export function PrivacyPage() {
                 contact us at{' '}
                 <a className="font-semibold text-patriot-blue underline" href={`mailto:${siteConfig.contact.email}`}>
                   {siteConfig.contact.email}
-                </a>{' '}
-                or through the Contact page on this website.
+                </a>
+                , by phone at{' '}
+                <a className="font-semibold text-patriot-blue underline" href={`tel:${siteConfig.contact.phoneDial}`}>
+                  Phone: {siteConfig.contact.phone}
+                </a>
+                , by mail at {siteConfig.contact.mailingAddress}, or through the Contact page on this website.
               </p>
             </section>
           </div>

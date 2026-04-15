@@ -12,7 +12,7 @@ import { Input } from '../components/ui/Input'
 import { Textarea } from '../components/ui/Textarea'
 import { Select } from '../components/ui/Select'
 import { Button } from '../components/ui/Button'
-import { submitPlatformForm } from '../lib/platformApi'
+import { sendSiteFormEmail } from '../lib/emailJsForms'
 import { siteConfig } from '../config/site'
 import { EnSpotSmsOptInLabel } from '../components/compliance/EnSpotSmsOptInLabel'
 
@@ -68,14 +68,20 @@ export function MessagingPage() {
 
   async function onSubmit(values: MessagingValues) {
     if (values.botField) return
-    await submitPlatformForm('messaging-inquiry', {
-      audienceType: values.audienceType,
-      organizationName: values.organizationName.trim(),
-      name: values.name,
-      email: values.email,
-      message: values.message,
-      agreePrivacyPolicy: true,
-      ...(values.phone?.trim() ? { phone: values.phone.trim(), smsConsent: true } : {}),
+    const audienceLabel =
+      audienceOptions.find((o) => o.value === values.audienceType)?.label ?? values.audienceType
+    await sendSiteFormEmail({
+      formLabel: 'Messaging inquiry',
+      emailSubjectTitle: `${audienceLabel} — ${values.organizationName.trim()}`,
+      data: {
+        audienceType: values.audienceType,
+        organizationName: values.organizationName.trim(),
+        name: values.name,
+        email: values.email,
+        message: values.message,
+        agreePrivacyPolicy: true,
+        ...(values.phone?.trim() ? { phone: values.phone.trim(), smsConsent: true } : {}),
+      },
     })
   }
 
@@ -157,7 +163,7 @@ export function MessagingPage() {
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-patriot-text">
               Tell us who you are and what you need—voter contact, event promotion, fundraising texts, or vendor
-              introductions. Submissions go to our team through the same secure platform as other site forms.
+              introductions. Submissions are emailed to our team the same way as other site forms.
             </p>
 
             <form

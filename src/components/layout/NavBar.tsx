@@ -97,7 +97,7 @@ export function NavBar() {
   return (
     <header className="sticky top-0 z-50">
       <div className="bg-patriot-navy text-patriot-white">
-        <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-2 text-xs sm:px-6 lg:px-8">
+        <div className="mx-auto flex w-full max-w-none flex-wrap items-center justify-between gap-3 px-3 py-2.5 text-xs sm:px-5 lg:px-8 xl:px-12 2xl:px-16">
           <a
             className="inline-flex items-center rounded-md bg-white/10 px-3 py-1 font-semibold tracking-wide hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
             href={siteConfig.links.community}
@@ -110,8 +110,8 @@ export function NavBar() {
             <a className="hover:underline" href={`mailto:${siteConfig.contact.email}`}>
               {siteConfig.contact.email}
             </a>
-            <a className="hover:underline" href={`tel:${siteConfig.contact.phone.replace(/[^\d+]/g, '')}`}>
-              {siteConfig.contact.phone}
+            <a className="hover:underline" href={`tel:${siteConfig.contact.phoneDial}`}>
+              Phone: {siteConfig.contact.phone}
             </a>
           </div>
         </div>
@@ -119,10 +119,15 @@ export function NavBar() {
 
       <div className="relative border-b border-patriot-border bg-patriot-bg/95 backdrop-blur">
         <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-patriot-red via-patriot-blue to-patriot-navy" />
-        <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
-          <BrandLockup />
+        <div className="mx-auto flex w-full max-w-none items-center gap-2 px-3 py-3.5 sm:gap-3 sm:px-5 lg:gap-4 lg:px-8 lg:py-4 xl:gap-6 xl:px-12 2xl:px-16">
+          <div className="min-w-0 shrink-0 lg:mr-1 xl:mr-2 2xl:mr-4">
+            <BrandLockup />
+          </div>
 
-          <nav aria-label="Primary" className="hidden items-center gap-1 lg:flex">
+          <nav
+            aria-label="Primary"
+            className="hidden min-w-0 flex-1 items-stretch gap-1 lg:flex lg:gap-1.5 xl:gap-2 2xl:gap-3"
+          >
             {nav.map((item) => (
               <NavLink
                 key={item.to}
@@ -130,7 +135,8 @@ export function NavBar() {
                 end={item.to === '/'}
                 className={({ isActive }) =>
                   cn(
-                    'relative rounded-md px-3 py-2 text-sm font-semibold tracking-wide transition after:absolute after:inset-x-3 after:-bottom-1 after:h-[2px] after:origin-left after:rounded-full after:bg-patriot-red after:transition-transform after:duration-300 after:content-[\'\']',
+                    'relative flex min-w-0 flex-1 basis-0 items-center justify-center text-balance rounded-md px-1 py-2 text-center text-[0.7rem] font-semibold leading-snug tracking-wide transition sm:text-[0.75rem] md:text-xs lg:text-[0.8125rem] xl:text-sm xl:whitespace-nowrap',
+                    'after:absolute after:inset-x-1 after:-bottom-0.5 after:h-[2px] after:origin-left after:rounded-full after:bg-patriot-red after:transition-transform after:duration-300 after:content-[\'\'] xl:after:inset-x-2',
                     isActive
                       ? 'text-patriot-navy after:scale-x-100'
                       : 'text-patriot-navy/80 after:scale-x-0 hover:text-patriot-navy hover:after:scale-x-100',
@@ -142,27 +148,28 @@ export function NavBar() {
             ))}
           </nav>
 
-          <div className="hidden items-center gap-2 lg:flex">
-            <LinkButton to="/volunteer" variant="outline" size="sm">
-              Volunteer
-            </LinkButton>
-            <LinkButton to="/donate" variant="red" size="sm">
-              Donate <ArrowRight className="h-4 w-4" />
-            </LinkButton>
+          <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-2.5 lg:ml-1 xl:ml-2 2xl:ml-4">
+            <div className="hidden items-center gap-2 sm:gap-2.5 lg:flex">
+              <LinkButton to="/volunteer" variant="outline" size="sm">
+                Volunteer
+              </LinkButton>
+              <LinkButton to="/donate" variant="red" size="sm">
+                Donate <ArrowRight className="h-4 w-4" />
+              </LinkButton>
+            </div>
+            <button
+              ref={openButtonRef}
+              type="button"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-patriot-border bg-patriot-bg text-patriot-navy shadow-[0_10px_30px_rgba(27,38,115,0.10)] hover:border-patriot-blue/55 hover:bg-patriot-bg-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-patriot-blue/25 focus-visible:ring-offset-2 focus-visible:ring-offset-patriot-bg lg:hidden"
+              onClick={() => setOpen(true)}
+              aria-label="Open menu"
+              aria-expanded={open}
+              aria-controls="mobile-menu"
+              aria-haspopup="dialog"
+            >
+              <Menu className="h-5 w-5" />
+            </button>
           </div>
-
-          <button
-            ref={openButtonRef}
-            type="button"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-patriot-border bg-patriot-bg text-patriot-navy shadow-[0_10px_30px_rgba(27,38,115,0.10)] hover:border-patriot-blue/55 hover:bg-patriot-bg-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-patriot-blue/25 focus-visible:ring-offset-2 focus-visible:ring-offset-patriot-bg lg:hidden"
-            onClick={() => setOpen(true)}
-            aria-label="Open menu"
-            aria-expanded={open}
-            aria-controls="mobile-menu"
-            aria-haspopup="dialog"
-          >
-            <Menu className="h-5 w-5" />
-          </button>
         </div>
       </div>
 

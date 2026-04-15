@@ -1,3 +1,17 @@
+# Dependencies
+node_modules
+
+# Build output
+dist
+dist-ssr
+*.local
+
+# Vite
+.vite
+
+# TypeScript
+*.tsbuildinfo
+
 # Logs
 logs
 *.log
@@ -7,18 +21,30 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Env & secrets (keep example committed)
+.env
+.env.*
+!.env.example
+emailjs.txt
 
-# Editor directories and files
+# Testing / coverage
+coverage
+.nyc_output
+
+# Caches
+.eslintcache
+.cache
+
+# Editor
 .vscode/*
 !.vscode/extensions.json
 .idea
-.DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# OS
+.DS_Store
+Thumbs.db

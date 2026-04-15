@@ -6,7 +6,11 @@ export const siteConfig = {
     'A statewide PAC committed to the habits of self-government: show up locally, stay informed, speak with restraint, and act with steady responsibility.',
   contact: {
     email: 'info@patriotsinaction.com',
-    phone: '+1 (000) 000-0000',
+    /** Display (after “Phone: ” in UI where labeled) */
+    phone: '(866) 756 1776',
+    /** E.164 for <a href="tel:…"> */
+    phoneDial: '+18667561776',
+    mailingAddress: '1000 S. Jefferson Street, Amarillo, TX 79101',
   },
   links: {
     texasHub: 'https://patriotsinactiontx.com/',
@@ -15,6 +19,7 @@ export const siteConfig = {
   },
   brand: {
     pacLogoSrc: '/brand/PIAPatriot.png',
+    footerLogoSrc: '/brand/PIAFooterLogo.png',
     patriotsInActionLockupSrc: '/brand/PIAFullTextLogoRedWhite.png',
   },
 } as const

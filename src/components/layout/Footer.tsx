@@ -1,6 +1,5 @@
 import { NavLink } from 'react-router-dom'
 import { BrandMark } from '../brand/Brand'
-import { PatriotsInActionLockup } from '../brand/PatriotsInAction'
 import { cn } from '../../lib/cn'
 import { siteConfig } from '../../config/site'
 
@@ -78,11 +77,21 @@ export function Footer() {
               <a className="hover:text-patriot-white" href={`mailto:${siteConfig.contact.email}`}>
                 {siteConfig.contact.email}
               </a>
+              <a className="hover:text-patriot-white" href={`tel:${siteConfig.contact.phoneDial}`}>
+                Phone: {siteConfig.contact.phone}
+              </a>
+              <div className="max-w-xs leading-relaxed text-patriot-white/75">{siteConfig.contact.mailingAddress}</div>
               <a className="hover:text-patriot-white" href={siteConfig.links.community} target="_blank" rel="noopener noreferrer">
                 Join our community
               </a>
               <div className="mt-2 rounded-xl border border-white/15 bg-white/10 p-3">
-                <PatriotsInActionLockup className="h-10" alt="Patriots in Action" />
+                <img
+                  src={siteConfig.brand.footerLogoSrc}
+                  alt="Patriots in Action"
+                  className="h-10 w-auto max-w-full object-contain object-left sm:h-11"
+                  loading="lazy"
+                  decoding="async"
+                />
                 <a
                   className="mt-2 block text-sm font-semibold text-patriot-white/90 underline decoration-white/30 underline-offset-4 hover:text-patriot-white hover:decoration-white/60"
                   href={siteConfig.links.texasHub}

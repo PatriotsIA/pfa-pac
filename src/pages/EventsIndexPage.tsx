@@ -16,7 +16,7 @@ import { Button } from '../components/ui/Button'
 import { cms } from '../lib/cms'
 import type { EventItem } from '../lib/models'
 import { formatEventDateRange } from '../lib/datetime'
-import { submitPlatformForm } from '../lib/platformApi'
+import { sendSiteFormEmail } from '../lib/emailJsForms'
 
 const eventSubmitSchema = z.object({
   name: z.string().min(2, 'Please enter your name.'),
@@ -73,14 +73,18 @@ export function EventsIndexPage() {
 
   async function onSubmit(values: EventSubmitValues) {
     if (values.botField) return
-    await submitPlatformForm('event-submit', {
-      name: values.name,
-      email: values.email,
-      title: values.title,
-      startsAt: values.startsAt,
-      ...(values.location?.trim() ? { location: values.location.trim() } : {}),
-      details: values.details,
-      agreePrivacyPolicy: true,
+    await sendSiteFormEmail({
+      formLabel: 'Event submission',
+      emailSubjectTitle: values.title.trim(),
+      data: {
+        name: values.name,
+        email: values.email,
+        title: values.title,
+        startsAt: values.startsAt,
+        ...(values.location?.trim() ? { location: values.location.trim() } : {}),
+        details: values.details,
+        agreePrivacyPolicy: true,
+      },
     })
   }
 
@@ -169,7 +173,7 @@ export function EventsIndexPage() {
               Share a meetup or action
             </h2>
             <p className="mt-3 max-w-prose text-sm leading-relaxed text-patriot-text">
-              Submissions are reviewed before they appear on the site. Posts go to the Patriots Platform API; honeypot
+              Submissions are reviewed before they appear on the site. Posts are emailed to our team via EmailJS; honeypot
               below reduces bots. Optional Turnstile paths are documented in the README.
             </p>
 

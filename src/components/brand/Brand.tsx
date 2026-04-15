@@ -20,7 +20,7 @@ export function BrandMark({ className, title = 'Patriots For Action PAC', logoSr
       <img
         src={src}
         alt={title}
-        className={cn('h-9 w-9 object-contain', className)}
+        className={cn('h-10 w-10 object-contain sm:h-11 sm:w-11', className)}
         loading="eager"
         decoding="async"
       />
@@ -29,7 +29,7 @@ export function BrandMark({ className, title = 'Patriots For Action PAC', logoSr
 
   return (
     <svg
-      className={cn('h-9 w-9', className)}
+      className={cn('h-10 w-10 sm:h-11 sm:w-11', className)}
       viewBox="0 0 64 64"
       role="img"
       aria-label={title}
@@ -70,16 +70,19 @@ type BrandLockupProps = {
 
 export function BrandLockup({ className, logoSrc }: BrandLockupProps) {
   return (
-    <Link to="/" className={cn('group inline-flex items-center gap-3', className)}>
+    <Link
+      to="/"
+      className={cn(
+        'group inline-flex min-w-0 shrink-0 items-center gap-3.5 sm:gap-4 pr-1 sm:pr-2',
+        className,
+      )}
+    >
       <BrandMark
         logoSrc={logoSrc}
         className="shrink-0 transition-transform duration-300 group-hover:scale-[1.03]"
       />
-      <div className="leading-tight">
-        <div className="font-display text-lg tracking-wide text-patriot-navy">
-          Patriots For Action
-        </div>
-        <div className="text-xs font-medium text-patriot-muted">Local-first. Values-forward. Action-oriented.</div>
+      <div className="font-display text-xl leading-tight tracking-wide text-patriot-navy sm:text-2xl sm:tracking-tight">
+        {siteConfig.name}
       </div>
     </Link>
   )

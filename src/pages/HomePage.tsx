@@ -22,6 +22,9 @@ export function HomePage() {
             <h1 className="mt-3 font-display text-4xl font-bold leading-[1.05] tracking-wide text-patriot-navy sm:text-6xl">
               Patriots For Action
             </h1>
+            <p className="mx-auto mt-3 max-w-2xl text-sm font-semibold leading-snug tracking-wide text-patriot-navy/85 sm:text-base">
+              {siteConfig.tagline}
+            </p>
             <p className="mx-auto mt-4 max-w-3xl text-base leading-relaxed text-patriot-text sm:text-lg">
               Freedom doesn’t run on autopilot. {siteConfig.description}
             </p>

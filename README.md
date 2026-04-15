@@ -41,6 +41,16 @@ Create `.env.local` for local overrides (never commit secrets).
 - **`VITE_SITE_URL`**: canonical site URL used for `canonical` links and `sitemap.xml` (e.g. `https://pac.example.org`)
 - **`VITE_CMS_PROVIDER`**: `json` (default), `decap`, `sanity`, `wordpress` (stubs; see CMS section)
 
+### Forms (EmailJS)
+
+Site forms (contact, volunteer, event submission, messaging) send email via [EmailJS](https://www.emailjs.com/). Add an email service and template, set the template recipient to your inbox, then set:
+
+- **`VITE_EMAILJS_SERVICE_ID`**
+- **`VITE_EMAILJS_TEMPLATE_ID`**
+- **`VITE_EMAILJS_PUBLIC_KEY`**
+
+The app sends `name`, `title`, `message`, and `time` so you can use a template like subject `Contact Us: {{title}}` and a body with `{{name}}`, `{{time}}`, and `{{message}}`. The `message` value is a plain-text dump of all submitted fields (including email).
+
 ### Analytics (privacy-friendly)
 
 The repo includes a clean example for **Plausible** behind an env flag.
@@ -92,17 +102,17 @@ The app calls a CMS abstraction layer so you can swap sources later:
 
 To switch, set `VITE_CMS_PROVIDER` and implement the provider client under `src/lib/cms/providers/`.
 
-## Forms: Volunteer / Contact / Submit an event
+## Forms: Volunteer / Contact / Submit an event / Messaging
 
 Forms are:
 
 - Accessible (labels, focus, keyboard)
 - Validated client-side (Zod + React Hook Form)
-- Submitted via **Netlify Forms** by default (with a honeypot)
+- Submitted with **EmailJS** (see **Forms (EmailJS)** under environment variables). A honeypot field reduces simple bot posts.
 
 ### Spam protection options
 
-- **Netlify Forms + honeypot**: enabled by default
+- **Honeypot**: included on forms (hidden field; submissions with it filled are ignored)
 - **reCAPTCHA**: optional (documented configuration)
 - **Cloudflare Turnstile**: example server-side verification endpoints:
   - Netlify: `netlify/functions/turnstile-verify.js`

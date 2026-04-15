@@ -38,7 +38,11 @@ export function TermsPage() {
               <a className="font-semibold text-patriot-blue underline" href={`mailto:${siteConfig.contact.email}`}>
                 {siteConfig.contact.email}
               </a>
-              .
+              , by phone at{' '}
+              <a className="font-semibold text-patriot-blue underline" href={`tel:${siteConfig.contact.phoneDial}`}>
+                Phone: {siteConfig.contact.phone}
+              </a>
+              , or by mail to {siteConfig.contact.mailingAddress}.
             </p>
 
             <section className="space-y-3">
