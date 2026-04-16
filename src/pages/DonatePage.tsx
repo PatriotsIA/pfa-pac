@@ -8,17 +8,87 @@ import { siteConfig } from '../config/site'
 
 export function DonatePage() {
   const anyEnabled = donationConfig.actBlue.enabled || donationConfig.paypal.enabled || donationConfig.stripe.enabled
+  const anedotUrl = donationConfig.anedot.checkoutUrl
 
   return (
     <>
       <Seo title="Donate" />
       <PageHeader
         eyebrow="Donate"
-        title="Support the work"
-        subtitle="We don’t collect card details on this site. Donations are handled through trusted, hosted payment flows."
+        title="Support Texas counties"
+        subtitle="Inform, empower, and unite citizens from the Panhandle to the Gulf—so self-government stays strong in every county. We never collect card details here; your gift is completed on our secure hosted checkout."
       />
 
       <div className="mt-10 grid gap-6">
+        <Card id="donate-now">
+          <CardGlow />
+          <div className="relative flex flex-col items-center text-center">
+            <div className="text-xs font-bold uppercase tracking-[0.22em] text-patriot-red">Guarding liberty</div>
+            <h2 className="mt-2 font-display text-2xl font-bold tracking-wide text-patriot-navy">
+              One movement. Two urgent fights.
+            </h2>
+            <p className="mt-3 max-w-prose text-sm leading-relaxed text-patriot-text">
+              Patriots For Action PAC is building a statewide network that strengthens counties across Texas—helping
+              neighbors get informed, stay engaged, and take responsibility where liberty actually lives: at home, in
+              precincts, and in local communities. Your donation fuels that work statewide, not in just one region.
+            </p>
+            <ul className="mt-4 w-full max-w-prose space-y-2 text-left text-sm leading-relaxed text-patriot-text">
+              <li>
+                <span className="font-semibold text-patriot-navy">Restore transparent paper elections.</span> We support
+                efforts that make elections easier to verify and harder to manipulate—so Texans can trust the process
+                and hold leaders accountable.
+              </li>
+              <li>
+                <span className="font-semibold text-patriot-navy">Eliminate property taxes.</span> We back advocacy and
+                organizing that pushes back against a system that treats your home like a rental from the government—
+                and fights for lasting tax relief Texans can feel.
+              </li>
+            </ul>
+            <p className="mt-4 max-w-prose text-sm leading-relaxed text-patriot-text">
+              When you give, you help put resources behind education, engagement, and action in counties throughout
+              Texas—turning shared values into practical results.
+            </p>
+            <div className="mt-6 flex flex-col items-center">
+              <a
+                className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-patriot-red px-5 text-sm font-semibold tracking-wide text-patriot-white shadow-glow-red transition hover:brightness-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-patriot-blue/40 focus-visible:ring-offset-2 focus-visible:ring-offset-patriot-bg"
+                href={anedotUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Donate now <ExternalLink className="h-4 w-4" />
+              </a>
+              <p className="mt-3 max-w-md text-xs leading-relaxed text-patriot-muted">
+                You will leave this site to complete your gift on a secure payment page.
+              </p>
+            </div>
+
+            <div className="mt-10 w-full max-w-xl border-t border-patriot-border pt-10">
+              <p className="text-sm leading-relaxed text-patriot-text">
+                To find out how to get involved and support your local community visit patriotsinactiontx.com or join
+                your local community.
+              </p>
+              <div className="mt-5 flex flex-wrap justify-center gap-3">
+                <a
+                  className="inline-flex h-11 items-center justify-center gap-2 rounded-lg border border-patriot-blue/35 bg-patriot-bg px-4 text-sm font-semibold tracking-wide text-patriot-navy transition hover:-translate-y-[1px] hover:border-patriot-blue hover:bg-patriot-bg-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-patriot-blue/40 focus-visible:ring-offset-2 focus-visible:ring-offset-patriot-bg"
+                  href={siteConfig.links.texasHub}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  patriotsinactiontx.com <ExternalLink className="h-4 w-4" />
+                </a>
+                <a
+                  className="inline-flex h-11 items-center justify-center gap-2 rounded-lg border border-patriot-blue/35 bg-patriot-bg px-4 text-sm font-semibold tracking-wide text-patriot-navy transition hover:-translate-y-[1px] hover:border-patriot-blue hover:bg-patriot-bg-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-patriot-blue/40 focus-visible:ring-offset-2 focus-visible:ring-offset-patriot-bg"
+                  href={siteConfig.links.community}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Join your local community <ExternalLink className="h-4 w-4" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </Card>
+
         <Card>
           <CardGlow />
           <div className="relative">
@@ -34,7 +104,7 @@ export function DonatePage() {
                 Give time <ArrowRight className="h-4 w-4" />
               </LinkButton>
               <a
-                href="#donation-options"
+                href="#donate-now"
                 className="inline-flex h-9 items-center justify-center gap-2 rounded-lg border border-patriot-blue/35 bg-patriot-bg px-3 text-sm font-semibold tracking-wide text-patriot-navy transition hover:-translate-y-[1px] hover:border-patriot-blue hover:bg-patriot-bg-soft active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-patriot-blue/40 focus-visible:ring-offset-2 focus-visible:ring-offset-patriot-bg"
               >
                 Give treasure <ArrowRight className="h-4 w-4" />
@@ -45,18 +115,20 @@ export function DonatePage() {
               <div className="rounded-2xl border border-patriot-border bg-patriot-bg-soft p-5">
                 <div className="text-xs font-bold uppercase tracking-[0.22em] text-patriot-red">How we spend</div>
                 <ul className="mt-3 grid gap-2 text-sm leading-relaxed text-patriot-text">
-                  <li>Local events, outreach, and organizing support.</li>
-                  <li>Voter education materials and communications.</li>
-                  <li>Tools and infrastructure (hosting, forms, analytics) to coordinate volunteers and updates.</li>
-                  <li>Compliance and reporting costs required to operate responsibly.</li>
+                  <li>County-level outreach, events, and organizing support across Texas.</li>
+                  <li>Voter education on election integrity and transparent, paper-based processes.</li>
+                  <li>Communications and materials that advance property-tax relief and fiscal accountability.</li>
+                  <li>Tools and infrastructure to coordinate volunteers, updates, and statewide campaigns.</li>
+                  <li>Compliance and reporting required to operate a PAC responsibly.</li>
                 </ul>
               </div>
 
               <div className="rounded-2xl border border-patriot-border bg-patriot-bg-soft p-5">
                 <div className="text-xs font-bold uppercase tracking-[0.22em] text-patriot-red">Where money goes</div>
                 <p className="mt-3 text-sm leading-relaxed text-patriot-text">
-                  We prioritize direct, mission-aligned work first. When overhead exists, it’s in service of reliable
-                  operations: keeping records, meeting deadlines, and making sure every effort is legally compliant.
+                  We prioritize mission-aligned work in Texas counties first. When overhead is necessary, it supports
+                  dependable operations: accurate records, deadlines met, and every effort kept legally sound—so more
+                  of your gift reaches real-world impact.
                 </p>
               </div>
 
@@ -83,8 +155,8 @@ export function DonatePage() {
               <div className="rounded-2xl border border-patriot-border bg-patriot-bg-soft p-5">
                 <div className="text-xs font-bold uppercase tracking-[0.22em] text-patriot-red">Impact</div>
                 <p className="mt-3 text-sm leading-relaxed text-patriot-text">
-                  Your support helps us turn civic energy into practical outputs: better coordination, clearer
-                  communication, stronger local participation, and more consistent follow-through.
+                  Your support helps turn civic conviction into steady action: stronger county networks, clearer
+                  messaging on liberty and accountability, and Texans equipped to show up where it counts.
                 </p>
               </div>
             </div>
