@@ -3,7 +3,6 @@ import { PageHeader } from '../components/ui/PageHeader'
 import { Seo } from '../lib/seo/Seo'
 import { siteConfig } from '../config/site'
 import { ExternalLinkButton } from '../components/ui/ExternalLinkButton'
-import { PatriotsInActionLockup } from '../components/brand/PatriotsInAction'
 
 export function CountyDirectoryPage() {
   return (
@@ -17,18 +16,26 @@ export function CountyDirectoryPage() {
 
       <div className="mx-auto mt-10 max-w-3xl">
         <div className="rounded-2xl border border-patriot-border bg-patriot-bg p-6 shadow-card">
-          <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <PatriotsInActionLockup className="h-12" alt="Patriots in Action" />
-            <a
-              className="text-sm font-semibold text-patriot-navy underline decoration-patriot-blue/40 underline-offset-4 hover:decoration-patriot-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-patriot-blue/25 focus-visible:ring-offset-2 focus-visible:ring-offset-patriot-bg"
-              href={siteConfig.links.texasHub}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              PatriotsInActionTX.com
-            </a>
+          <div className="rounded-xl bg-patriot-navy p-4 sm:p-5">
+            <div className="rounded-xl border border-white/15 bg-white/10 p-3">
+              <img
+                src={siteConfig.brand.footerLogoSrc}
+                alt="Patriots in Action"
+                className="h-10 w-auto max-w-full object-contain object-left sm:h-11"
+                loading="lazy"
+                decoding="async"
+              />
+              <a
+                className="mt-2 block text-sm font-semibold text-patriot-white/90 underline decoration-white/30 underline-offset-4 hover:text-patriot-white hover:decoration-white/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-patriot-blue/30 focus-visible:ring-offset-2 focus-visible:ring-offset-patriot-navy"
+                href={siteConfig.links.texasHub}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                PatriotsInActionTX.com
+              </a>
+            </div>
           </div>
-          <p className="text-sm leading-relaxed text-patriot-text">
+          <p className="mt-6 text-sm leading-relaxed text-patriot-text">
             Patriots in Action Texas is where you can connect with county-level activity, find local groups,
             and take the next step in your area.
           </p>

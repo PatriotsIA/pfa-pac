@@ -5,7 +5,8 @@ import { Seo } from '../lib/seo/Seo'
 import { LinkButton } from '../components/ui/LinkButton'
 import { ExternalLinkButton } from '../components/ui/ExternalLinkButton'
 import { siteConfig } from '../config/site'
-import { Users } from 'lucide-react'
+import { ExternalLink, Users } from 'lucide-react'
+import { OperationShowUpCover } from '../components/brand/OperationShowUpCover'
 
 export function AboutPage() {
   return (
@@ -65,14 +66,21 @@ export function AboutPage() {
       <Section title="Operation Show Up" kicker="Featured resource">
         <Card>
           <CardGlow />
-          <div className="relative">
-            <p className="text-sm leading-relaxed text-patriot-text">
-              Operation Show Up is a handbook for rebuilding the habits of self-government—showing up locally, asking clear questions, and staying engaged with measured strength.
-            </p>
-            <div className="mt-5">
-              <LinkButton to="/operation-show-up" variant="outline" size="sm">
-                Read highlights and quotes
-              </LinkButton>
+          <div className="relative flex flex-col gap-6 md:flex-row md:items-start">
+            <OperationShowUpCover className="mx-auto h-52 w-auto shrink-0 md:mx-0 md:h-60" />
+            <div className="min-w-0 flex-1">
+              <p className="text-sm leading-relaxed text-patriot-text">
+                Operation Show Up is a handbook for rebuilding the habits of self-government—showing up locally, asking
+                clear questions, and staying engaged with measured strength.
+              </p>
+              <div className="mt-5 flex flex-wrap gap-3">
+                <LinkButton to="/operation-show-up" variant="outline" size="sm">
+                  Read highlights and quotes
+                </LinkButton>
+                <ExternalLinkButton href={siteConfig.links.operationShowUpAmazon} variant="outline" size="sm">
+                  Buy on Amazon <ExternalLink className="h-4 w-4" />
+                </ExternalLinkButton>
+              </div>
             </div>
           </div>
         </Card>

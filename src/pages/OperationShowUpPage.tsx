@@ -7,6 +7,7 @@ import { ExternalLinkButton } from '../components/ui/ExternalLinkButton'
 import { LinkButton } from '../components/ui/LinkButton'
 import { siteConfig } from '../config/site'
 import { PatriotsInActionLockup } from '../components/brand/PatriotsInAction'
+import { OperationShowUpCover } from '../components/brand/OperationShowUpCover'
 
 type BookQuote = {
   text: string
@@ -109,12 +110,19 @@ export function OperationShowUpPage() {
             <ExternalLinkButton href={siteConfig.links.texasHub} variant="outline">
               County-level involvement <ExternalLink className="h-4 w-4" />
             </ExternalLinkButton>
+            <ExternalLinkButton href={siteConfig.links.operationShowUpAmazon} variant="outline">
+              Buy on Amazon <ExternalLink className="h-4 w-4" />
+            </ExternalLinkButton>
             <LinkButton to="/volunteer" variant="red">
               Volunteer
             </LinkButton>
           </>
         }
       />
+
+      <div className="mx-auto mt-8 flex justify-center px-4">
+        <OperationShowUpCover className="max-h-[min(480px,52vh)] w-auto max-w-[min(100%,280px)]" />
+      </div>
 
       <div className="mx-auto mt-8 max-w-4xl">
         <div className="flex flex-col items-center gap-3 rounded-2xl border border-patriot-border bg-patriot-bg/80 p-5 text-center shadow-card">
@@ -189,6 +197,11 @@ export function OperationShowUpPage() {
             <div className="font-semibold text-patriot-navy">Operation Show Up</div>
             <div>Daniel L. Rogers</div>
             <div className="text-patriot-muted">ISBN: 979-8-90333-387-5</div>
+            <div className="mt-5">
+              <ExternalLinkButton href={siteConfig.links.operationShowUpAmazon} variant="primary" size="sm">
+                Buy on Amazon <ExternalLink className="h-4 w-4" />
+              </ExternalLinkButton>
+            </div>
             <div className="mt-3 text-xs text-patriot-muted">
               Quotes shown here are short excerpts for reference and inspiration. Copyright © 2026 Patriots Connect,
               L.L.C. All rights reserved.

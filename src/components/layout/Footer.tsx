@@ -50,6 +50,16 @@ export function Footer() {
               <NavLink to="/operation-show-up" className={linkClass}>
                 Operation Show Up
               </NavLink>
+              <a
+                className={cn(
+                  'text-sm font-semibold text-patriot-white/80 transition hover:text-patriot-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-patriot-blue/30 focus-visible:ring-offset-2 focus-visible:ring-offset-patriot-navy',
+                )}
+                href={siteConfig.links.operationShowUpAmazon}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Buy on Amazon — Operation Show Up
+              </a>
               <NavLink to="/volunteer" className={linkClass}>
                 Volunteer
               </NavLink>

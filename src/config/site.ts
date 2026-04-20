@@ -16,11 +16,14 @@ export const siteConfig = {
     texasHub: 'https://patriotsinactiontx.com/',
     community:
       'https://community.patriotsinaction.com/collections/22475?sort=by_hosts',
+    /** Short Amazon link for *Operation Show Up* (Daniel L. Rogers) */
+    operationShowUpAmazon: 'https://a.co/d/0aDRqxP1',
   },
   brand: {
     pacLogoSrc: '/brand/PIAPatriot.png',
     footerLogoSrc: '/brand/PIAFooterLogo.png',
     patriotsInActionLockupSrc: '/brand/PIAFullTextLogoRedWhite.png',
+    operationShowUpCoverSrc: '/brand/operation-show-up-cover.png',
   },
 } as const
 
