@@ -1,6 +1,35 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Google Consent Mode defaults must run before Google Tag Manager loads. -->
+    <script>
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+
+      ;(function () {
+        var storedConsent = null
+        try {
+          storedConsent = JSON.parse(localStorage.getItem('pfa_cookie_consent_v1') || 'null')
+        } catch (_error) {
+          storedConsent = null
+        }
+
+        var analyticsGranted = storedConsent && storedConsent.analytics === true
+
+        gtag('consent', 'default', {
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied',
+          analytics_storage: analyticsGranted ? 'granted' : 'denied',
+          functionality_storage: 'granted',
+          personalization_storage: 'denied',
+          security_storage: 'granted',
+          wait_for_update: 500,
+        })
+      })()
+    </script>
     <!-- Google Tag Manager -->
     <script>
       ;(function (w, d, s, l, i) {

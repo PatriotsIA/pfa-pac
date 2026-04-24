@@ -2,6 +2,7 @@ import { Toaster } from 'react-hot-toast'
 import { RouterProvider } from 'react-router-dom'
 import type { DataRouter } from 'react-router'
 import { Analytics } from '../lib/analytics/Analytics'
+import { ConsentBanner } from '../components/compliance/ConsentBanner'
 
 export function AppShell({ router }: { router: DataRouter }) {
   const isBrowser = typeof window !== 'undefined'
@@ -10,6 +11,7 @@ export function AppShell({ router }: { router: DataRouter }) {
     <>
       <Analytics />
       <RouterProvider router={router} />
+      <ConsentBanner />
       {isBrowser ? (
         <Toaster
           position="top-right"
