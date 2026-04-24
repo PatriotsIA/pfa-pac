@@ -16,7 +16,42 @@
           storedConsent = null
         }
 
-        var analyticsGranted = storedConsent && storedConsent.analytics === true
+        var hasStoredConsent = storedConsent && typeof storedConsent.analytics === 'boolean'
+        var analyticsGranted = hasStoredConsent ? storedConsent.analytics === true : true
+        var consentRequiredRegions = [
+          'AT',
+          'BE',
+          'BG',
+          'CH',
+          'CY',
+          'CZ',
+          'DE',
+          'DK',
+          'EE',
+          'ES',
+          'FI',
+          'FR',
+          'GB',
+          'GR',
+          'HR',
+          'HU',
+          'IE',
+          'IS',
+          'IT',
+          'LI',
+          'LT',
+          'LU',
+          'LV',
+          'MT',
+          'NL',
+          'NO',
+          'PL',
+          'PT',
+          'RO',
+          'SE',
+          'SI',
+          'SK',
+        ]
 
         gtag('consent', 'default', {
           ad_storage: 'denied',
@@ -28,6 +63,13 @@
           security_storage: 'granted',
           wait_for_update: 500,
         })
+
+        if (!hasStoredConsent) {
+          gtag('consent', 'default', {
+            analytics_storage: 'denied',
+            region: consentRequiredRegions,
+          })
+        }
       })()
     </script>
     <!-- Google Tag Manager -->

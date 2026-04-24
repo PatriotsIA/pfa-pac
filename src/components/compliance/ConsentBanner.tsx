@@ -37,8 +37,8 @@ export function ConsentBanner() {
           </h2>
           <p className="text-sm leading-relaxed text-patriot-muted">
             We use Google Analytics through Google Tag Manager to understand site traffic and improve our outreach.
-            Analytics storage is off unless you accept. Advertising storage, ad personalization, and ad user data stay
-            off. See our{' '}
+            You can choose whether analytics storage is allowed. Advertising storage, ad personalization, and ad user
+            data stay off. See our{' '}
             <a className="font-semibold text-patriot-navy underline decoration-patriot-blue/40 underline-offset-4" href="/privacy">
               privacy policy
             </a>
