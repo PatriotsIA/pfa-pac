@@ -81,8 +81,34 @@ export function AboutPage() {
                 <LinkButton to="/operation-show-up" variant="outline" size="sm">
                   Read highlights and quotes
                 </LinkButton>
-                <ExternalLinkButton href={siteConfig.links.operationShowUpAmazon} variant="outline" size="sm">
-                  Buy on Amazon <ExternalLink className="h-4 w-4" />
+                <ExternalLinkButton href={siteConfig.links.operationShowUpPatriotMerch} variant="primary" size="sm">
+                  Buy on Patriot Merch <ExternalLink className="h-4 w-4" />
+                </ExternalLinkButton>
+              </div>
+            </div>
+          </div>
+        </Card>
+      </Section>
+
+      <Section title="Operation Show Up Coloring Book" kicker="Featured book">
+        <Card>
+          <CardGlow />
+          <div className="relative flex flex-col gap-6 md:flex-row md:items-start">
+            <img
+              src={siteConfig.brand.coloringBookCoverSrc}
+              alt="Operation Show Up coloring book cover"
+              className="mx-auto h-52 w-auto shrink-0 rounded-xl border border-patriot-border bg-patriot-bg object-contain shadow-card md:mx-0 md:h-60"
+              loading="lazy"
+              decoding="async"
+            />
+            <div className="min-w-0 flex-1">
+              <p className="text-sm leading-relaxed text-patriot-text">
+                A companion coloring book for families who want to make the ideas of presence, responsibility, and
+                citizenship approachable for younger learners.
+              </p>
+              <div className="mt-5 flex flex-wrap gap-3">
+                <ExternalLinkButton href={siteConfig.links.operationShowUpColoringBook} variant="primary" size="sm">
+                  Buy on Patriot Merch <ExternalLink className="h-4 w-4" />
                 </ExternalLinkButton>
               </div>
             </div>

@@ -110,8 +110,8 @@ export function OperationShowUpPage() {
             <ExternalLinkButton href={siteConfig.links.texasHub} variant="outline">
               County-level involvement <ExternalLink className="h-4 w-4" />
             </ExternalLinkButton>
-            <ExternalLinkButton href={siteConfig.links.operationShowUpAmazon} variant="outline">
-              Buy on Amazon <ExternalLink className="h-4 w-4" />
+            <ExternalLinkButton href={siteConfig.links.operationShowUpPatriotMerch} variant="outline">
+              Buy on Patriot Merch <ExternalLink className="h-4 w-4" />
             </ExternalLinkButton>
             <LinkButton to="/volunteer" variant="red">
               Volunteer
@@ -198,8 +198,8 @@ export function OperationShowUpPage() {
             <div>Daniel L. Rogers</div>
             <div className="text-patriot-muted">ISBN: 979-8-90333-387-5</div>
             <div className="mt-5">
-              <ExternalLinkButton href={siteConfig.links.operationShowUpAmazon} variant="primary" size="sm">
-                Buy on Amazon <ExternalLink className="h-4 w-4" />
+              <ExternalLinkButton href={siteConfig.links.operationShowUpPatriotMerch} variant="primary" size="sm">
+                Buy on Patriot Merch <ExternalLink className="h-4 w-4" />
               </ExternalLinkButton>
             </div>
             <div className="mt-3 text-xs text-patriot-muted">

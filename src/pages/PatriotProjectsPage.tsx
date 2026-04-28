@@ -26,7 +26,15 @@ const projects: Project[] = [
     coverSrc: siteConfig.brand.operationShowUpCoverSrc,
     coverAlt: operationShowUpCoverAlt,
     internalLinks: [{ label: 'Highlights & quotes', to: '/operation-show-up' }],
-    links: [{ label: 'Buy on Amazon', href: siteConfig.links.operationShowUpAmazon }],
+    links: [{ label: 'Buy on Patriot Merch', href: siteConfig.links.operationShowUpPatriotMerch }],
+  },
+  {
+    name: 'Operation Show Up Coloring Book',
+    description:
+      'A family-friendly companion resource that helps children and families connect civic habits with memorable, hands-on activities.',
+    coverSrc: siteConfig.brand.coloringBookCoverSrc,
+    coverAlt: 'Operation Show Up coloring book cover',
+    links: [{ label: 'Buy on Patriot Merch', href: siteConfig.links.operationShowUpColoringBook }],
   },
   {
     name: 'Patriots in Action TX',

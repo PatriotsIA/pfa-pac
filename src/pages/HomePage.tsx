@@ -46,9 +46,6 @@ export function HomePage() {
               <LinkButton to="/operation-show-up" variant="outline">
                 Operation Show Up <ArrowRight className="h-4 w-4" />
               </LinkButton>
-              <ExternalLinkButton href={siteConfig.links.operationShowUpAmazon} variant="outline">
-                Buy on Amazon <ExternalLink className="h-4 w-4" />
-              </ExternalLinkButton>
               <LinkButton to="/volunteer" variant="outline">
                 Volunteer <ArrowRight className="h-4 w-4" />
               </LinkButton>
@@ -59,24 +56,52 @@ export function HomePage() {
           </Reveal>
 
           <Reveal delay={0.12}>
-            <div className="mx-auto mt-10 max-w-3xl rounded-2xl border border-patriot-border bg-patriot-bg p-6 shadow-card">
-              <div className="flex flex-col items-center gap-5 sm:flex-row sm:items-center sm:justify-center sm:gap-8">
-                <OperationShowUpCover className="h-48 w-auto sm:h-52" />
-                <div className="text-center sm:text-left">
-                  <div className="text-xs font-bold uppercase tracking-[0.22em] text-patriot-red">Featured book</div>
-                  <h2 className="mt-2 font-display text-xl font-bold tracking-wide text-patriot-navy sm:text-2xl">
-                    Operation Show Up
-                  </h2>
-                  <p className="mt-2 text-sm leading-relaxed text-patriot-text">
-                    By Daniel L. Rogers — a handbook for citizenship, local presence, and measured strength.
-                  </p>
-                  <div className="mt-4 flex flex-wrap justify-center gap-2 sm:justify-start">
-                    <LinkButton to="/operation-show-up" variant="outline" size="sm">
-                      Read highlights <ArrowRight className="h-4 w-4" />
-                    </LinkButton>
-                    <ExternalLinkButton href={siteConfig.links.operationShowUpAmazon} variant="primary" size="sm">
-                      Buy on Amazon <ExternalLink className="h-4 w-4" />
-                    </ExternalLinkButton>
+            <div className="mx-auto mt-10 grid max-w-5xl gap-6 lg:grid-cols-2">
+              <div className="rounded-2xl border border-patriot-border bg-patriot-bg p-6 shadow-card">
+                <div className="flex flex-col items-center gap-5 sm:flex-row sm:items-center sm:justify-center sm:gap-8">
+                  <OperationShowUpCover className="h-48 w-auto sm:h-52" />
+                  <div className="text-center sm:text-left">
+                    <div className="text-xs font-bold uppercase tracking-[0.22em] text-patriot-red">Featured book</div>
+                    <h2 className="mt-2 font-display text-xl font-bold tracking-wide text-patriot-navy sm:text-2xl">
+                      Operation Show Up
+                    </h2>
+                    <p className="mt-2 text-sm leading-relaxed text-patriot-text">
+                      By Daniel L. Rogers — a handbook for citizenship, local presence, and measured strength.
+                    </p>
+                    <div className="mt-4 flex flex-wrap justify-center gap-2 sm:justify-start">
+                      <LinkButton to="/operation-show-up" variant="outline" size="sm">
+                        Read highlights <ArrowRight className="h-4 w-4" />
+                      </LinkButton>
+                      <ExternalLinkButton href={siteConfig.links.operationShowUpPatriotMerch} variant="primary" size="sm">
+                        Buy on Patriot Merch <ExternalLink className="h-4 w-4" />
+                      </ExternalLinkButton>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="rounded-2xl border border-patriot-border bg-patriot-bg p-6 shadow-card">
+                <div className="flex flex-col items-center gap-5 sm:flex-row sm:items-center sm:justify-center sm:gap-8">
+                  <img
+                    src={siteConfig.brand.coloringBookCoverSrc}
+                    alt="Operation Show Up coloring book cover"
+                    className="h-48 w-auto rounded-xl border border-patriot-border bg-patriot-bg object-contain shadow-card sm:h-52"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div className="text-center sm:text-left">
+                    <div className="text-xs font-bold uppercase tracking-[0.22em] text-patriot-red">Featured book</div>
+                    <h2 className="mt-2 font-display text-xl font-bold tracking-wide text-patriot-navy sm:text-2xl">
+                      Operation Show Up Coloring Book
+                    </h2>
+                    <p className="mt-2 text-sm leading-relaxed text-patriot-text">
+                      A family-friendly companion resource for making civic habits memorable and hands-on.
+                    </p>
+                    <div className="mt-4 flex flex-wrap justify-center gap-2 sm:justify-start">
+                      <ExternalLinkButton href={siteConfig.links.operationShowUpColoringBook} variant="primary" size="sm">
+                        Buy on Patriot Merch <ExternalLink className="h-4 w-4" />
+                      </ExternalLinkButton>
+                    </div>
                   </div>
                 </div>
               </div>
