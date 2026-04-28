@@ -124,16 +124,28 @@ Set:
 
 ## SEO
 
-- `Seo` component uses `react-helmet-async` for title/description/canonical + OpenGraph/Twitter
-- `sitemap.xml` and `robots.txt` are generated at build time (`scripts/generate-seo.mjs`)
-  - No county dynamic routes exist, and none are generated
+- `Seo` component uses `react-helmet-async` for title, description, canonical, robots, Open Graph, Twitter, and structured data.
+- The home page emits `Organization` and `WebSite` JSON-LD; news posts emit `NewsArticle` JSON-LD.
+- `sitemap.xml` and `robots.txt` are generated at build time (`scripts/generate-seo.mjs`).
+  - The sitemap includes static public routes and `/news/:postSlug` routes.
+  - No county dynamic routes exist, and none are generated.
+- `VITE_SITE_URL` should be set to `https://patriotsforaction.org` in production so canonical URLs, Open Graph URLs, and sitemap entries use the live domain.
 
-## Optional pre-rendering (SSG) for marketing routes
+### Google Search Console setup
 
-To generate crawlable HTML for key marketing routes (`/`, `/about`, `/issues`, `/donate`, `/volunteer`):
+After deploying a production build:
+
+1. Add a Domain property for `patriotsforaction.org` in Google Search Console and verify with DNS.
+2. Submit `https://patriotsforaction.org/sitemap.xml`.
+3. Use URL inspection on `https://patriotsforaction.org/` and a representative news post.
+4. Check Coverage/Indexing after Google recrawls.
+
+## Pre-rendering (SSG) for marketing routes
+
+`npm run build` now generates crawlable HTML for key marketing routes before writing SEO assets:
 
 ```bash
-npm run build:prerender
+npm run build
 ```
 
 This uses a Vite SSR build + a prerender script:
@@ -149,10 +161,10 @@ This uses a Vite SSR build + a prerender script:
 - Includes SPA rewrite rules so refresh works on nested routes.
 - Build output: `dist/`
 
-If you want prerendered marketing pages on Netlify, set build command to:
+Use this build command on Netlify:
 
 ```bash
-npm run build:prerender
+npm run build
 ```
 
 ### Vercel

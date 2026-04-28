@@ -6,11 +6,18 @@ import { Seo } from '../lib/seo/Seo'
 import { siteConfig } from '../config/site'
 import { ExternalLinkButton } from '../components/ui/ExternalLinkButton'
 import { OperationShowUpCover } from '../components/brand/OperationShowUpCover'
+import { organizationJsonLd, websiteJsonLd } from '../lib/seo/structuredData'
 
 export function HomePage() {
   return (
     <>
-      <Seo title="Home" />
+      <Seo
+        title="Texas Civic Action PAC"
+        description="Patriots For Action PAC helps Texans stay informed, organize locally, volunteer, and support values-driven civic action across the state."
+        canonicalPath="/"
+        keywords={['Patriots For Action PAC', 'Texas PAC', 'Texas civic engagement', 'local action']}
+        jsonLd={[organizationJsonLd(), websiteJsonLd()]}
+      />
 
       <div className="relative">
         <div className="absolute inset-x-0 top-0 -z-10 h-32 bg-gradient-to-b from-patriot-blue/10 to-transparent" />

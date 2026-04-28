@@ -33,7 +33,11 @@ const issues = [
 export function IssuesPage() {
   return (
     <>
-      <Seo title="Issues" />
+      <Seo
+        title="Issues"
+        description="Explore Patriots For Action PAC priorities, including integrity, transparency, community safety, local prosperity, and families."
+        canonicalPath="/issues"
+      />
       <PageHeader
         eyebrow="Issues"
         title="What we stand for"

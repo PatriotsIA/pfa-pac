@@ -8,6 +8,7 @@ import { Card, CardGlow } from '../components/ui/Card'
 import { formatEventDateRange } from '../lib/datetime'
 import { Markdown } from '../components/content/Markdown'
 import { buildGoogleCalendarUrl, buildIcs } from '../lib/calendar'
+import { eventJsonLd } from '../lib/seo/structuredData'
 
 export function EventDetailPage() {
   const { eventSlug } = useParams()
@@ -65,7 +66,12 @@ export function EventDetailPage() {
 
   return (
     <div className="mx-auto max-w-4xl">
-      <Seo title={event.title} description={event.summary} canonicalPath={`/events/${event.slug}`} />
+      <Seo
+        title={event.title}
+        description={event.summary}
+        canonicalPath={`/events/${event.slug}`}
+        jsonLd={eventJsonLd(event)}
+      />
 
       <div className="mb-6">
         <Link

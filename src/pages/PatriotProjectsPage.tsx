@@ -71,7 +71,11 @@ const projects: Project[] = [
 export function PatriotProjectsPage() {
   return (
     <>
-      <Seo title="Patriot Projects" />
+      <Seo
+        title="Patriot Projects"
+        description="Browse Patriot Projects, partner sites, and open-source civic tooling connected to local-first action."
+        canonicalPath="/projects"
+      />
       <PageHeader
         eyebrow="Projects"
         title="Patriot Projects"

@@ -14,10 +14,18 @@ export async function render(url: string) {
     </HelmetProvider>,
   )
 
-  const helmet = (helmetContext as { helmet?: { title?: { toString(): string }; meta?: { toString(): string }; link?: { toString(): string } } })
-    .helmet
+  const helmet = (
+    helmetContext as {
+      helmet?: {
+        title?: { toString(): string }
+        meta?: { toString(): string }
+        link?: { toString(): string }
+        script?: { toString(): string }
+      }
+    }
+  ).helmet
 
-  const head = [helmet?.title?.toString(), helmet?.meta?.toString(), helmet?.link?.toString()]
+  const head = [helmet?.title?.toString(), helmet?.meta?.toString(), helmet?.link?.toString(), helmet?.script?.toString()]
     .filter(Boolean)
     .join('\n')
 

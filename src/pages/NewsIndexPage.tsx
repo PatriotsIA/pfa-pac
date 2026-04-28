@@ -17,7 +17,11 @@ export function NewsIndexPage() {
 
   return (
     <>
-      <Seo title="News" />
+      <Seo
+        title="News"
+        description="Read Patriots For Action PAC updates, announcements, and practical civic action notes for supporters across Texas."
+        canonicalPath="/news"
+      />
       <PageHeader
         eyebrow="News"
         title="Updates and announcements"

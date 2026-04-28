@@ -9,7 +9,11 @@ const lastRevised = new Date().toLocaleDateString('en-US', { year: 'numeric', mo
 export function TermsPage() {
   return (
     <>
-      <Seo title="Terms & conditions" />
+      <Seo
+        title="Terms & conditions"
+        description="Review the Patriots For Action PAC terms and conditions for website use, forms, donations, and communications."
+        canonicalPath="/terms"
+      />
       <PageHeader
         eyebrow="Legal"
         title="Terms &amp; conditions"

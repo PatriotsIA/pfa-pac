@@ -91,7 +91,11 @@ export function VolunteerPage() {
 
   return (
     <>
-      <Seo title="Volunteer" />
+      <Seo
+        title="Volunteer"
+        description="Volunteer with Patriots For Action PAC and choose roles in outreach, events, research, communications, and operations."
+        canonicalPath="/volunteer"
+      />
       <PageHeader
         eyebrow="Volunteer"
         title="Step in where you can"

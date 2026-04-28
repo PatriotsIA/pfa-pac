@@ -1,6 +1,7 @@
 export const siteConfig = {
   name: 'Patriots For Action',
   legalName: 'Patriots For Action PAC',
+  url: 'https://patriotsforaction.org',
   tagline: 'Local-first. Values-forward. Action-oriented.',
   description:
     'A statewide PAC committed to the habits of self-government: show up locally, stay informed, speak with restraint, and act with steady responsibility.',

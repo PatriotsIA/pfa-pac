@@ -7,7 +7,11 @@ import { ExternalLinkButton } from '../components/ui/ExternalLinkButton'
 export function CountyDirectoryPage() {
   return (
     <>
-      <Seo title="Counties" />
+      <Seo
+        title="Counties"
+        description="Find county-level involvement through the Patriots in Action Texas hub and connect with local civic action opportunities."
+        canonicalPath="/counties"
+      />
       <PageHeader
         eyebrow="Counties"
         title="Get involved at the county level"

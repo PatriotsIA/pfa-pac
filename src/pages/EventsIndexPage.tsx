@@ -90,7 +90,11 @@ export function EventsIndexPage() {
 
   return (
     <>
-      <Seo title="Events" />
+      <Seo
+        title="Events"
+        description="Find upcoming Patriots For Action PAC events, filter by topic or location, and submit civic action events for review."
+        canonicalPath="/events"
+      />
       <PageHeader
         eyebrow="Events"
         title="Upcoming events"

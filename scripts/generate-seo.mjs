@@ -3,21 +3,30 @@ import path from 'node:path'
 
 const distDir = path.join(process.cwd(), 'dist')
 const baseUrlRaw = process.env.VITE_SITE_URL || process.env.SITE_URL || ''
-const baseUrl = baseUrlRaw.replace(/\/+$/, '')
-
-if (!baseUrl) {
-  // We still generate a sitemap for local preview, but it won't be correct for production.
-  // Set VITE_SITE_URL (recommended) in your CI/deploy environment.
-  console.warn('[seo] Missing VITE_SITE_URL/SITE_URL; sitemap will use a placeholder URL.')
-}
+const baseUrl = (baseUrlRaw || 'https://patriotsforaction.org').replace(/\/+$/, '')
 
 function joinUrl(p) {
-  const root = baseUrl || 'http://localhost'
-  return new URL(p, root.endsWith('/') ? root : `${root}/`).toString()
+  return new URL(p, `${baseUrl}/`).toString()
 }
 
 function todayIsoDate() {
   return new Date().toISOString().slice(0, 10)
+}
+
+function isoDate(value) {
+  if (!value) return todayIsoDate()
+  const date = new Date(value)
+  if (Number.isNaN(date.getTime())) return todayIsoDate()
+  return date.toISOString().slice(0, 10)
+}
+
+function escapeXml(value) {
+  return String(value)
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&apos;')
 }
 
 async function readJson(relPath) {
@@ -27,35 +36,56 @@ async function readJson(relPath) {
 }
 
 const staticRoutes = [
-  '/',
-  '/about',
-  '/issues',
-  '/counties',
-  '/news',
-  '/operation-show-up',
-  '/volunteer',
-  '/donate',
-  '/contact',
-  '/messaging',
-  '/privacy',
-  '/terms',
+  { path: '/', priority: '1.0', changefreq: 'weekly' },
+  { path: '/about', priority: '0.8', changefreq: 'monthly' },
+  { path: '/issues', priority: '0.8', changefreq: 'monthly' },
+  { path: '/counties', priority: '0.7', changefreq: 'monthly' },
+  { path: '/news', priority: '0.8', changefreq: 'weekly' },
+  { path: '/operation-show-up', priority: '0.8', changefreq: 'monthly' },
+  { path: '/projects', priority: '0.6', changefreq: 'monthly' },
+  { path: '/volunteer', priority: '0.9', changefreq: 'monthly' },
+  { path: '/donate', priority: '0.9', changefreq: 'monthly' },
+  { path: '/contact', priority: '0.7', changefreq: 'monthly' },
+  { path: '/messaging', priority: '0.5', changefreq: 'monthly' },
+  { path: '/privacy', priority: '0.3', changefreq: 'yearly' },
+  { path: '/terms', priority: '0.3', changefreq: 'yearly' },
 ]
 
 const news = await readJson('src/data/news.json').catch(() => [])
 
 const dynamicRoutes = [
-  ...(Array.isArray(news) ? news.map((p) => `/news/${p.slug}`) : []),
+  ...(Array.isArray(news)
+    ? news
+        .filter((p) => p?.slug)
+        .map((p) => ({
+          path: `/news/${p.slug}`,
+          lastmod: isoDate(p.publishedAt),
+          priority: '0.6',
+          changefreq: 'monthly',
+        }))
+    : []),
 ]
 
-const routes = Array.from(new Set([...staticRoutes, ...dynamicRoutes])).filter(Boolean)
+const routesByPath = new Map()
+for (const route of [...staticRoutes, ...dynamicRoutes]) {
+  if (route?.path && !routesByPath.has(route.path)) routesByPath.set(route.path, route)
+}
+const routes = Array.from(routesByPath.values())
 
 const lastmod = todayIsoDate()
 const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>\n` +
   `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
   routes
     .map((r) => {
-      const loc = joinUrl(r)
-      return `  <url><loc>${loc}</loc><lastmod>${lastmod}</lastmod></url>`
+      const loc = escapeXml(joinUrl(r.path))
+      return [
+        '  <url>',
+        `    <loc>${loc}</loc>`,
+        `    <lastmod>${escapeXml(r.lastmod ?? lastmod)}</lastmod>`,
+        `    <changefreq>${escapeXml(r.changefreq ?? 'monthly')}</changefreq>`,
+        `    <priority>${escapeXml(r.priority ?? '0.5')}</priority>`,
+        '  </url>',
+      ].join('\n')
     })
     .join('\n') +
   `\n</urlset>\n`
@@ -63,7 +93,7 @@ const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>\n` +
 const robotsTxt = [
   'User-agent: *',
   'Allow: /',
-  baseUrl ? `Sitemap: ${new URL('/sitemap.xml', `${baseUrl}/`).toString()}` : 'Sitemap: /sitemap.xml',
+  `Sitemap: ${new URL('/sitemap.xml', `${baseUrl}/`).toString()}`,
   '',
 ].join('\n')
 

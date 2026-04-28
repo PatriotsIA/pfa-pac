@@ -7,6 +7,7 @@ import type { NewsPost } from '../lib/models'
 import { Card, CardGlow } from '../components/ui/Card'
 import { formatDateTime } from '../lib/datetime'
 import { Markdown } from '../components/content/Markdown'
+import { newsArticleJsonLd } from '../lib/seo/structuredData'
 
 export function NewsPostPage() {
   const { postSlug } = useParams()
@@ -50,7 +51,15 @@ export function NewsPostPage() {
 
   return (
     <div className="mx-auto max-w-4xl">
-      <Seo title={post.title} description={post.excerpt} canonicalPath={`/news/${post.slug}`} />
+      <Seo
+        title={post.title}
+        description={post.excerpt}
+        canonicalPath={`/news/${post.slug}`}
+        type="article"
+        publishedTime={post.publishedAt}
+        modifiedTime={post.publishedAt}
+        jsonLd={newsArticleJsonLd(post)}
+      />
 
       <div className="mb-6">
         <Link

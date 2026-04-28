@@ -11,7 +11,11 @@ import { OperationShowUpCover } from '../components/brand/OperationShowUpCover'
 export function AboutPage() {
   return (
     <>
-      <Seo title="About" />
+      <Seo
+        title="About"
+        description="Learn how Patriots For Action PAC organizes, informs, and mobilizes Texans around local-first civic responsibility and practical action."
+        canonicalPath="/about"
+      />
       <PageHeader
         eyebrow="About"
         title="A PAC built on presence"

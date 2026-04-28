@@ -60,7 +60,11 @@ export function ContactPage() {
 
   return (
     <>
-      <Seo title="Contact" />
+      <Seo
+        title="Contact"
+        description="Contact Patriots For Action PAC with questions, tips, event information, or statewide civic action inquiries."
+        canonicalPath="/contact"
+      />
       <PageHeader
         eyebrow="Contact"
         title="Get in touch"

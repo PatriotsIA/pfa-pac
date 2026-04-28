@@ -12,7 +12,11 @@ export function DonatePage() {
 
   return (
     <>
-      <Seo title="Donate" />
+      <Seo
+        title="Donate"
+        description="Support Patriots For Action PAC's statewide work to inform, organize, and mobilize Texans around local responsibility and practical civic action."
+        canonicalPath="/donate"
+      />
       <PageHeader
         eyebrow="Donate"
         title="Support Texas counties"

@@ -87,7 +87,11 @@ export function MessagingPage() {
 
   return (
     <>
-      <Seo title="Messaging & compliance" description="Text message compliance and outreach intake for campaigns and organizations." />
+      <Seo
+        title="Messaging & compliance"
+        description="Review text message compliance language and outreach intake requirements for Patriots For Action PAC communications."
+        canonicalPath="/messaging"
+      />
       <PageHeader
         eyebrow="Messaging"
         title="Outreach & text compliance"
