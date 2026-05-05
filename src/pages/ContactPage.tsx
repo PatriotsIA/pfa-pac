@@ -143,8 +143,8 @@ export function ContactPage() {
               <Field label="Subject (optional)">
                 <Input {...form.register('subject')} autoComplete="off" />
               </Field>
-              <Field label="County/Region (optional)" hint="Free-text (not routed)">
-                <Input {...form.register('countyOrRegion')} placeholder="e.g. Harris, South Texas" />
+              <Field label="County/Region (optional)">
+                <Input {...form.register('countyOrRegion')} />
               </Field>
               <div className="md:col-span-2">
                 <Field label="Message" error={form.formState.errors.message?.message}>

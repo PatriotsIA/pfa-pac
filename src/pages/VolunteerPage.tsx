@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { Link } from 'react-router-dom'
-import { useForm } from 'react-hook-form'
+import { useForm, useWatch } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import toast from 'react-hot-toast'
 import { ArrowRight, HeartHandshake, Users } from 'lucide-react'
@@ -12,9 +12,9 @@ import { Input } from '../components/ui/Input'
 import { Textarea } from '../components/ui/Textarea'
 import { Button } from '../components/ui/Button'
 import { sendSiteFormEmail } from '../lib/emailJsForms'
-import { LinkButton } from '../components/ui/LinkButton'
 import { ExternalLinkButton } from '../components/ui/ExternalLinkButton'
 import { siteConfig } from '../config/site'
+import { donationConfig } from '../config/donations'
 import { EnSpotSmsOptInLabel } from '../components/compliance/EnSpotSmsOptInLabel'
 
 const interests = [
@@ -69,7 +69,7 @@ export function VolunteerPage() {
     },
   })
 
-  const phoneWatch = form.watch('phone')
+  const phoneWatch = useWatch({ control: form.control, name: 'phone' })
 
   async function onSubmit(values: VolunteerValues) {
     if (values.botField) return
@@ -105,9 +105,9 @@ export function VolunteerPage() {
             <ExternalLinkButton href={siteConfig.links.community} variant="outline">
               Join our community <Users className="h-4 w-4" />
             </ExternalLinkButton>
-            <LinkButton to="/donate" variant="red">
+            <ExternalLinkButton href={donationConfig.anedot.checkoutUrl} variant="red">
               Donate <ArrowRight className="h-4 w-4" />
-            </LinkButton>
+            </ExternalLinkButton>
           </>
         }
       />
@@ -121,9 +121,7 @@ export function VolunteerPage() {
             <ol className="mt-4 grid gap-3 text-sm text-patriot-text">
               <li className="rounded-xl border border-patriot-border bg-patriot-bg-soft p-4">
                 <div className="font-semibold text-patriot-navy">1) Attend an event</div>
-                <div className="mt-1 text-patriot-text">
-                  Events are temporarily paused on this PAC site. Join the community to see what’s happening.
-                </div>
+                <div className="mt-1 text-patriot-text">Join the community to see upcoming opportunities and local activity.</div>
                 <div className="mt-3">
                   <ExternalLinkButton href={siteConfig.links.community} variant="primary" size="sm">
                     Join our community <Users className="h-4 w-4" />
@@ -138,9 +136,9 @@ export function VolunteerPage() {
                 <div className="font-semibold text-patriot-navy">3) Support with a donation</div>
                 <div className="mt-1 text-patriot-text">Fuel events, outreach, and communications.</div>
                 <div className="mt-3">
-                  <LinkButton to="/donate" variant="red" size="sm">
+                  <ExternalLinkButton href={donationConfig.anedot.checkoutUrl} variant="red" size="sm">
                     Donate <ArrowRight className="h-4 w-4" />
-                  </LinkButton>
+                  </ExternalLinkButton>
                 </div>
               </li>
             </ol>
@@ -154,8 +152,7 @@ export function VolunteerPage() {
               <HeartHandshake className="h-4 w-4" /> Volunteer form
             </div>
             <p className="mt-3 max-w-prose text-sm leading-relaxed text-patriot-text">
-              Client-side validation; submissions are emailed to our team via EmailJS (honeypot below). Optional Turnstile
-              examples remain in the repo.
+              Tell us how you would like to help, and our team will follow up with next steps.
             </p>
 
             <form
@@ -189,8 +186,8 @@ export function VolunteerPage() {
               <Field label="Phone (optional)">
                 <Input {...form.register('phone')} autoComplete="tel" />
               </Field>
-              <Field label="County/Region (optional)" hint="Free-text (not routed)">
-                <Input {...form.register('countyOrRegion')} placeholder="e.g. Travis, Panhandle, North Texas" />
+              <Field label="County/Region (optional)">
+                <Input {...form.register('countyOrRegion')} />
               </Field>
 
               <div className="md:col-span-2">
@@ -220,7 +217,7 @@ export function VolunteerPage() {
 
               <div className="md:col-span-2">
                 <Field label="Message (optional)">
-                  <Textarea {...form.register('message')} placeholder="Anything we should know?" />
+                  <Textarea {...form.register('message')} />
                 </Field>
               </div>
 

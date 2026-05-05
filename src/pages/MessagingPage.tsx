@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { useForm } from 'react-hook-form'
+import { useForm, useWatch } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import toast from 'react-hot-toast'
 import { Link } from 'react-router-dom'
@@ -64,7 +64,7 @@ export function MessagingPage() {
     },
   })
 
-  const phoneValue = form.watch('phone')
+  const phoneValue = useWatch({ control: form.control, name: 'phone' })
 
   async function onSubmit(values: MessagingValues) {
     if (values.botField) return
@@ -242,11 +242,7 @@ export function MessagingPage() {
 
               <div className="md:col-span-2">
                 <Field label="What do you need?" error={form.formState.errors.message?.message}>
-                  <Textarea
-                    {...form.register('message')}
-                    aria-invalid={!!form.formState.errors.message}
-                    placeholder="Audience size, timeline, types of messages, current tools, etc."
-                  />
+                  <Textarea {...form.register('message')} aria-invalid={!!form.formState.errors.message} />
                 </Field>
               </div>
 

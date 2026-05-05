@@ -69,11 +69,6 @@ const projects: Project[] = [
     description: 'Bond analysis and accountability tooling.',
     links: [{ label: 'Bond Assassins', href: 'https://main.d29xv8yo82m18c.amplifyapp.com/' }],
   },
-  {
-    name: 'mytexasgop',
-    description: 'Project link coming soon.',
-    links: [],
-  },
 ]
 
 export function PatriotProjectsPage() {
@@ -120,8 +115,6 @@ export function PatriotProjectsPage() {
                       {link.label} <ExternalLink className="h-4 w-4" />
                     </ExternalLinkButton>
                   ))
-                ) : !project.internalLinks?.length ? (
-                  <div className="text-sm font-semibold text-patriot-muted">Link coming soon.</div>
                 ) : null}
               </div>
             </div>

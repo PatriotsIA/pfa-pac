@@ -5,9 +5,11 @@ import { ArrowRight, Menu, X } from 'lucide-react'
 import { cn } from '../../lib/cn'
 import { BrandLockup } from '../brand/Brand'
 import { LinkButton } from '../ui/LinkButton'
+import { ExternalLinkButton } from '../ui/ExternalLinkButton'
 import { siteConfig } from '../../config/site'
+import { donationConfig } from '../../config/donations'
 
-type NavItem = { to: string; label: string }
+type NavItem = { to?: string; href?: string; label: string }
 
 function useLockBodyScroll(locked: boolean) {
   useEffect(() => {
@@ -39,7 +41,8 @@ export function NavBar() {
       { to: '/about', label: 'About' },
       { to: '/issues', label: 'Issues' },
       { to: '/counties', label: 'Counties' },
-      { to: '/news', label: 'News' },
+      // News pages are temporarily hidden from the frontend.
+      // { to: '/news', label: 'News' },
       { to: '/projects', label: 'Projects' },
       { to: '/volunteer', label: 'Volunteer' },
       { to: '/donate', label: 'Donate' },
@@ -128,24 +131,40 @@ export function NavBar() {
             aria-label="Primary"
             className="hidden min-w-0 flex-1 items-stretch gap-1 lg:flex lg:gap-1.5 xl:gap-2 2xl:gap-3"
           >
-            {nav.map((item) => (
-              <NavLink
-                key={item.to}
-                to={item.to}
-                end={item.to === '/'}
-                className={({ isActive }) =>
-                  cn(
+            {nav.map((item) =>
+              item.href ? (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={cn(
                     'relative flex min-w-0 flex-1 basis-0 items-center justify-center text-balance rounded-md px-1 py-2 text-center text-[0.7rem] font-semibold leading-snug tracking-wide transition sm:text-[0.75rem] md:text-xs lg:text-[0.8125rem] xl:text-sm xl:whitespace-nowrap',
                     'after:absolute after:inset-x-1 after:-bottom-0.5 after:h-[2px] after:origin-left after:rounded-full after:bg-patriot-red after:transition-transform after:duration-300 after:content-[\'\'] xl:after:inset-x-2',
-                    isActive
-                      ? 'text-patriot-navy after:scale-x-100'
-                      : 'text-patriot-navy/80 after:scale-x-0 hover:text-patriot-navy hover:after:scale-x-100',
-                  )
-                }
-              >
-                {item.label}
-              </NavLink>
-            ))}
+                    'text-patriot-navy/80 after:scale-x-0 hover:text-patriot-navy hover:after:scale-x-100',
+                  )}
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <NavLink
+                  key={item.to}
+                  to={item.to ?? '/'}
+                  end={item.to === '/'}
+                  className={({ isActive }) =>
+                    cn(
+                      'relative flex min-w-0 flex-1 basis-0 items-center justify-center text-balance rounded-md px-1 py-2 text-center text-[0.7rem] font-semibold leading-snug tracking-wide transition sm:text-[0.75rem] md:text-xs lg:text-[0.8125rem] xl:text-sm xl:whitespace-nowrap',
+                      'after:absolute after:inset-x-1 after:-bottom-0.5 after:h-[2px] after:origin-left after:rounded-full after:bg-patriot-red after:transition-transform after:duration-300 after:content-[\'\'] xl:after:inset-x-2',
+                      isActive
+                        ? 'text-patriot-navy after:scale-x-100'
+                        : 'text-patriot-navy/80 after:scale-x-0 hover:text-patriot-navy hover:after:scale-x-100',
+                    )
+                  }
+                >
+                  {item.label}
+                </NavLink>
+              ),
+            )}
           </nav>
 
           <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-2.5 lg:ml-1 xl:ml-2 2xl:ml-4">
@@ -153,9 +172,9 @@ export function NavBar() {
               <LinkButton to="/volunteer" variant="outline" size="sm">
                 Volunteer
               </LinkButton>
-              <LinkButton to="/donate" variant="red" size="sm">
+              <ExternalLinkButton href={donationConfig.anedot.checkoutUrl} variant="red" size="sm">
                 Donate <ArrowRight className="h-4 w-4" />
-              </LinkButton>
+              </ExternalLinkButton>
             </div>
             <button
               ref={openButtonRef}
@@ -216,22 +235,35 @@ export function NavBar() {
               </div>
 
               <div className="flex flex-col gap-1 px-2 py-3">
-                {nav.map((item) => (
-                  <NavLink
-                    key={item.to}
-                    to={item.to}
-                    end={item.to === '/'}
-                    onClick={() => setOpen(false)}
-                    className={({ isActive }) =>
-                      cn(
-                        'rounded-lg px-4 py-3 text-base font-semibold tracking-wide focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-patriot-blue/25',
-                        isActive ? 'bg-patriot-bg-soft text-patriot-navy' : 'text-patriot-navy/85 hover:bg-patriot-bg-soft',
-                      )
-                    }
-                  >
-                    {item.label}
-                  </NavLink>
-                ))}
+                {nav.map((item) =>
+                  item.href ? (
+                    <a
+                      key={item.href}
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setOpen(false)}
+                      className="rounded-lg px-4 py-3 text-base font-semibold tracking-wide text-patriot-navy/85 hover:bg-patriot-bg-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-patriot-blue/25"
+                    >
+                      {item.label}
+                    </a>
+                  ) : (
+                    <NavLink
+                      key={item.to}
+                      to={item.to ?? '/'}
+                      end={item.to === '/'}
+                      onClick={() => setOpen(false)}
+                      className={({ isActive }) =>
+                        cn(
+                          'rounded-lg px-4 py-3 text-base font-semibold tracking-wide focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-patriot-blue/25',
+                          isActive ? 'bg-patriot-bg-soft text-patriot-navy' : 'text-patriot-navy/85 hover:bg-patriot-bg-soft',
+                        )
+                      }
+                    >
+                      {item.label}
+                    </NavLink>
+                  ),
+                )}
               </div>
 
               <div className="mt-auto border-t border-patriot-border p-4">
@@ -239,9 +271,9 @@ export function NavBar() {
                   <LinkButton to="/volunteer" variant="outline" onClick={() => setOpen(false)}>
                     Volunteer
                   </LinkButton>
-                  <LinkButton to="/donate" variant="red" onClick={() => setOpen(false)}>
+                  <ExternalLinkButton href={donationConfig.anedot.checkoutUrl} variant="red" onClick={() => setOpen(false)}>
                     Donate <ArrowRight className="h-4 w-4" />
-                  </LinkButton>
+                  </ExternalLinkButton>
                 </div>
                 <p className="mt-3 text-xs text-patriot-muted">{siteConfig.tagline}</p>
               </div>

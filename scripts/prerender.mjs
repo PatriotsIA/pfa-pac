@@ -10,7 +10,8 @@ const routes = [
   '/about',
   '/issues',
   '/counties',
-  '/news',
+  // News pages are temporarily hidden from the frontend.
+  // '/news',
   '/operation-show-up',
   '/projects',
   '/donate',

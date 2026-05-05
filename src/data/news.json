@@ -6,20 +6,20 @@
     "publishedAt": "2026-03-17T00:00:00.000Z",
     "author": "Patriots For Action",
     "tags": [{ "slug": "announcement", "label": "Announcement" }],
-    "bodyMarkdown": "We built this site to keep supporters informed and equipped.\n\n### What you’ll find here\n\n- Events you can attend\n- Updates you can share\n- Ways to volunteer or donate\n\n### What you won’t find here\n\nCounty microsites are hosted on the Texas hub at **PatriotsInActionTX.com**. This PAC site intentionally stays focused on statewide updates and action.\n\nIf a post is syndicated from another site in the future, we’ll link to the original source instead of scraping or copying content.",
+    "bodyMarkdown": "We built this site to keep supporters informed and equipped.\n\n### What you’ll find here\n\n- Events you can attend\n- Updates you can share\n- Ways to volunteer or donate\n\nCounty-level involvement lives on the Texas hub at **PatriotsInActionTX.com**.",
     "sourceUrl": "https://patriotsinactiontx.com/"
   },
   {
     "slug": "how-to-submit-an-event",
     "title": "How to submit an event",
-    "excerpt": "Events are temporarily paused on this PAC site. Here’s how to share local activity in the meantime.",
+    "excerpt": "Here’s how to share local activity with the team.",
     "publishedAt": "2026-03-10T00:00:00.000Z",
     "author": "Patriots For Action",
     "tags": [
       { "slug": "events", "label": "Events" },
       { "slug": "how-to", "label": "How-to" }
     ],
-    "bodyMarkdown": "Events pages are temporarily paused on this PAC site.\n\n### In the meantime\n\n- Share what’s happening by joining the community and posting the details there.\n- For county-level involvement, use the Texas hub site.\n- If you need to reach the statewide team, use the Contact page.\n\n### What to include\n\n- Title and start time\n- Location or virtual link\n- A short summary\n- Registration link (if any)\n\nWe may edit for clarity and consistency before publishing."
+    "bodyMarkdown": "Share what’s happening by joining the community and posting the details there. For county-level involvement, use the Texas hub site. If you need to reach the statewide team, use the Contact page.\n\n### What to include\n\n- Title and start time\n- Location or virtual link\n- A short summary\n- Registration link"
   }
 ]
 

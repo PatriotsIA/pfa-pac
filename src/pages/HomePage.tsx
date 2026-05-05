@@ -7,6 +7,7 @@ import { siteConfig } from '../config/site'
 import { ExternalLinkButton } from '../components/ui/ExternalLinkButton'
 import { OperationShowUpCover } from '../components/brand/OperationShowUpCover'
 import { organizationJsonLd, websiteJsonLd } from '../lib/seo/structuredData'
+import { donationConfig } from '../config/donations'
 
 export function HomePage() {
   return (
@@ -49,9 +50,9 @@ export function HomePage() {
               <LinkButton to="/volunteer" variant="outline">
                 Volunteer <ArrowRight className="h-4 w-4" />
               </LinkButton>
-              <LinkButton to="/donate" variant="red">
+              <ExternalLinkButton href={donationConfig.anedot.checkoutUrl} variant="red">
                 Donate <ArrowRight className="h-4 w-4" />
-              </LinkButton>
+              </ExternalLinkButton>
             </div>
           </Reveal>
 
@@ -156,12 +157,9 @@ export function HomePage() {
                   Updates you can use
                 </h2>
                 <p className="mt-3 text-sm leading-relaxed text-patriot-text">
-                  Get event alerts, news highlights, and concrete next steps. No noise—just what you need.
+                  Get important updates, practical resources, and concrete next steps. No noise—just what you need.
                 </p>
                 <div className="mt-5 flex flex-wrap gap-2">
-                  <LinkButton to="/news" variant="primary" size="sm">
-                    Read news <ArrowRight className="h-4 w-4" />
-                  </LinkButton>
                   <LinkButton to="/contact" variant="outline" size="sm">
                     Contact <Mail className="h-4 w-4" />
                   </LinkButton>

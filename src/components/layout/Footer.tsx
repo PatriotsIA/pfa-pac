@@ -41,9 +41,10 @@ export function Footer() {
               <NavLink to="/issues" className={linkClass}>
                 Issues
               </NavLink>
-              <NavLink to="/news" className={linkClass}>
+              {/* News pages are temporarily hidden from the frontend. */}
+              {/* <NavLink to="/news" className={linkClass}>
                 News
-              </NavLink>
+              </NavLink> */}
               <NavLink to="/projects" className={linkClass}>
                 Projects
               </NavLink>
@@ -122,7 +123,6 @@ export function Footer() {
               Paid for by {siteConfig.legalName}. Not authorized by any candidate or candidate&apos;s committee. Website
               includes on-domain contact, Privacy Policy, Terms &amp; Conditions, and phone opt-in language aligned with common
               10DLC / campaign vetting worksheet guidance (for example EnSpot Political).
-              <span className="ml-2 text-patriot-white/70">Counsel should finalize all legal text.</span>
             </div>
           </div>
         </div>

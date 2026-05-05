@@ -7,14 +7,14 @@
     "endsAt": "2026-04-02T01:00:00.000Z",
     "timezone": "America/Chicago",
     "isVirtual": true,
-    "virtualUrl": "https://example.com/virtual-event",
-    "registrationUrl": "https://example.com/register",
+    "virtualUrl": "https://community.patriotsinaction.com/collections/22475?sort=by_hosts",
+    "registrationUrl": "https://community.patriotsinaction.com/collections/22475?sort=by_hosts",
     "tags": [
       { "slug": "virtual", "label": "Virtual" },
       { "slug": "organizing", "label": "Organizing" }
     ],
     "featured": true,
-    "detailsMarkdown": "## What to expect\n\n- Quick updates from around the state\n- A clear list of next actions\n- Time for questions\n\n**Note:** This is a sample event in the default JSON provider. Replace with your real events under `src/data/events.json`."
+    "detailsMarkdown": "## What to expect\n\n- Quick updates from around the state\n- A clear list of next actions\n- Time for questions"
   },
   {
     "slug": "community-meetup-north",
@@ -26,8 +26,8 @@
     "locationName": "Community Center",
     "locationAddress": "123 Main St",
     "locationCity": "Dallas",
-    "locationRegion": "North Texas (optional)",
-    "registrationUrl": "https://example.com/rsvp",
+    "locationRegion": "North Texas",
+    "registrationUrl": "https://community.patriotsinaction.com/collections/22475?sort=by_hosts",
     "tags": [
       { "slug": "in-person", "label": "In person" },
       { "slug": "meetup", "label": "Meetup" }

@@ -97,7 +97,7 @@ export function EventDetailPage() {
             <div className="rounded-xl border border-patriot-border bg-patriot-bg-soft p-4">
               <div className="text-xs font-bold uppercase tracking-[0.22em] text-patriot-red">Where</div>
               <div className="mt-2 text-sm font-semibold text-patriot-navy">
-                {event.isVirtual ? 'Virtual' : event.locationName ?? 'Location TBD'}
+                {event.isVirtual ? 'Virtual' : event.locationName ?? 'Location details to be shared'}
               </div>
               <div className="mt-1 text-sm text-patriot-text">
                 {event.isVirtual ? (

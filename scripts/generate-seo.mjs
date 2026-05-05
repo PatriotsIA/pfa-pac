@@ -13,12 +13,12 @@ function todayIsoDate() {
   return new Date().toISOString().slice(0, 10)
 }
 
-function isoDate(value) {
-  if (!value) return todayIsoDate()
-  const date = new Date(value)
-  if (Number.isNaN(date.getTime())) return todayIsoDate()
-  return date.toISOString().slice(0, 10)
-}
+// function isoDate(value) {
+//   if (!value) return todayIsoDate()
+//   const date = new Date(value)
+//   if (Number.isNaN(date.getTime())) return todayIsoDate()
+//   return date.toISOString().slice(0, 10)
+// }
 
 function escapeXml(value) {
   return String(value)
@@ -29,18 +29,19 @@ function escapeXml(value) {
     .replaceAll("'", '&apos;')
 }
 
-async function readJson(relPath) {
-  const abs = path.join(process.cwd(), relPath)
-  const raw = await fs.readFile(abs, 'utf8')
-  return JSON.parse(raw)
-}
+// async function readJson(relPath) {
+//   const abs = path.join(process.cwd(), relPath)
+//   const raw = await fs.readFile(abs, 'utf8')
+//   return JSON.parse(raw)
+// }
 
 const staticRoutes = [
   { path: '/', priority: '1.0', changefreq: 'weekly' },
   { path: '/about', priority: '0.8', changefreq: 'monthly' },
   { path: '/issues', priority: '0.8', changefreq: 'monthly' },
   { path: '/counties', priority: '0.7', changefreq: 'monthly' },
-  { path: '/news', priority: '0.8', changefreq: 'weekly' },
+  // News pages are temporarily hidden from the frontend.
+  // { path: '/news', priority: '0.8', changefreq: 'weekly' },
   { path: '/operation-show-up', priority: '0.8', changefreq: 'monthly' },
   { path: '/projects', priority: '0.6', changefreq: 'monthly' },
   { path: '/volunteer', priority: '0.9', changefreq: 'monthly' },
@@ -51,19 +52,20 @@ const staticRoutes = [
   { path: '/terms', priority: '0.3', changefreq: 'yearly' },
 ]
 
-const news = await readJson('src/data/news.json').catch(() => [])
+// News pages are temporarily hidden from the frontend.
+// const news = await readJson('src/data/news.json').catch(() => [])
 
 const dynamicRoutes = [
-  ...(Array.isArray(news)
-    ? news
-        .filter((p) => p?.slug)
-        .map((p) => ({
-          path: `/news/${p.slug}`,
-          lastmod: isoDate(p.publishedAt),
-          priority: '0.6',
-          changefreq: 'monthly',
-        }))
-    : []),
+  // ...(Array.isArray(news)
+  //   ? news
+  //       .filter((p) => p?.slug)
+  //       .map((p) => ({
+  //         path: `/news/${p.slug}`,
+  //         lastmod: isoDate(p.publishedAt),
+  //         priority: '0.6',
+  //         changefreq: 'monthly',
+  //       }))
+  //   : []),
 ]
 
 const routesByPath = new Map()

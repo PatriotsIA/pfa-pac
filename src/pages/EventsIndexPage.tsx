@@ -111,7 +111,7 @@ export function EventsIndexPage() {
 
             <div className="mt-4 grid gap-4 sm:grid-cols-2">
               <Field label="Search" hint="Title, city, details">
-                <Input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search events" />
+                <Input value={query} onChange={(e) => setQuery(e.target.value)} />
               </Field>
               <Field label="Tag">
                 <Select value={tag} onChange={(e) => setTag(e.target.value)}>
@@ -123,12 +123,8 @@ export function EventsIndexPage() {
                   ))}
                 </Select>
               </Field>
-              <Field label="Location (optional)" hint="Free-text">
-                <Input
-                  value={location}
-                  onChange={(e) => setLocation(e.target.value)}
-                  placeholder="e.g. Dallas, North Texas"
-                />
+              <Field label="Location (optional)">
+                <Input value={location} onChange={(e) => setLocation(e.target.value)} />
               </Field>
               <div className="flex items-end">
                 <Button
@@ -177,8 +173,8 @@ export function EventsIndexPage() {
               Share a meetup or action
             </h2>
             <p className="mt-3 max-w-prose text-sm leading-relaxed text-patriot-text">
-              Submissions are reviewed before they appear on the site. Posts are emailed to our team via EmailJS; honeypot
-              below reduces bots. Optional Turnstile paths are documented in the README.
+              Submissions are reviewed before they appear on the site. Share the essentials and our team will follow up
+              if we need more details.
             </p>
 
             <form
@@ -217,13 +213,9 @@ export function EventsIndexPage() {
                 <Input {...form.register('title')} aria-invalid={!!form.formState.errors.title} />
               </Field>
               <Field label="Start date/time" hint="Include timezone" error={form.formState.errors.startsAt?.message}>
-                <Input
-                  {...form.register('startsAt')}
-                  aria-invalid={!!form.formState.errors.startsAt}
-                  placeholder="e.g. 2026-04-12 6:00pm CT"
-                />
+                <Input {...form.register('startsAt')} aria-invalid={!!form.formState.errors.startsAt} />
               </Field>
-              <Field label="Location or virtual link (optional)" hint="Free-text" error={form.formState.errors.location?.message}>
+              <Field label="Location or virtual link (optional)" error={form.formState.errors.location?.message}>
                 <Input {...form.register('location')} aria-invalid={!!form.formState.errors.location} />
               </Field>
               <div className="md:col-span-2">

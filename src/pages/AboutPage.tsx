@@ -7,6 +7,7 @@ import { ExternalLinkButton } from '../components/ui/ExternalLinkButton'
 import { siteConfig } from '../config/site'
 import { ExternalLink, Users } from 'lucide-react'
 import { OperationShowUpCover } from '../components/brand/OperationShowUpCover'
+import { donationConfig } from '../config/donations'
 
 export function AboutPage() {
   return (
@@ -28,9 +29,9 @@ export function AboutPage() {
             <LinkButton to="/volunteer" variant="outline">
               Volunteer
             </LinkButton>
-            <LinkButton to="/donate" variant="red">
+            <ExternalLinkButton href={donationConfig.anedot.checkoutUrl} variant="red">
               Donate
-            </LinkButton>
+            </ExternalLinkButton>
           </>
         }
       />
@@ -121,7 +122,7 @@ export function AboutPage() {
           <CardGlow />
           <div className="relative">
             <p className="text-sm leading-relaxed text-patriot-text">
-              County-level involvement lives on the Patriots in Action Texas hub. This PAC site intentionally does not host county microsites.
+              County-level involvement lives on the Patriots in Action Texas hub, where local communities can stay connected.
             </p>
             <div className="mt-5">
               <LinkButton to="/counties" variant="outline" size="sm">

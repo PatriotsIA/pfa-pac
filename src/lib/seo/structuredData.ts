@@ -66,7 +66,7 @@ export function eventJsonLd(event: EventItem) {
       }
     : {
         '@type': 'Place',
-        name: event.locationName ?? 'Location TBD',
+        name: event.locationName ?? 'Location details to be shared',
         address: [event.locationAddress, event.locationCity, event.locationRegion].filter(Boolean).join(', '),
       }
 
