@@ -5,9 +5,7 @@ import { ArrowRight, Menu, X } from 'lucide-react'
 import { cn } from '../../lib/cn'
 import { BrandLockup } from '../brand/Brand'
 import { LinkButton } from '../ui/LinkButton'
-import { ExternalLinkButton } from '../ui/ExternalLinkButton'
 import { siteConfig } from '../../config/site'
-import { donationConfig } from '../../config/donations'
 
 type NavItem = { to?: string; href?: string; label: string }
 
@@ -172,9 +170,9 @@ export function NavBar() {
               <LinkButton to="/volunteer" variant="outline" size="sm">
                 Volunteer
               </LinkButton>
-              <ExternalLinkButton href={donationConfig.anedot.checkoutUrl} variant="red" size="sm">
+              <LinkButton to="/donate" variant="red" size="sm">
                 Donate <ArrowRight className="h-4 w-4" />
-              </ExternalLinkButton>
+              </LinkButton>
             </div>
             <button
               ref={openButtonRef}
@@ -271,9 +269,9 @@ export function NavBar() {
                   <LinkButton to="/volunteer" variant="outline" onClick={() => setOpen(false)}>
                     Volunteer
                   </LinkButton>
-                  <ExternalLinkButton href={donationConfig.anedot.checkoutUrl} variant="red" onClick={() => setOpen(false)}>
+                  <LinkButton to="/donate" variant="red" onClick={() => setOpen(false)}>
                     Donate <ArrowRight className="h-4 w-4" />
-                  </ExternalLinkButton>
+                  </LinkButton>
                 </div>
                 <p className="mt-3 text-xs text-patriot-muted">{siteConfig.tagline}</p>
               </div>

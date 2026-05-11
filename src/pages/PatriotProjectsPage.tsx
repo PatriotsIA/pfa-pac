@@ -6,6 +6,7 @@ import { ExternalLinkButton } from '../components/ui/ExternalLinkButton'
 import { LinkButton } from '../components/ui/LinkButton'
 import { siteConfig } from '../config/site'
 import { operationShowUpCoverAlt } from '../components/brand/OperationShowUpCover'
+import { candidateProjects, issueProjects } from '../config/donations'
 
 type ProjectLink = { label: string; href: string }
 type ProjectInternalLink = { label: string; to: string }
@@ -84,6 +85,50 @@ export function PatriotProjectsPage() {
         title="Patriot Projects"
         subtitle="A quick directory of Patriot Projects—sites and open-source repos supporting local-first civic action."
       />
+
+      <div className="mt-10 grid gap-6">
+        <Card>
+          <CardGlow />
+          <div className="relative">
+            <div className="text-xs font-bold uppercase tracking-[0.22em] text-patriot-red">Candidate Projects</div>
+            <h2 className="mt-2 font-display text-2xl font-bold tracking-wide text-patriot-navy">
+              Help candidates reach Texas voters
+            </h2>
+            <div className="mt-5 grid gap-4 lg:grid-cols-3">
+              {candidateProjects.map((project) => (
+                <div key={project.href} className="rounded-2xl border border-patriot-border bg-patriot-bg-soft p-5">
+                  <div className="text-xs font-bold uppercase tracking-[0.22em] text-patriot-red">{project.name}</div>
+                  <h3 className="mt-2 font-display text-xl font-bold tracking-wide text-patriot-navy">{project.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-patriot-text">{project.description}</p>
+                  <div className="mt-4">
+                    <ExternalLinkButton href={project.href} variant="outline" size="sm">
+                      View candidate profile <ExternalLink className="h-4 w-4" />
+                    </ExternalLinkButton>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Card>
+
+        <Card>
+          <CardGlow />
+          <div className="relative">
+            <div className="text-xs font-bold uppercase tracking-[0.22em] text-patriot-red">Issue Projects</div>
+            <h2 className="mt-2 font-display text-2xl font-bold tracking-wide text-patriot-navy">
+              Voter education priorities
+            </h2>
+            <div className="mt-5 grid gap-4 md:grid-cols-2">
+              {issueProjects.map((project) => (
+                <div key={project.title} className="rounded-2xl border border-patriot-border bg-patriot-bg-soft p-5">
+                  <h3 className="font-display text-xl font-bold tracking-wide text-patriot-navy">{project.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-patriot-text">{project.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Card>
+      </div>
 
       <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {projects.map((project) => (

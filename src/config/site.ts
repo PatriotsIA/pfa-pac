@@ -1,10 +1,10 @@
 export const siteConfig = {
-  name: 'Patriots For Action',
-  legalName: 'Patriots For Action PAC',
-  url: 'https://patriotsforaction.org',
-  tagline: 'Local-first. Values-forward. Action-oriented.',
+  name: 'Patriots in Action',
+  legalName: 'Patriots Connect, LLC, DBA Patriots in Action',
+  url: 'https://patriotsinaction.com',
+  tagline: 'Empowering citizens. Preserving Liberty.',
   description:
-    'A statewide PAC committed to the habits of self-government: show up locally, stay informed, speak with restraint, and act with steady responsibility.',
+    'A nationwide county-by-county civic network for local events, trusted resources, community updates, and practical action.',
   contact: {
     email: 'info@patriotsinaction.com',
     /** Display (after “Phone: ” in UI where labeled) */

@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom'
 import { BrandMark } from '../brand/Brand'
 import { cn } from '../../lib/cn'
 import { siteConfig } from '../../config/site'
+import { pacPaidForDisclosure } from '../../config/donations'
 
 export function Footer() {
   const linkClass = ({ isActive }: { isActive: boolean }) =>
@@ -120,9 +121,7 @@ export function Footer() {
           <div className="text-xs leading-relaxed text-patriot-white/85">
             <div className="font-semibold tracking-wide text-patriot-white">Compliance</div>
             <div className="mt-2 text-patriot-white/80">
-              Paid for by {siteConfig.legalName}. Not authorized by any candidate or candidate&apos;s committee. Website
-              includes on-domain contact, Privacy Policy, Terms &amp; Conditions, and phone opt-in language aligned with common
-              10DLC / campaign vetting worksheet guidance (for example EnSpot Political).
+              {pacPaidForDisclosure}
             </div>
           </div>
         </div>

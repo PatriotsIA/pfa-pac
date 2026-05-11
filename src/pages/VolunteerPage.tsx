@@ -14,7 +14,7 @@ import { Button } from '../components/ui/Button'
 import { sendSiteFormEmail } from '../lib/emailJsForms'
 import { ExternalLinkButton } from '../components/ui/ExternalLinkButton'
 import { siteConfig } from '../config/site'
-import { donationConfig } from '../config/donations'
+import { donationConfig, donationDisclosure } from '../config/donations'
 import { EnSpotSmsOptInLabel } from '../components/compliance/EnSpotSmsOptInLabel'
 
 const interests = [
@@ -105,9 +105,17 @@ export function VolunteerPage() {
             <ExternalLinkButton href={siteConfig.links.community} variant="outline">
               Join our community <Users className="h-4 w-4" />
             </ExternalLinkButton>
-            <ExternalLinkButton href={donationConfig.anedot.checkoutUrl} variant="red">
-              Donate <ArrowRight className="h-4 w-4" />
-            </ExternalLinkButton>
+            <div className="flex w-full max-w-3xl flex-col items-center gap-3 text-center">
+              <ExternalLinkButton href={donationConfig.anedot.checkoutUrl} variant="red">
+                Donate <ArrowRight className="h-4 w-4" />
+              </ExternalLinkButton>
+              <div className="w-full rounded-2xl border border-patriot-border bg-patriot-bg-soft p-4">
+                <div className="text-xs font-bold uppercase tracking-[0.22em] text-patriot-red">
+                  Help Get This Message Out to Texas Voters
+                </div>
+                <p className="mt-2 text-xs leading-relaxed text-patriot-muted">{donationDisclosure}</p>
+              </div>
+            </div>
           </>
         }
       />
@@ -136,9 +144,17 @@ export function VolunteerPage() {
                 <div className="font-semibold text-patriot-navy">3) Support with a donation</div>
                 <div className="mt-1 text-patriot-text">Fuel events, outreach, and communications.</div>
                 <div className="mt-3">
-                  <ExternalLinkButton href={donationConfig.anedot.checkoutUrl} variant="red" size="sm">
-                    Donate <ArrowRight className="h-4 w-4" />
-                  </ExternalLinkButton>
+                  <div className="flex flex-col items-center gap-3 text-center">
+                    <ExternalLinkButton href={donationConfig.anedot.checkoutUrl} variant="red" size="sm">
+                      Donate <ArrowRight className="h-4 w-4" />
+                    </ExternalLinkButton>
+                    <div className="rounded-2xl border border-patriot-border bg-patriot-bg p-4 text-center">
+                      <div className="text-xs font-bold uppercase tracking-[0.22em] text-patriot-red">
+                        Help Get This Message Out to Texas Voters
+                      </div>
+                      <p className="mt-2 text-xs leading-relaxed text-patriot-muted">{donationDisclosure}</p>
+                    </div>
+                  </div>
                 </div>
               </li>
             </ol>

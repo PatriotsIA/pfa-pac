@@ -3,7 +3,14 @@ import { Seo } from '../lib/seo/Seo'
 import { PageHeader } from '../components/ui/PageHeader'
 import { Card, CardGlow } from '../components/ui/Card'
 import { LinkButton } from '../components/ui/LinkButton'
-import { donationConfig } from '../config/donations'
+import {
+  candidateProjects,
+  donationConfig,
+  donationDisclosure,
+  foundingMemberOffer,
+  issueProjects,
+  pacPaidForDisclosure,
+} from '../config/donations'
 import { siteConfig } from '../config/site'
 
 export function DonatePage() {
@@ -51,7 +58,7 @@ export function DonatePage() {
               When you give, you help put resources behind education, engagement, and action in counties throughout
               Texas—turning shared values into practical results.
             </p>
-            <div className="mt-6 flex flex-col items-center">
+            <div className="mt-6 flex w-full max-w-3xl flex-col items-center gap-4 text-center">
               <a
                 className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-patriot-red px-5 text-sm font-semibold tracking-wide text-patriot-white shadow-glow-red transition hover:brightness-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-patriot-blue/40 focus-visible:ring-offset-2 focus-visible:ring-offset-patriot-bg"
                 href={anedotUrl}
@@ -60,9 +67,15 @@ export function DonatePage() {
               >
                 Donate now <ExternalLink className="h-4 w-4" />
               </a>
-              <p className="mt-3 max-w-md text-xs leading-relaxed text-patriot-muted">
-                You will leave this site to complete your gift on a secure payment page.
-              </p>
+              <div className="w-full rounded-2xl border border-patriot-border bg-patriot-bg-soft p-4">
+                <div className="text-xs font-bold uppercase tracking-[0.22em] text-patriot-red">
+                  Help Get This Message Out to Texas Voters
+                </div>
+                <p className="mt-2 text-xs leading-relaxed text-patriot-muted">{donationDisclosure}</p>
+                <p className="mt-2 text-xs leading-relaxed text-patriot-muted">
+                  You will leave this site to complete your gift on a secure payment page.
+                </p>
+              </div>
             </div>
 
             <div className="mt-10 w-full max-w-xl border-t border-patriot-border pt-10">
@@ -88,6 +101,82 @@ export function DonatePage() {
                   Join your local community <ExternalLink className="h-4 w-4" />
                 </a>
               </div>
+            </div>
+          </div>
+        </Card>
+
+        <Card>
+          <CardGlow />
+          <div className="relative">
+            <div className="text-xs font-bold uppercase tracking-[0.22em] text-patriot-red">Projects</div>
+            <h2 className="mt-2 font-display text-2xl font-bold tracking-wide text-patriot-navy">
+              Candidate outreach projects
+            </h2>
+            <p className="mt-3 max-w-prose text-sm leading-relaxed text-patriot-text">
+              Choose a project to help distribute unfiltered interviews to verified Texas voters across the state.
+            </p>
+            <div className="mt-5 grid gap-4 lg:grid-cols-3">
+              {candidateProjects.map((project) => (
+                <div key={project.href} className="rounded-2xl border border-patriot-border bg-patriot-bg-soft p-5">
+                  <div className="text-xs font-bold uppercase tracking-[0.22em] text-patriot-red">{project.name}</div>
+                  <h3 className="mt-2 font-display text-xl font-bold tracking-wide text-patriot-navy">{project.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-patriot-text">{project.description}</p>
+                  <a
+                    className="mt-4 inline-flex h-9 items-center justify-center gap-2 rounded-lg border border-patriot-blue/35 bg-patriot-bg px-3 text-sm font-semibold tracking-wide text-patriot-navy transition hover:-translate-y-[1px] hover:border-patriot-blue hover:bg-patriot-bg-soft active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-patriot-blue/40 focus-visible:ring-offset-2 focus-visible:ring-offset-patriot-bg"
+                    href={project.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View candidate profile <ExternalLink className="h-4 w-4" />
+                  </a>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Card>
+
+        <Card>
+          <CardGlow />
+          <div className="relative">
+            <div className="text-xs font-bold uppercase tracking-[0.22em] text-patriot-red">Issue Projects</div>
+            <h2 className="mt-2 font-display text-2xl font-bold tracking-wide text-patriot-navy">
+              Fund direct voter education
+            </h2>
+            <div className="mt-5 grid gap-4 md:grid-cols-2">
+              {issueProjects.map((project) => (
+                <div key={project.title} className="rounded-2xl border border-patriot-border bg-patriot-bg-soft p-5">
+                  <h3 className="font-display text-xl font-bold tracking-wide text-patriot-navy">{project.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-patriot-text">{project.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Card>
+
+        <Card>
+          <CardGlow />
+          <div className="relative">
+            <div className="text-xs font-bold uppercase tracking-[0.22em] text-patriot-red">
+              Become a Patriots in Action Founding Member
+            </div>
+            <h2 className="mt-2 font-display text-2xl font-bold tracking-wide text-patriot-navy">
+              {foundingMemberOffer.title}
+            </h2>
+            <p className="mt-3 max-w-prose text-sm leading-relaxed text-patriot-text">
+              {foundingMemberOffer.description}
+            </p>
+            <p className="mt-3 max-w-prose text-sm leading-relaxed text-patriot-muted">
+              {foundingMemberOffer.finePrint}
+            </p>
+            <div className="mt-6">
+              <a
+                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-patriot-red px-5 py-3 text-sm font-semibold tracking-wide text-patriot-white shadow-glow-red transition hover:brightness-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-patriot-blue/40 focus-visible:ring-offset-2 focus-visible:ring-offset-patriot-bg"
+                href={anedotUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Contribute and Claim My Founding Membership <ExternalLink className="h-4 w-4" />
+              </a>
             </div>
           </div>
         </Card>
@@ -253,7 +342,7 @@ export function DonatePage() {
           <div className="relative">
             <div className="text-xs font-bold uppercase tracking-[0.22em] text-patriot-red">Disclaimer</div>
             <div className="mt-3 text-sm leading-relaxed text-patriot-text">
-              Paid for by {siteConfig.legalName}. Not authorized by any candidate or candidate&apos;s committee.
+              {pacPaidForDisclosure}
             </div>
           </div>
         </Card>

@@ -20,6 +20,16 @@ const routes = [
   '/messaging',
   '/privacy',
   '/terms',
+  '/texas',
+  '/texas/potter',
+  '/texas/potter/about',
+  '/texas/potter/elections',
+  '/texas/potter/news',
+  '/texas/potter/events',
+  '/texas/potter/tv',
+  '/texas/potter/partners',
+  '/texas/potter/contact',
+  '/texas/potter/submit-event',
 ]
 
 async function findEntryServer() {

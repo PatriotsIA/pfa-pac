@@ -1,66 +1,42 @@
-import { ExternalLink, Users } from 'lucide-react'
+import { ExternalLink } from 'lucide-react'
 import { PageHeader } from '../components/ui/PageHeader'
 import { Seo } from '../lib/seo/Seo'
-import { siteConfig } from '../config/site'
+import { Card, CardGlow } from '../components/ui/Card'
 import { ExternalLinkButton } from '../components/ui/ExternalLinkButton'
+import { siteConfig } from '../config/site'
 
 export function CountyDirectoryPage() {
   return (
     <>
       <Seo
         title="Counties"
-        description="Find county-level involvement through the Patriots in Action Texas hub and connect with local civic action opportunities."
+        description="Find Patriots in Action state and county sites with local calendars, news, voter resources, partners, and contact forms."
         canonicalPath="/counties"
       />
       <PageHeader
         eyebrow="Counties"
-        title="Get involved at the county level"
-        subtitle="For county-level involvement, local updates, and connections to your area team, use the Patriots in Action Texas hub."
+        title="Find your county Patriot Network"
+        subtitle="County-specific Patriots in Action sites live on the Texas hub, where local communities can share calendars, news, voter resources, partners, and contact information."
       />
 
-      <div className="mx-auto mt-10 max-w-3xl">
-        <div className="rounded-2xl border border-patriot-border bg-patriot-bg p-6 shadow-card">
-          <div className="rounded-xl bg-patriot-navy p-4 sm:p-5">
-            <div className="rounded-xl border border-white/15 bg-white/10 p-3">
-              <img
-                src={siteConfig.brand.footerLogoSrc}
-                alt="Patriots in Action"
-                className="h-10 w-auto max-w-full object-contain object-left sm:h-11"
-                loading="lazy"
-                decoding="async"
-              />
-              <a
-                className="mt-2 block text-sm font-semibold text-patriot-white/90 underline decoration-white/30 underline-offset-4 hover:text-patriot-white hover:decoration-white/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-patriot-blue/30 focus-visible:ring-offset-2 focus-visible:ring-offset-patriot-navy"
-                href={siteConfig.links.texasHub}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                PatriotsInActionTX.com
-              </a>
+      <div className="mt-10">
+        <Card>
+          <CardGlow />
+          <div className="relative flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+            <div>
+              <div className="text-xs font-bold uppercase tracking-[0.22em] text-patriot-red">Texas county hub</div>
+              <h2 className="mt-2 font-display text-2xl font-bold tracking-wide text-patriot-navy">
+                Continue to Patriots in Action TX
+              </h2>
+              <p className="mt-3 max-w-prose text-sm leading-relaxed text-patriot-text">
+                This PAC site links out to the county network instead of hosting county microsites here.
+              </p>
             </div>
+            <ExternalLinkButton href={siteConfig.links.texasHub} variant="primary">
+              Open county hub <ExternalLink className="h-4 w-4" />
+            </ExternalLinkButton>
           </div>
-          <p className="mt-6 text-sm leading-relaxed text-patriot-text">
-            Patriots in Action Texas is where you can connect with county-level activity, find local groups,
-            and take the next step in your area.
-          </p>
-          <p className="mt-3 text-sm leading-relaxed text-patriot-text">
-            Use the Texas hub to find the right county context and ways to participate.
-          </p>
-          <p className="mt-3 text-sm leading-relaxed text-patriot-text">
-            For broader discussions and statewide conversations, you can also join our community space.
-          </p>
-
-          <div className="mt-6">
-            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <ExternalLinkButton href={siteConfig.links.texasHub} variant="primary">
-                Go to PatriotsInActionTX.com <ExternalLink className="h-4 w-4" />
-              </ExternalLinkButton>
-              <ExternalLinkButton href={siteConfig.links.community} variant="outline">
-                Join our community <Users className="h-4 w-4" />
-              </ExternalLinkButton>
-            </div>
-          </div>
-        </div>
+        </Card>
       </div>
     </>
   )

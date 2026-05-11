@@ -6,6 +6,7 @@ import { Section } from '../components/ui/Section'
 import { Seo } from '../lib/seo/Seo'
 import { ExternalLinkButton } from '../components/ui/ExternalLinkButton'
 import { siteConfig } from '../config/site'
+import { issueProjects } from '../config/donations'
 
 const issues = [
   {
@@ -53,6 +54,23 @@ export function IssuesPage() {
           </>
         }
       />
+
+      <Section title="Issue Projects" kicker="Current campaigns">
+        <div className="grid gap-4 md:grid-cols-2">
+          {issueProjects.map((project) => (
+            <Card key={project.title}>
+              <CardGlow />
+              <div className="relative">
+                <div className="text-xs font-bold uppercase tracking-[0.22em] text-patriot-red">Issue Project</div>
+                <h3 className="mt-2 font-display text-2xl font-bold tracking-wide text-patriot-navy">
+                  {project.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-patriot-text">{project.description}</p>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </Section>
 
       <Section title="Priority areas" kicker="Platform">
         <div className="grid gap-4 md:grid-cols-2">

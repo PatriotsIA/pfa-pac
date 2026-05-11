@@ -3,7 +3,7 @@ import { useForm, useWatch } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import toast from 'react-hot-toast'
 import { Link } from 'react-router-dom'
-import { MessageSquareText, ShieldCheck } from 'lucide-react'
+import { ExternalLink, MessageSquareText, ShieldCheck } from 'lucide-react'
 import { Seo } from '../lib/seo/Seo'
 import { PageHeader } from '../components/ui/PageHeader'
 import { Card, CardGlow } from '../components/ui/Card'
@@ -15,6 +15,8 @@ import { Button } from '../components/ui/Button'
 import { sendSiteFormEmail } from '../lib/emailJsForms'
 import { siteConfig } from '../config/site'
 import { EnSpotSmsOptInLabel } from '../components/compliance/EnSpotSmsOptInLabel'
+import { ExternalLinkButton } from '../components/ui/ExternalLinkButton'
+import { candidateProjects } from '../config/donations'
 
 const audienceOptions = [
   { value: 'candidate', label: 'Candidate or campaign' },
@@ -151,10 +153,6 @@ export function MessagingPage() {
                 Conditions. We use their recommended pattern on this site when mobile numbers are collected.
               </p>
             </section>
-            <p className="rounded-xl border border-patriot-border bg-patriot-bg-soft px-4 py-3 text-xs leading-relaxed text-patriot-muted">
-              Reference: EnSpot Political &quot;Text Message Compliance for Websites&quot; worksheet — informational
-              only; not a substitute for legal advice.
-            </p>
           </div>
         </Card>
 
@@ -314,6 +312,33 @@ export function MessagingPage() {
           </div>
         </Card>
       </div>
+
+      <Card className="mt-6">
+        <CardGlow />
+        <div className="relative">
+          <div className="text-xs font-bold uppercase tracking-[0.22em] text-patriot-red">Candidate Projects</div>
+          <h2 className="mt-2 font-display text-2xl font-bold tracking-wide text-patriot-navy">
+            Help candidates reach Texas voters
+          </h2>
+          <p className="mt-3 max-w-prose text-sm leading-relaxed text-patriot-text">
+            Fund distribution of unfiltered candidate interviews to verified Texas voters across the state.
+          </p>
+          <div className="mt-5 grid gap-4 lg:grid-cols-3">
+            {candidateProjects.map((project) => (
+              <div key={project.href} className="rounded-2xl border border-patriot-border bg-patriot-bg-soft p-5">
+                <div className="text-xs font-bold uppercase tracking-[0.22em] text-patriot-red">{project.name}</div>
+                <h3 className="mt-2 font-display text-xl font-bold tracking-wide text-patriot-navy">{project.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-patriot-text">{project.description}</p>
+                <div className="mt-4">
+                  <ExternalLinkButton href={project.href} variant="outline" size="sm">
+                    View candidate profile <ExternalLink className="h-4 w-4" />
+                  </ExternalLinkButton>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Card>
     </>
   )
 }

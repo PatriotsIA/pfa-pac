@@ -7,7 +7,7 @@ import { ExternalLinkButton } from '../components/ui/ExternalLinkButton'
 import { siteConfig } from '../config/site'
 import { ExternalLink, Users } from 'lucide-react'
 import { OperationShowUpCover } from '../components/brand/OperationShowUpCover'
-import { donationConfig } from '../config/donations'
+import { donationConfig, donationDisclosure } from '../config/donations'
 
 export function AboutPage() {
   return (
@@ -29,9 +29,17 @@ export function AboutPage() {
             <LinkButton to="/volunteer" variant="outline">
               Volunteer
             </LinkButton>
-            <ExternalLinkButton href={donationConfig.anedot.checkoutUrl} variant="red">
-              Donate
-            </ExternalLinkButton>
+            <div className="flex w-full max-w-3xl flex-col items-center gap-3 text-center">
+              <ExternalLinkButton href={donationConfig.anedot.checkoutUrl} variant="red">
+                Donate
+              </ExternalLinkButton>
+              <div className="w-full rounded-2xl border border-patriot-border bg-patriot-bg-soft p-4">
+                <div className="text-xs font-bold uppercase tracking-[0.22em] text-patriot-red">
+                  Help Get This Message Out to Texas Voters
+                </div>
+                <p className="mt-2 text-xs leading-relaxed text-patriot-muted">{donationDisclosure}</p>
+              </div>
+            </div>
           </>
         }
       />
