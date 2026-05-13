@@ -3,6 +3,7 @@ import { Seo } from '../lib/seo/Seo'
 import { PageHeader } from '../components/ui/PageHeader'
 import { Card, CardGlow } from '../components/ui/Card'
 import { LinkButton } from '../components/ui/LinkButton'
+import { VoterEducationCallout } from '../components/donations/VoterEducationCallout'
 import {
   candidateProjects,
   donationConfig,
@@ -30,6 +31,8 @@ export function DonatePage() {
       />
 
       <div className="mt-10 grid gap-6">
+        <VoterEducationCallout />
+
         <Card id="donate-now">
           <CardGlow />
           <div className="relative flex flex-col items-center text-center">

@@ -5,6 +5,7 @@ import { Card, CardGlow } from '../components/ui/Card'
 import { Section } from '../components/ui/Section'
 import { Seo } from '../lib/seo/Seo'
 import { ExternalLinkButton } from '../components/ui/ExternalLinkButton'
+import { VoterEducationCallout } from '../components/donations/VoterEducationCallout'
 import { siteConfig } from '../config/site'
 import { issueProjects } from '../config/donations'
 
@@ -54,6 +55,10 @@ export function IssuesPage() {
           </>
         }
       />
+
+      <div className="mt-10">
+        <VoterEducationCallout />
+      </div>
 
       <Section title="Issue Projects" kicker="Current campaigns">
         <div className="grid gap-4 md:grid-cols-2">

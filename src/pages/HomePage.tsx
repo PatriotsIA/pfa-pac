@@ -6,8 +6,9 @@ import { Seo } from '../lib/seo/Seo'
 import { siteConfig } from '../config/site'
 import { ExternalLinkButton } from '../components/ui/ExternalLinkButton'
 import { OperationShowUpCover } from '../components/brand/OperationShowUpCover'
+import { VoterEducationCallout } from '../components/donations/VoterEducationCallout'
 import { organizationJsonLd, websiteJsonLd } from '../lib/seo/structuredData'
-import { candidateProjects, donationConfig, donationDisclosure, foundingMemberOffer, issueProjects } from '../config/donations'
+import { donationConfig, donationDisclosure, foundingMemberOffer, issueProjects } from '../config/donations'
 
 export function HomePage() {
   return (
@@ -120,36 +121,7 @@ export function HomePage() {
 
         <Reveal delay={0.14}>
           <section className="mt-12 rounded-3xl border border-patriot-border bg-patriot-bg p-6 shadow-card sm:p-8">
-            <div className="text-center">
-              <div className="text-xs font-bold uppercase tracking-[0.26em] text-patriot-red">Projects</div>
-              <h2 className="mt-2 font-display text-3xl font-bold tracking-wide text-patriot-navy">
-                Help Texas voters hear directly from candidates
-              </h2>
-              <p className="mx-auto mt-3 max-w-3xl text-sm leading-relaxed text-patriot-text">
-                Contributions support distribution of unfiltered interviews, voter education, and election outreach across
-                Texas.
-              </p>
-            </div>
-
-            <div className="mt-6 grid gap-4 lg:grid-cols-3">
-              {candidateProjects.map((project) => (
-                <Card key={project.href}>
-                  <CardGlow />
-                  <div className="relative flex h-full flex-col">
-                    <div className="text-xs font-bold uppercase tracking-[0.22em] text-patriot-red">{project.name}</div>
-                    <h3 className="mt-2 font-display text-xl font-bold tracking-wide text-patriot-navy">
-                      {project.title}
-                    </h3>
-                    <p className="mt-3 flex-1 text-sm leading-relaxed text-patriot-text">{project.description}</p>
-                    <div className="mt-5">
-                      <ExternalLinkButton href={project.href} variant="outline" size="sm">
-                        View candidate profile <ExternalLink className="h-4 w-4" />
-                      </ExternalLinkButton>
-                    </div>
-                  </div>
-                </Card>
-              ))}
-            </div>
+            <VoterEducationCallout />
 
             <div className="mt-8 border-t border-patriot-border pt-8">
               <div className="text-xs font-bold uppercase tracking-[0.26em] text-patriot-red">Issue Projects</div>
