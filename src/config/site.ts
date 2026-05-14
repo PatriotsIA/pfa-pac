@@ -6,7 +6,7 @@ export const siteConfig = {
   description:
     'A nationwide county-by-county civic network for local events, trusted resources, community updates, and practical action.',
   contact: {
-    email: 'info@patriotsinaction.com',
+    email: 'support@patriotsinaction.com',
     /** Display (after “Phone: ” in UI where labeled) */
     phone: '(866) 756 1776',
     /** E.164 for <a href="tel:…"> */
