@@ -8,7 +8,7 @@ import { ExternalLinkButton } from '../components/ui/ExternalLinkButton'
 import { OperationShowUpCover } from '../components/brand/OperationShowUpCover'
 import { VoterEducationCallout } from '../components/donations/VoterEducationCallout'
 import { organizationJsonLd, websiteJsonLd } from '../lib/seo/structuredData'
-import { donationConfig, donationDisclosure, foundingMemberOffer, issueProjects } from '../config/donations'
+import { donationConfig, donationDisclosure, issueProjects } from '../config/donations'
 
 export function HomePage() {
   return (
@@ -135,23 +135,6 @@ export function HomePage() {
               </div>
             </div>
 
-            <div className="mt-8 border-t border-patriot-border pt-8">
-              <div className="text-xs font-bold uppercase tracking-[0.26em] text-patriot-red">
-                Become a Patriots in Action Founding Member
-              </div>
-              <div className="mt-4 rounded-2xl border border-patriot-blue/20 bg-patriot-bg-soft p-5">
-                <h3 className="font-display text-xl font-bold tracking-wide text-patriot-navy">
-                  {foundingMemberOffer.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-patriot-text">{foundingMemberOffer.description}</p>
-                <p className="mt-3 text-sm leading-relaxed text-patriot-muted">{foundingMemberOffer.finePrint}</p>
-                <div className="mt-5">
-                  <ExternalLinkButton href={donationConfig.anedot.checkoutUrl} variant="red">
-                    Contribute and Claim My Founding Membership <ArrowRight className="h-4 w-4" />
-                  </ExternalLinkButton>
-                </div>
-              </div>
-            </div>
           </section>
         </Reveal>
 

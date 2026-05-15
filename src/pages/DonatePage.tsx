@@ -7,7 +7,6 @@ import { VoterEducationCallout } from '../components/donations/VoterEducationCal
 import {
   donationConfig,
   donationDisclosure,
-  foundingMemberOffer,
   issueProjects,
   pacPaidForDisclosure,
 } from '../config/donations'
@@ -121,34 +120,6 @@ export function DonatePage() {
                   <p className="mt-3 text-sm leading-relaxed text-patriot-text">{project.description}</p>
                 </div>
               ))}
-            </div>
-          </div>
-        </Card>
-
-        <Card>
-          <CardGlow />
-          <div className="relative">
-            <div className="text-xs font-bold uppercase tracking-[0.22em] text-patriot-red">
-              Become a Patriots in Action Founding Member
-            </div>
-            <h2 className="mt-2 font-display text-2xl font-bold tracking-wide text-patriot-navy">
-              {foundingMemberOffer.title}
-            </h2>
-            <p className="mt-3 max-w-prose text-sm leading-relaxed text-patriot-text">
-              {foundingMemberOffer.description}
-            </p>
-            <p className="mt-3 max-w-prose text-sm leading-relaxed text-patriot-muted">
-              {foundingMemberOffer.finePrint}
-            </p>
-            <div className="mt-6">
-              <a
-                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-patriot-red px-5 py-3 text-sm font-semibold tracking-wide text-patriot-white shadow-glow-red transition hover:brightness-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-patriot-blue/40 focus-visible:ring-offset-2 focus-visible:ring-offset-patriot-bg"
-                href={anedotUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Contribute and Claim My Founding Membership <ExternalLink className="h-4 w-4" />
-              </a>
             </div>
           </div>
         </Card>

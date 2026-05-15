@@ -1,12 +1,12 @@
 export const siteConfig = {
-  name: 'Patriots in Action',
+  name: 'Patriots For Action',
   legalName: 'Patriots Connect, LLC, DBA Patriots in Action',
   url: 'https://patriotsinaction.com',
   tagline: 'Empowering citizens. Preserving Liberty.',
   description:
     'A nationwide county-by-county civic network for local events, trusted resources, community updates, and practical action.',
   contact: {
-    email: 'support@patriotsinaction.com',
+    email: 'giving@patriotsforaction.org',
     /** Display (after “Phone: ” in UI where labeled) */
     phone: '(866) 756 1776',
     /** E.164 for <a href="tel:…"> */

@@ -21,14 +21,6 @@ export const issueProjects = [
   },
 ] as const
 
-export const foundingMemberOffer = {
-  title: 'Contribute $115 or More - Get One Full Year Free',
-  description:
-    'As a thank you for your support, any contribution of $115 or more includes one full year of Patriots in Action founding membership - our unfiltered platform featuring celebrity voices, conservative podcasters, and your official Patriot Rewards Card delivered straight to your phone.',
-  finePrint:
-    'Founding Member pricing is locked forever at $9.95 a month after your first year. This offer is exclusively for Patriots for Action PAC contributors.',
-} as const
-
 export const donationConfig = {
   /** Hosted Anedot form (no card data on this site). Override with `VITE_DONATE_ANEDOT_URL`. */
   anedot: {
