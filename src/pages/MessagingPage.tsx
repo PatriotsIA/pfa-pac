@@ -2,7 +2,6 @@ import { z } from 'zod'
 import { useForm, useWatch } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import toast from 'react-hot-toast'
-import { Link } from 'react-router-dom'
 import { MessageSquareText, ShieldCheck } from 'lucide-react'
 import { Seo } from '../lib/seo/Seo'
 import { PageHeader } from '../components/ui/PageHeader'
@@ -15,6 +14,7 @@ import { Button } from '../components/ui/Button'
 import { sendSiteFormEmail } from '../lib/emailJsForms'
 import { siteConfig } from '../config/site'
 import { EnSpotSmsOptInLabel } from '../components/compliance/EnSpotSmsOptInLabel'
+import { ContactConsentLabel } from '../components/compliance/ContactConsentLabel'
 
 const audienceOptions = [
   { value: 'candidate', label: 'Candidate or campaign' },
@@ -30,8 +30,8 @@ const messagingSchema = z
     email: z.string().email('Please enter a valid email address.'),
     phone: z.string().optional(),
     message: z.string().min(10, 'Please describe what you’re looking for (at least a few words).'),
-    agreePrivacyPolicy: z.boolean().refine((v) => v === true, {
-      message: 'You must accept the privacy policy to continue.',
+    consentToContact: z.boolean().refine((v) => v === true, {
+      message: 'Please confirm consent to be contacted.',
     }),
     smsConsent: z.boolean().optional(),
     botField: z.string().optional(),
@@ -58,7 +58,7 @@ export function MessagingPage() {
       email: '',
       phone: '',
       message: '',
-      agreePrivacyPolicy: false,
+      consentToContact: false,
       smsConsent: false,
       botField: '',
     },
@@ -79,6 +79,7 @@ export function MessagingPage() {
         name: values.name,
         email: values.email,
         message: values.message,
+        consentToContact: true,
         agreePrivacyPolicy: true,
         ...(values.phone?.trim() ? { phone: values.phone.trim(), smsConsent: true } : {}),
       },
@@ -181,7 +182,7 @@ export function MessagingPage() {
                   email: '',
                   phone: '',
                   message: '',
-                  agreePrivacyPolicy: false,
+                  consentToContact: false,
                   smsConsent: false,
                   botField: '',
                 })
@@ -246,32 +247,15 @@ export function MessagingPage() {
                 <label className="flex items-start gap-3 rounded-xl border border-patriot-border bg-patriot-bg-soft px-4 py-3 text-sm text-patriot-text">
                   <input
                     type="checkbox"
-                    {...form.register('agreePrivacyPolicy')}
+                    {...form.register('consentToContact')}
                     className="mt-1 h-4 w-4 accent-patriot-blue"
                   />
                   <span>
-                    I have read and agree to the{' '}
-                    <Link
-                      className="font-semibold text-patriot-blue underline decoration-patriot-blue/30 underline-offset-2 hover:decoration-patriot-blue/60"
-                      to="/privacy"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Privacy Policy
-                    </Link>{' '}
-                    and{' '}
-                    <Link
-                      className="font-semibold text-patriot-blue underline decoration-patriot-blue/30 underline-offset-2 hover:decoration-patriot-blue/60"
-                      to="/terms"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Terms &amp; Conditions
-                    </Link>
-                    . {form.formState.errors.agreePrivacyPolicy?.message ? (
+                    <ContactConsentLabel purpose="my messaging inquiry" />
+                    {form.formState.errors.consentToContact?.message ? (
                       <span className="text-xs font-semibold text-patriot-red">
                         {' '}
-                        {form.formState.errors.agreePrivacyPolicy.message}
+                        {form.formState.errors.consentToContact.message}
                       </span>
                     ) : null}
                   </span>

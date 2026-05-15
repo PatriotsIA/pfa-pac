@@ -17,6 +17,7 @@ import { cms } from '../lib/cms'
 import type { EventItem } from '../lib/models'
 import { formatEventDateRange } from '../lib/datetime'
 import { sendSiteFormEmail } from '../lib/emailJsForms'
+import { ContactConsentLabel } from '../components/compliance/ContactConsentLabel'
 
 const eventSubmitSchema = z.object({
   name: z.string().min(2, 'Please enter your name.'),
@@ -25,8 +26,8 @@ const eventSubmitSchema = z.object({
   startsAt: z.string().min(4, 'Please include a start date/time.'),
   location: z.string().optional(),
   details: z.string().min(10, 'Please include a few details.'),
-  agreePrivacyPolicy: z.boolean().refine((v) => v === true, {
-    message: 'You must accept the privacy policy to continue.',
+  consentToContact: z.boolean().refine((v) => v === true, {
+    message: 'Please confirm consent to be contacted about this event submission.',
   }),
   botField: z.string().optional(),
 })
@@ -66,7 +67,7 @@ export function EventsIndexPage() {
       startsAt: '',
       location: '',
       details: '',
-      agreePrivacyPolicy: false,
+      consentToContact: false,
       botField: '',
     },
   })
@@ -83,6 +84,7 @@ export function EventsIndexPage() {
         startsAt: values.startsAt,
         ...(values.location?.trim() ? { location: values.location.trim() } : {}),
         details: values.details,
+        consentToContact: true,
         agreePrivacyPolicy: true,
       },
     })
@@ -228,32 +230,15 @@ export function EventsIndexPage() {
                 <label className="flex items-start gap-3 rounded-xl border border-patriot-border bg-patriot-bg-soft px-4 py-3 text-sm text-patriot-text">
                   <input
                     type="checkbox"
-                    {...form.register('agreePrivacyPolicy')}
+                    {...form.register('consentToContact')}
                     className="mt-1 h-4 w-4 accent-patriot-blue"
                   />
                   <span>
-                    I have read and agree to the{' '}
-                    <Link
-                      className="font-semibold text-patriot-blue underline decoration-patriot-blue/30 underline-offset-2 hover:decoration-patriot-blue/60"
-                      to="/privacy"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Privacy Policy
-                    </Link>{' '}
-                    and{' '}
-                    <Link
-                      className="font-semibold text-patriot-blue underline decoration-patriot-blue/30 underline-offset-2 hover:decoration-patriot-blue/60"
-                      to="/terms"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Terms &amp; Conditions
-                    </Link>{' '}
-                    and confirm I have permission to share this event information.
-                    {form.formState.errors.agreePrivacyPolicy?.message ? (
+                    <ContactConsentLabel purpose="my event submission" /> I confirm I have permission to share this
+                    event information.
+                    {form.formState.errors.consentToContact?.message ? (
                       <span className="ml-2 text-xs font-semibold text-patriot-red">
-                        {form.formState.errors.agreePrivacyPolicy.message}
+                        {form.formState.errors.consentToContact.message}
                       </span>
                     ) : null}
                   </span>
@@ -262,7 +247,8 @@ export function EventsIndexPage() {
 
               <div className="md:col-span-2 flex flex-wrap items-center justify-between gap-3">
                 <div className="text-xs text-patriot-muted">
-                  By submitting, you confirm you have permission to share this information.
+                  By submitting, you consent to follow-up about this event and confirm you have permission to share this
+                  information.
                 </div>
                 <Button type="submit" variant="primary">
                   Submit event <CalendarPlus className="h-4 w-4" />

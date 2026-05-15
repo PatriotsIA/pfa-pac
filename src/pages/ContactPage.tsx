@@ -1,5 +1,4 @@
 import { z } from 'zod'
-import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import toast from 'react-hot-toast'
@@ -13,6 +12,7 @@ import { Textarea } from '../components/ui/Textarea'
 import { Button } from '../components/ui/Button'
 import { sendSiteFormEmail } from '../lib/emailJsForms'
 import { siteConfig } from '../config/site'
+import { ContactConsentLabel } from '../components/compliance/ContactConsentLabel'
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Please enter your name.'),
@@ -20,8 +20,8 @@ const contactSchema = z.object({
   subject: z.string().optional(),
   countyOrRegion: z.string().optional(),
   message: z.string().min(10, 'Please enter a message.'),
-  agreePrivacyPolicy: z.boolean().refine((v) => v === true, {
-    message: 'You must accept the privacy policy to continue.',
+  consentToContact: z.boolean().refine((v) => v === true, {
+    message: 'Please confirm consent to be contacted.',
   }),
   botField: z.string().optional(),
 })
@@ -37,7 +37,7 @@ export function ContactPage() {
       subject: '',
       countyOrRegion: '',
       message: '',
-      agreePrivacyPolicy: false,
+      consentToContact: false,
       botField: '',
     },
   })
@@ -53,6 +53,7 @@ export function ContactPage() {
         ...(values.subject?.trim() ? { subject: values.subject.trim() } : {}),
         ...(values.countyOrRegion?.trim() ? { countyOrRegion: values.countyOrRegion.trim() } : {}),
         message: values.message,
+        consentToContact: true,
         agreePrivacyPolicy: true,
       },
     })
@@ -156,32 +157,14 @@ export function ContactPage() {
                 <label className="flex items-start gap-3 rounded-xl border border-patriot-border bg-patriot-bg-soft px-4 py-3 text-sm text-patriot-text">
                   <input
                     type="checkbox"
-                    {...form.register('agreePrivacyPolicy')}
+                    {...form.register('consentToContact')}
                     className="mt-1 h-4 w-4 accent-patriot-blue"
                   />
                   <span>
-                    I have read and agree to the{' '}
-                    <Link
-                      className="font-semibold text-patriot-blue underline decoration-patriot-blue/30 underline-offset-2 hover:decoration-patriot-blue/60"
-                      to="/privacy"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Privacy Policy
-                    </Link>{' '}
-                    and{' '}
-                    <Link
-                      className="font-semibold text-patriot-blue underline decoration-patriot-blue/30 underline-offset-2 hover:decoration-patriot-blue/60"
-                      to="/terms"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Terms &amp; Conditions
-                    </Link>
-                    .
-                    {form.formState.errors.agreePrivacyPolicy?.message ? (
+                    <ContactConsentLabel purpose="my message or inquiry" />
+                    {form.formState.errors.consentToContact?.message ? (
                       <span className="ml-2 text-xs font-semibold text-patriot-red">
-                        {form.formState.errors.agreePrivacyPolicy.message}
+                        {form.formState.errors.consentToContact.message}
                       </span>
                     ) : null}
                   </span>
