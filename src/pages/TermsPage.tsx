@@ -11,7 +11,7 @@ export function TermsPage() {
     <>
       <Seo
         title="Terms & conditions"
-        description="Review the Patriots For Action PAC terms and conditions for website use, forms, donations, and communications."
+        description="Review the Patriots for Action PAC terms and conditions for website use, forms, donations, and communications."
         canonicalPath="/terms"
       />
       <PageHeader
@@ -93,9 +93,8 @@ export function TermsPage() {
             <section className="space-y-3">
               <h2 className="font-display text-xl font-bold tracking-wide text-patriot-navy">Donations</h2>
               <p>
-                Donations may be processed by third-party providers (for example ActBlue, PayPal, or Stripe). We do not
-                collect raw payment-card details on this site. Refunds and chargeback rules are governed by the processor
-                and applicable law.
+                Donations are processed through Anedot. We do not collect raw payment-card details on this site. Refunds
+                and chargeback rules are governed by the processor and applicable law.
               </p>
             </section>
 

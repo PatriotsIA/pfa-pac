@@ -15,12 +15,12 @@ export function VoterEducationCallout() {
           Help Texans get the information they need
         </h2>
         <p className="mt-3 max-w-3xl text-sm leading-relaxed text-patriot-text">
-          Patriots For Action PAC funds, builds, and informs voters by providing voter education and important
+          Patriots for Action PAC funds, builds, and informs voters by providing voter education and important
           information distribution across Texas.
         </p>
         <div className="mt-6">
           <ExternalLinkButton href={donationConfig.anedot.checkoutUrl} variant="red">
-            Help us inform more voters. <ArrowRight className="h-4 w-4" />
+            Contribute Securely <ArrowRight className="h-4 w-4" />
           </ExternalLinkButton>
         </div>
       </div>

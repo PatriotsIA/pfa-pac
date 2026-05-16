@@ -10,7 +10,7 @@ const linkClass =
 export function ContactConsentLabel({ purpose }: Props) {
   return (
     <>
-      I consent to be contacted by Patriots For Action PAC about {purpose} using the contact information I provide. I
+      I consent to be contacted by Patriots for Action PAC about {purpose} using the contact information I provide. I
       have read and agree to the{' '}
       <Link className={linkClass} to="/privacy" target="_blank" rel="noopener noreferrer">
         Privacy Policy

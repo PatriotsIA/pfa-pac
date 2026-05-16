@@ -14,7 +14,7 @@ export function AboutPage() {
     <>
       <Seo
         title="About"
-        description="Learn how Patriots For Action PAC organizes, informs, and mobilizes Texans around local-first civic responsibility and practical action."
+        description="Learn how Patriots for Action PAC organizes, informs, and mobilizes Texans around local-first civic responsibility and practical action."
         canonicalPath="/about"
       />
       <PageHeader
@@ -23,15 +23,15 @@ export function AboutPage() {
         subtitle="Inspired by the spirit of Operation Show Up: attention over outrage, local responsibility over armchair commentary, and steady participation that strengthens self-government."
         actions={
           <>
-            <ExternalLinkButton href={siteConfig.links.community} variant="primary">
-              Join our community <Users className="h-4 w-4" />
+            <ExternalLinkButton href={siteConfig.links.community} variant="outline">
+              Patriots in Action Nation Wide County-by-County Platform <Users className="h-4 w-4" />
             </ExternalLinkButton>
             <LinkButton to="/volunteer" variant="outline">
               Volunteer
             </LinkButton>
             <div className="flex w-full max-w-3xl flex-col items-center gap-3 text-center">
               <ExternalLinkButton href={donationConfig.anedot.checkoutUrl} variant="red">
-                Donate
+                Contribute Securely
               </ExternalLinkButton>
               <div className="w-full rounded-2xl border border-patriot-border bg-patriot-bg-soft p-4">
                 <div className="text-xs font-bold uppercase tracking-[0.22em] text-patriot-red">
@@ -130,7 +130,8 @@ export function AboutPage() {
           <CardGlow />
           <div className="relative">
             <p className="text-sm leading-relaxed text-patriot-text">
-              County-level involvement lives on the Patriots in Action Texas hub, where local communities can stay connected.
+              County-level involvement lives on Patriots in Action, a separate Nation Wide County-by-County Platform
+              where local communities can stay connected outside this PAC site.
             </p>
             <div className="mt-5">
               <LinkButton to="/counties" variant="outline" size="sm">

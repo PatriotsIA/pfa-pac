@@ -23,7 +23,6 @@ export function organizationJsonLd() {
       postalCode: '79101',
       addressCountry: 'US',
     },
-    sameAs: [siteConfig.links.texasHub, siteConfig.links.community],
   }
 }
 

@@ -5,7 +5,9 @@ import { ArrowRight, Menu, X } from 'lucide-react'
 import { cn } from '../../lib/cn'
 import { BrandLockup } from '../brand/Brand'
 import { LinkButton } from '../ui/LinkButton'
+import { ExternalLinkButton } from '../ui/ExternalLinkButton'
 import { siteConfig } from '../../config/site'
+import { donationConfig } from '../../config/donations'
 
 type NavItem = { to?: string; href?: string; label: string }
 
@@ -43,7 +45,7 @@ export function NavBar() {
       // { to: '/news', label: 'News' },
       { to: '/projects', label: 'Projects' },
       { to: '/volunteer', label: 'Volunteer' },
-      { to: '/donate', label: 'Donate' },
+      { href: donationConfig.anedot.checkoutUrl, label: 'Contribute Securely' },
       { to: '/contact', label: 'Contact' },
       { to: '/messaging', label: 'Messaging' },
     ],
@@ -105,7 +107,7 @@ export function NavBar() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Join our community
+            Patriots in Action Nation Wide County-by-County Platform
           </a>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
             <a className="hover:underline" href={`mailto:${siteConfig.contact.email}`}>
@@ -170,9 +172,9 @@ export function NavBar() {
               <LinkButton to="/volunteer" variant="outline" size="sm">
                 Volunteer
               </LinkButton>
-              <LinkButton to="/donate" variant="red" size="sm">
-                Donate <ArrowRight className="h-4 w-4" />
-              </LinkButton>
+              <ExternalLinkButton href={donationConfig.anedot.checkoutUrl} variant="red" size="sm">
+                Contribute Securely <ArrowRight className="h-4 w-4" />
+              </ExternalLinkButton>
             </div>
             <button
               ref={openButtonRef}
@@ -269,9 +271,9 @@ export function NavBar() {
                   <LinkButton to="/volunteer" variant="outline" onClick={() => setOpen(false)}>
                     Volunteer
                   </LinkButton>
-                  <LinkButton to="/donate" variant="red" onClick={() => setOpen(false)}>
-                    Donate <ArrowRight className="h-4 w-4" />
-                  </LinkButton>
+                  <ExternalLinkButton href={donationConfig.anedot.checkoutUrl} variant="red" onClick={() => setOpen(false)}>
+                    Contribute Securely <ArrowRight className="h-4 w-4" />
+                  </ExternalLinkButton>
                 </div>
                 <p className="mt-3 text-xs text-patriot-muted">{siteConfig.tagline}</p>
               </div>

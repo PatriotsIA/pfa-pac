@@ -38,39 +38,6 @@ const projects: Project[] = [
     coverAlt: 'Operation Show Up coloring book cover',
     links: [{ label: 'Buy on Patriot Merch', href: siteConfig.links.operationShowUpColoringBook }],
   },
-  {
-    name: 'Patriots in Action TX',
-    description: 'Texas hub for Patriots in Action.',
-    links: [{ label: 'patriotsinactiontx.com', href: 'https://patriotsinactiontx.com/' }],
-  },
-  {
-    name: 'Patriots in Action',
-    description: 'National community and broader Patriots in Action presence.',
-    links: [{ label: 'patriotsinaction.com', href: 'https://patriotsinaction.com/' }],
-  },
-  {
-    name: 'Patriots for Action PAC (this site)',
-    description: 'The PAC site codebase, deployment, and content.',
-    links: [{ label: 'patriotsforaction', href: 'https://main.d39ycowgvb2ojq.amplifyapp.com/' }],
-  },
-  {
-    name: 'Ballot Box',
-    description: 'Open-source election tooling experiments and prototypes.',
-    links: [
-      { label: 'GitHub: ballotbox-py', href: 'https://github.com/ErikBurdett/ballotbox-py' },
-      { label: 'GitHub: ballotbox-js', href: 'https://github.com/ErikBurdett/ballotbox-js' },
-    ],
-  },
-  {
-    name: 'Patriots for Paper',
-    description: 'Paper-first workflows and tooling.',
-    links: [{ label: 'Patriots For Paper', href: 'https://main.d2pqbeealr8kyx.amplifyapp.com/' }],
-  },
-  {
-    name: 'Bond Assassin',
-    description: 'Bond analysis and accountability tooling.',
-    links: [{ label: 'Bond Assassins', href: 'https://main.d29xv8yo82m18c.amplifyapp.com/' }],
-  },
 ]
 
 export function PatriotProjectsPage() {

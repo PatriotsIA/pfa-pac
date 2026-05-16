@@ -89,7 +89,7 @@ export function VolunteerPage() {
     <>
       <Seo
         title="Volunteer"
-        description="Volunteer with Patriots For Action PAC and choose roles in outreach, events, research, communications, and operations."
+        description="Volunteer with Patriots for Action PAC and choose roles in outreach, events, research, communications, and operations."
         canonicalPath="/volunteer"
       />
       <PageHeader
@@ -99,11 +99,11 @@ export function VolunteerPage() {
         actions={
           <>
             <ExternalLinkButton href={siteConfig.links.community} variant="outline">
-              Join our community <Users className="h-4 w-4" />
+              Patriots in Action Nation Wide County-by-County Platform <Users className="h-4 w-4" />
             </ExternalLinkButton>
             <div className="flex w-full max-w-3xl flex-col items-center gap-3 text-center">
               <ExternalLinkButton href={donationConfig.anedot.checkoutUrl} variant="red">
-                Donate <ArrowRight className="h-4 w-4" />
+                Contribute Securely <ArrowRight className="h-4 w-4" />
               </ExternalLinkButton>
               <div className="w-full rounded-2xl border border-patriot-border bg-patriot-bg-soft p-4">
                 <div className="text-xs font-bold uppercase tracking-[0.22em] text-patriot-red">
@@ -125,10 +125,13 @@ export function VolunteerPage() {
             <ol className="mt-4 grid gap-3 text-sm text-patriot-text">
               <li className="rounded-xl border border-patriot-border bg-patriot-bg-soft p-4">
                 <div className="font-semibold text-patriot-navy">1) Attend an event</div>
-                <div className="mt-1 text-patriot-text">Join the community to see upcoming opportunities and local activity.</div>
+                <div className="mt-1 text-patriot-text">
+                  Visit Patriots in Action, a separate Nation Wide County-by-County Platform, for local opportunities
+                  and activity.
+                </div>
                 <div className="mt-3">
-                  <ExternalLinkButton href={siteConfig.links.community} variant="primary" size="sm">
-                    Join our community <Users className="h-4 w-4" />
+                  <ExternalLinkButton href={siteConfig.links.community} variant="outline" size="sm">
+                    Patriots in Action platform <Users className="h-4 w-4" />
                   </ExternalLinkButton>
                 </div>
               </li>
@@ -142,7 +145,7 @@ export function VolunteerPage() {
                 <div className="mt-3">
                   <div className="flex flex-col items-center gap-3 text-center">
                     <ExternalLinkButton href={donationConfig.anedot.checkoutUrl} variant="red" size="sm">
-                      Donate <ArrowRight className="h-4 w-4" />
+                      Contribute Securely <ArrowRight className="h-4 w-4" />
                     </ExternalLinkButton>
                     <div className="rounded-2xl border border-patriot-border bg-patriot-bg p-4 text-center">
                       <div className="text-xs font-bold uppercase tracking-[0.22em] text-patriot-red">

@@ -19,7 +19,7 @@ export function NewsIndexPage() {
     <>
       <Seo
         title="News"
-        description="Read Patriots For Action PAC updates, announcements, and practical civic action notes for supporters across Texas."
+        description="Read Patriots for Action PAC updates, announcements, and practical civic action notes for supporters across Texas."
         canonicalPath="/news"
       />
       <PageHeader

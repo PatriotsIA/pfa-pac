@@ -66,7 +66,7 @@ export function buildIcs(event: EventItem) {
   return [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
-    'PRODID:-//Patriots For Action PAC//Events//EN',
+    'PRODID:-//Patriots for Action PAC//Events//EN',
     'CALSCALE:GREGORIAN',
     'METHOD:PUBLISH',
     'BEGIN:VEVENT',

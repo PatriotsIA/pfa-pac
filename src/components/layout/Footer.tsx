@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom'
 import { BrandMark } from '../brand/Brand'
 import { cn } from '../../lib/cn'
 import { siteConfig } from '../../config/site'
-import { pacPaidForDisclosure } from '../../config/donations'
+import { donationConfig, pacPaidForDisclosure } from '../../config/donations'
 
 export function Footer() {
   const linkClass = ({ isActive }: { isActive: boolean }) =>
@@ -65,9 +65,14 @@ export function Footer() {
               <NavLink to="/volunteer" className={linkClass}>
                 Volunteer
               </NavLink>
-              <NavLink to="/donate" className={linkClass}>
-                Donate
-              </NavLink>
+              <a
+                className="text-sm font-semibold text-patriot-white/80 transition hover:text-patriot-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-patriot-blue/30 focus-visible:ring-offset-2 focus-visible:ring-offset-patriot-navy"
+                href={donationConfig.anedot.checkoutUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Contribute Securely
+              </a>
               <NavLink to="/contact" className={linkClass}>
                 Contact
               </NavLink>
@@ -94,25 +99,8 @@ export function Footer() {
               </a>
               <div className="max-w-xs leading-relaxed text-patriot-white/75">{siteConfig.contact.mailingAddress}</div>
               <a className="hover:text-patriot-white" href={siteConfig.links.community} target="_blank" rel="noopener noreferrer">
-                Join our community
+                Patriots in Action Nation Wide County-by-County Platform
               </a>
-              <div className="mt-2 rounded-xl border border-white/15 bg-white/10 p-3">
-                <img
-                  src={siteConfig.brand.footerLogoSrc}
-                  alt="Patriots in Action"
-                  className="h-10 w-auto max-w-full object-contain object-left sm:h-11"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <a
-                  className="mt-2 block text-sm font-semibold text-patriot-white/90 underline decoration-white/30 underline-offset-4 hover:text-patriot-white hover:decoration-white/60"
-                  href={siteConfig.links.texasHub}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  PatriotsInActionTX.com
-                </a>
-              </div>
             </div>
           </div>
         </div>

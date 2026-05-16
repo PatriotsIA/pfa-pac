@@ -6,7 +6,6 @@ import { Section } from '../components/ui/Section'
 import { ExternalLinkButton } from '../components/ui/ExternalLinkButton'
 import { LinkButton } from '../components/ui/LinkButton'
 import { siteConfig } from '../config/site'
-import { PatriotsInActionLockup } from '../components/brand/PatriotsInAction'
 import { OperationShowUpCover } from '../components/brand/OperationShowUpCover'
 
 type BookQuote = {
@@ -104,11 +103,11 @@ export function OperationShowUpPage() {
         subtitle="A civic handbook by Daniel L. Rogers focused on rebuilding the habits that keep liberty alive: attention, presence, local responsibility, and measured courage."
         actions={
           <>
-            <ExternalLinkButton href={siteConfig.links.community} variant="primary">
-              Join our community <Users className="h-4 w-4" />
+            <ExternalLinkButton href={siteConfig.links.community} variant="outline">
+              Patriots in Action Nation Wide County-by-County Platform <Users className="h-4 w-4" />
             </ExternalLinkButton>
             <ExternalLinkButton href={siteConfig.links.texasHub} variant="outline">
-              County-level involvement <ExternalLink className="h-4 w-4" />
+              Nation Wide County-by-County Platform <ExternalLink className="h-4 w-4" />
             </ExternalLinkButton>
             <ExternalLinkButton href={siteConfig.links.operationShowUpPatriotMerch} variant="outline">
               Buy on Patriot Merch <ExternalLink className="h-4 w-4" />
@@ -126,9 +125,9 @@ export function OperationShowUpPage() {
 
       <div className="mx-auto mt-8 max-w-4xl">
         <div className="flex flex-col items-center gap-3 rounded-2xl border border-patriot-border bg-patriot-bg/80 p-5 text-center shadow-card">
-          <PatriotsInActionLockup className="h-12" alt="Patriots in Action" />
           <div className="text-sm text-patriot-text">
-            County-level involvement and local connections live on the Texas hub.
+            County-level involvement and local connections live on Patriots in Action, a separate Nation Wide
+            County-by-County Platform.
           </div>
           <a
             className="text-sm font-semibold text-patriot-navy underline decoration-patriot-blue/40 underline-offset-4 hover:decoration-patriot-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-patriot-blue/25 focus-visible:ring-offset-2 focus-visible:ring-offset-patriot-bg"
@@ -136,7 +135,7 @@ export function OperationShowUpPage() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            PatriotsInActionTX.com
+            PatriotsInAction.com
           </a>
         </div>
       </div>
@@ -203,8 +202,7 @@ export function OperationShowUpPage() {
               </ExternalLinkButton>
             </div>
             <div className="mt-3 text-xs text-patriot-muted">
-              Quotes shown here are short excerpts for reference and inspiration. Copyright © 2026 Patriots Connect,
-              L.L.C. All rights reserved.
+              Quotes shown here are short excerpts for reference and inspiration. All rights reserved.
             </div>
           </div>
         </div>

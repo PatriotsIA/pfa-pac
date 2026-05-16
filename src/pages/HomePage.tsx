@@ -15,9 +15,9 @@ export function HomePage() {
     <>
       <Seo
         title="Texas Civic Action PAC"
-        description="Patriots For Action PAC helps Texans stay informed, organize locally, volunteer, and support values-driven civic action across the state."
+        description="Patriots for Action PAC helps Texans stay informed, organize locally, volunteer, and support values-driven civic action across the state."
         canonicalPath="/"
-        keywords={['Patriots For Action PAC', 'Texas PAC', 'Texas civic engagement', 'local action']}
+        keywords={['Patriots for Action PAC', 'Texas PAC', 'Texas civic engagement', 'local action']}
         jsonLd={[organizationJsonLd(), websiteJsonLd()]}
       />
 
@@ -30,7 +30,7 @@ export function HomePage() {
               Statewide PAC
             </div>
             <h1 className="mt-3 font-display text-4xl font-bold leading-[1.05] tracking-wide text-patriot-navy sm:text-6xl">
-              Patriots For Action
+              Patriots for Action PAC
             </h1>
             <p className="mx-auto mt-3 max-w-2xl text-sm font-semibold leading-snug tracking-wide text-patriot-navy/85 sm:text-base">
               {siteConfig.tagline}
@@ -42,9 +42,6 @@ export function HomePage() {
 
           <Reveal delay={0.08}>
             <div className="mt-6 flex flex-wrap justify-center gap-3">
-              <ExternalLinkButton href={siteConfig.links.community} variant="primary">
-                Join our community <Users className="h-4 w-4" />
-              </ExternalLinkButton>
               <LinkButton to="/operation-show-up" variant="outline">
                 Operation Show Up <ArrowRight className="h-4 w-4" />
               </LinkButton>
@@ -54,7 +51,7 @@ export function HomePage() {
             </div>
             <div className="mx-auto mt-4 flex max-w-3xl flex-col items-center gap-4 text-center">
               <ExternalLinkButton href={donationConfig.anedot.checkoutUrl} variant="red">
-                Donate <ArrowRight className="h-4 w-4" />
+                Contribute Securely <ArrowRight className="h-4 w-4" />
               </ExternalLinkButton>
               <div className="w-full rounded-2xl border border-patriot-border bg-patriot-bg-soft p-4">
               <div className="text-xs font-bold uppercase tracking-[0.22em] text-patriot-red">
@@ -196,6 +193,32 @@ export function HomePage() {
             </Card>
           </Reveal>
         </div>
+
+        <Reveal delay={0.14}>
+          <div className="mx-auto mt-8 max-w-3xl">
+            <Card>
+              <CardGlow />
+              <div className="relative text-center">
+                <div className="text-xs font-bold uppercase tracking-[0.26em] text-patriot-red">
+                  Nation Wide County-by-County Platform
+                </div>
+                <h2 className="mt-2 font-display text-2xl font-bold tracking-wide text-patriot-navy">
+                  Patriots in Action
+                </h2>
+                <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-patriot-text">
+                  Patriots in Action is a separate entity and Nation Wide County-by-County Platform that gives counties
+                  and citizens a community for voter resources, county and ultra-local news, candidate information, and
+                  local civic connection.
+                </p>
+                <div className="mt-5">
+                  <ExternalLinkButton href={siteConfig.links.texasHub} variant="outline">
+                    Visit Patriots in Action <Users className="h-4 w-4" />
+                  </ExternalLinkButton>
+                </div>
+              </div>
+            </Card>
+          </div>
+        </Reveal>
       </div>
     </>
   )

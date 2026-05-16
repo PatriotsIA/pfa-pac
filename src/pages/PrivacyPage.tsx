@@ -10,7 +10,7 @@ export function PrivacyPage() {
     <>
       <Seo
         title="Privacy policy"
-        description="Review the Patriots For Action PAC privacy policy for website, contact, analytics, and communications data."
+        description="Review the Patriots for Action PAC privacy policy for website, contact, analytics, and communications data."
         canonicalPath="/privacy"
       />
       <PageHeader

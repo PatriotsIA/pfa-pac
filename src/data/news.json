@@ -1,25 +1,25 @@
 [
   {
     "slug": "welcome-to-patriots-for-action",
-    "title": "Welcome to Patriots For Action",
+    "title": "Welcome to Patriots for Action PAC",
     "excerpt": "What this PAC hub is, what it is not, and how to stay connected.",
     "publishedAt": "2026-03-17T00:00:00.000Z",
-    "author": "Patriots For Action",
+    "author": "Patriots for Action PAC",
     "tags": [{ "slug": "announcement", "label": "Announcement" }],
-    "bodyMarkdown": "We built this site to keep supporters informed and equipped.\n\n### What you’ll find here\n\n- Events you can attend\n- Updates you can share\n- Ways to volunteer or donate\n\nCounty-level involvement lives on the Texas hub at **PatriotsInActionTX.com**.",
-    "sourceUrl": "https://patriotsinactiontx.com/"
+    "bodyMarkdown": "We built this PAC site to keep supporters informed and equipped.\n\n### What you’ll find here\n\n- Events you can attend\n- Updates you can share\n- Ways to volunteer or contribute\n\nCounty-level involvement lives on Patriots in Action, a separate **Nation Wide County-by-County Platform**, at **PatriotsInAction.com**.",
+    "sourceUrl": "https://patriotsinaction.com/"
   },
   {
     "slug": "how-to-submit-an-event",
     "title": "How to submit an event",
     "excerpt": "Here’s how to share local activity with the team.",
     "publishedAt": "2026-03-10T00:00:00.000Z",
-    "author": "Patriots For Action",
+    "author": "Patriots for Action PAC",
     "tags": [
       { "slug": "events", "label": "Events" },
       { "slug": "how-to", "label": "How-to" }
     ],
-    "bodyMarkdown": "Share what’s happening by joining the community and posting the details there. For county-level involvement, use the Texas hub site. If you need to reach the statewide team, use the Contact page.\n\n### What to include\n\n- Title and start time\n- Location or virtual link\n- A short summary\n- Registration link"
+    "bodyMarkdown": "Share what’s happening through Patriots in Action, a separate **Nation Wide County-by-County Platform**. For county-level involvement, use PatriotsInAction.com. If you need to reach the statewide PAC team, use the Contact page.\n\n### What to include\n\n- Title and start time\n- Location or virtual link\n- A short summary\n- Registration link"
   }
 ]
 

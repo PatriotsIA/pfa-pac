@@ -37,7 +37,7 @@ export function IssuesPage() {
     <>
       <Seo
         title="Issues"
-        description="Explore Patriots For Action PAC priorities, including integrity, transparency, community safety, local prosperity, and families."
+        description="Explore Patriots for Action PAC priorities, including integrity, transparency, community safety, local prosperity, and families."
         canonicalPath="/issues"
       />
       <PageHeader
@@ -46,8 +46,8 @@ export function IssuesPage() {
         subtitle="Values-driven priorities, translated into practical action. This page describes our themes; specific initiatives are shared through our news and events."
         actions={
           <>
-            <ExternalLinkButton href={siteConfig.links.community} variant="primary">
-              Join our community <Users className="h-4 w-4" />
+            <ExternalLinkButton href={siteConfig.links.community} variant="outline">
+              Patriots in Action Nation Wide County-by-County Platform <Users className="h-4 w-4" />
             </ExternalLinkButton>
             <LinkButton to="/volunteer" variant="outline">
               Volunteer

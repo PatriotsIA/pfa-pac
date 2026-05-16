@@ -1,10 +1,10 @@
 export const siteConfig = {
-  name: 'Patriots For Action',
-  legalName: 'Patriots Connect, LLC, DBA Patriots in Action',
-  url: 'https://patriotsinaction.com',
+  name: 'Patriots for Action PAC',
+  legalName: 'Patriots for Action PAC',
+  url: 'https://patriotsforaction.org',
   tagline: 'Empowering citizens. Preserving Liberty.',
   description:
-    'A nationwide county-by-county civic network for local events, trusted resources, community updates, and practical action.',
+    'A Texas political action committee focused on voter education, election outreach, and practical civic action.',
   contact: {
     email: 'giving@patriotsforaction.org',
     /** Display (after “Phone: ” in UI where labeled) */
@@ -14,14 +14,14 @@ export const siteConfig = {
     mailingAddress: '1000 S. Jefferson Street, Amarillo, TX 79101',
   },
   links: {
-    texasHub: 'https://patriotsinactiontx.com/',
+    texasHub: 'https://patriotsinaction.com/',
     community:
       'https://community.patriotsinaction.com/collections/22475?sort=by_hosts',
     /** Patriot Merch links for Operation Show Up products. */
     operationShowUpPatriotMerch:
       'https://shop.patriotsinaction.com/products/operation-show-up?variant=53583746826606',
     operationShowUpColoringBook:
-      'https://shop.patriotsinaction.com/products/operation-show-up?variant=53583746826606',
+      'https://shop.patriotsinaction.com/products/the-founding-of-america-coloring-book?variant=53583769502062',
   },
   brand: {
     pacLogoSrc: '/brand/PIAPatriot.png',

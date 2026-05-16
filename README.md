@@ -1,4 +1,4 @@
-# Patriots For Action PAC (React + Vite)
+# Patriots for Action PAC (React + Vite)
 
 Production-ready PAC website built with **Vite + React + TypeScript** and **Tailwind CSS**, following the layout/component patterns from the `patriot-paper` template (two-tier header, patriotic tokens, motion helpers, UI primitives).
 
@@ -62,17 +62,9 @@ The repo includes a clean example for **Plausible** behind an env flag.
 
 ### Donations
 
-This site never collects raw card details. Donation modes are enabled independently:
+This site never collects raw card details. PAC donation buttons link directly to the hosted Anedot checkout:
 
-- **ActBlue embed**
-  - `VITE_DONATE_ACTBLUE_ENABLED=true`
-  - `VITE_DONATE_ACTBLUE_IFRAME_SRC=<iframe src URL>`
-- **PayPal hosted checkout**
-  - `VITE_DONATE_PAYPAL_ENABLED=true`
-  - `VITE_DONATE_PAYPAL_URL=<hosted checkout URL>`
-- **Stripe hosted Checkout**
-  - `VITE_DONATE_STRIPE_ENABLED=true`
-  - `VITE_DONATE_STRIPE_CHECKOUT_URL=<hosted checkout URL>`
+`https://secure.anedot.com/patriots-for-action/donate`
 
 ## Content: events and news
 

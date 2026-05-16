@@ -12,7 +12,7 @@ type BrandMarkProps = {
   logoSrc?: string
 }
 
-export function BrandMark({ className, title = 'Patriots For Action PAC', logoSrc }: BrandMarkProps) {
+export function BrandMark({ className, title = 'Patriots for Action PAC', logoSrc }: BrandMarkProps) {
   const src = logoSrc ?? siteConfig.brand.pacLogoSrc
 
   if (src) {
