@@ -101,14 +101,6 @@ export function NavBar() {
     <header className="sticky top-0 z-50">
       <div className="bg-patriot-navy text-patriot-white">
         <div className="mx-auto flex w-full max-w-none flex-wrap items-center justify-between gap-3 px-3 py-2.5 text-xs sm:px-5 lg:px-8 xl:px-12 2xl:px-16">
-          <a
-            className="inline-flex items-center rounded-md bg-white/10 px-3 py-1 font-semibold tracking-wide hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
-            href={siteConfig.links.community}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Patriots in Action Nation Wide County-by-County Platform
-          </a>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
             <a className="hover:underline" href={`mailto:${siteConfig.contact.email}`}>
               {siteConfig.contact.email}

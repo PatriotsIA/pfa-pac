@@ -98,9 +98,6 @@ export function Footer() {
                 Phone: {siteConfig.contact.phone}
               </a>
               <div className="max-w-xs leading-relaxed text-patriot-white/75">{siteConfig.contact.mailingAddress}</div>
-              <a className="hover:text-patriot-white" href={siteConfig.links.community} target="_blank" rel="noopener noreferrer">
-                Patriots in Action Nation Wide County-by-County Platform
-              </a>
             </div>
           </div>
         </div>
