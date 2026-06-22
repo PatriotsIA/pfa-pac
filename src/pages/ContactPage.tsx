@@ -161,7 +161,7 @@ export function ContactPage() {
                     className="mt-1 h-4 w-4 accent-patriot-blue"
                   />
                   <span>
-                    <ContactConsentLabel purpose="my message or inquiry" />
+                    <ContactConsentLabel />
                     {form.formState.errors.consentToContact?.message ? (
                       <span className="ml-2 text-xs font-semibold text-patriot-red">
                         {form.formState.errors.consentToContact.message}

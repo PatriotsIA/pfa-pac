@@ -16,7 +16,7 @@ export function PrivacyPage() {
       <PageHeader
         eyebrow="Legal"
         title="Privacy policy"
-        subtitle={`Privacy Policy for ${siteConfig.legalName} website, structured for counsel review and aligned with common 10DLC / political texting worksheet expectations (e.g. EnSpot Political).`}
+        subtitle={`Privacy Policy for ${siteConfig.legalName} website, structured for counsel review and aligned with common political texting expectations.`}
       />
 
       <div className="mt-10 mx-auto max-w-4xl">

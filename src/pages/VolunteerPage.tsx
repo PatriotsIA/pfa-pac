@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { useForm, useWatch } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import toast from 'react-hot-toast'
 import { ArrowRight, HeartHandshake, Users } from 'lucide-react'
@@ -14,7 +14,6 @@ import { sendSiteFormEmail } from '../lib/emailJsForms'
 import { ExternalLinkButton } from '../components/ui/ExternalLinkButton'
 import { siteConfig } from '../config/site'
 import { donationConfig, donationDisclosure } from '../config/donations'
-import { EnSpotSmsOptInLabel } from '../components/compliance/EnSpotSmsOptInLabel'
 import { ContactConsentLabel } from '../components/compliance/ContactConsentLabel'
 
 const interests = [
@@ -34,17 +33,7 @@ const volunteerSchema = z
     interests: z.array(z.string()).min(1, 'Please select at least one interest area.'),
     message: z.string().optional(),
     consentToContact: z.boolean().refine((v) => v === true, { message: 'Please confirm consent to be contacted.' }),
-    smsConsent: z.boolean().optional(),
     botField: z.string().optional(),
-  })
-  .superRefine((data, ctx) => {
-    if (data.phone?.trim() && data.smsConsent !== true) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: 'When you add a mobile number, please confirm consent to receive text messages.',
-        path: ['smsConsent'],
-      })
-    }
   })
 
 type VolunteerValues = z.infer<typeof volunteerSchema>
@@ -60,12 +49,9 @@ export function VolunteerPage() {
       interests: [],
       message: '',
       consentToContact: false,
-      smsConsent: false,
       botField: '',
     },
   })
-
-  const phoneWatch = useWatch({ control: form.control, name: 'phone' })
 
   async function onSubmit(values: VolunteerValues) {
     if (values.botField) return
@@ -75,7 +61,7 @@ export function VolunteerPage() {
       data: {
         name: values.name,
         email: values.email,
-        ...(values.phone?.trim() ? { phone: values.phone.trim(), smsConsent: true } : {}),
+        ...(values.phone?.trim() ? { phone: values.phone.trim() } : {}),
         ...(values.countyOrRegion?.trim() ? { countyOrRegion: values.countyOrRegion.trim() } : {}),
         interests: values.interests,
         ...(values.message?.trim() ? { message: values.message.trim() } : {}),
@@ -240,7 +226,7 @@ export function VolunteerPage() {
                 <label className="flex items-start gap-3 rounded-xl border border-patriot-border bg-patriot-bg-soft px-4 py-3 text-sm text-patriot-text">
                   <input type="checkbox" {...form.register('consentToContact')} className="mt-1 h-4 w-4 accent-patriot-blue" />
                   <span>
-                    <ContactConsentLabel purpose="volunteering opportunities" />
+                    <ContactConsentLabel />
                     {form.formState.errors.consentToContact?.message ? (
                       <span className="ml-2 text-xs font-semibold text-patriot-red">
                         {form.formState.errors.consentToContact.message}
@@ -249,29 +235,6 @@ export function VolunteerPage() {
                   </span>
                 </label>
               </div>
-
-              {phoneWatch?.trim() ? (
-                <div className="md:col-span-2">
-                  <label className="flex items-start gap-3 rounded-xl border border-patriot-border bg-patriot-bg-soft px-4 py-3 text-sm text-patriot-text">
-                    <input
-                      type="checkbox"
-                      {...form.register('smsConsent')}
-                      className="mt-1 h-4 w-4 accent-patriot-blue"
-                    />
-                    <span>
-                      <EnSpotSmsOptInLabel
-                        organizationName={siteConfig.legalName}
-                        purposePhrase="informational and donation-related"
-                      />
-                      {form.formState.errors.smsConsent?.message ? (
-                        <span className="mt-1 block text-xs font-semibold text-patriot-red">
-                          {form.formState.errors.smsConsent.message}
-                        </span>
-                      ) : null}
-                    </span>
-                  </label>
-                </div>
-              ) : null}
 
               <div className="md:col-span-2 flex items-center justify-end">
                 <Button type="submit" variant="primary">

@@ -234,8 +234,7 @@ export function EventsIndexPage() {
                     className="mt-1 h-4 w-4 accent-patriot-blue"
                   />
                   <span>
-                    <ContactConsentLabel purpose="my event submission" /> I confirm I have permission to share this
-                    event information.
+                    <ContactConsentLabel />
                     {form.formState.errors.consentToContact?.message ? (
                       <span className="ml-2 text-xs font-semibold text-patriot-red">
                         {form.formState.errors.consentToContact.message}

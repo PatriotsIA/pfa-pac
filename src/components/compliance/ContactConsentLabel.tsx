@@ -1,24 +1,19 @@
-import { Link } from 'react-router-dom'
-
-type Props = {
-  purpose: string
-}
-
 const linkClass =
   'font-semibold text-patriot-blue underline decoration-patriot-blue/30 underline-offset-2 hover:decoration-patriot-blue/60'
 
-export function ContactConsentLabel({ purpose }: Props) {
+export function ContactConsentLabel() {
   return (
     <>
-      I consent to be contacted by Patriots for Action PAC about {purpose} using the contact information I provide. I
-      have read and agree to the{' '}
-      <Link className={linkClass} to="/privacy" target="_blank" rel="noopener noreferrer">
+      I consent to receive marketing, donation-related, and informational emails, calls and text messages from Patriots
+      for Action PAC, including pre-recorded messages and via automated methods. Msg &amp; data rates may apply. Msg
+      frequency may vary. Reply “STOP” to opt-out and “HELP” for help. I have read and agree to the{' '}
+      <a className={linkClass} href="https://patriotsforaction.org/privacy" target="_blank" rel="noopener noreferrer">
         Privacy Policy
-      </Link>{' '}
+      </a>{' '}
       and{' '}
-      <Link className={linkClass} to="/terms" target="_blank" rel="noopener noreferrer">
+      <a className={linkClass} href="https://patriotsforaction.org/terms" target="_blank" rel="noopener noreferrer">
         Terms &amp; Conditions
-      </Link>
+      </a>
       .
     </>
   )

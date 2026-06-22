@@ -1,8 +1,8 @@
 import { z } from 'zod'
-import { useForm, useWatch } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import toast from 'react-hot-toast'
-import { MessageSquareText, ShieldCheck } from 'lucide-react'
+import { MessageSquareText } from 'lucide-react'
 import { Seo } from '../lib/seo/Seo'
 import { PageHeader } from '../components/ui/PageHeader'
 import { Card, CardGlow } from '../components/ui/Card'
@@ -13,7 +13,6 @@ import { Select } from '../components/ui/Select'
 import { Button } from '../components/ui/Button'
 import { sendSiteFormEmail } from '../lib/emailJsForms'
 import { siteConfig } from '../config/site'
-import { EnSpotSmsOptInLabel } from '../components/compliance/EnSpotSmsOptInLabel'
 import { ContactConsentLabel } from '../components/compliance/ContactConsentLabel'
 
 const audienceOptions = [
@@ -33,17 +32,7 @@ const messagingSchema = z
     consentToContact: z.boolean().refine((v) => v === true, {
       message: 'Please confirm consent to be contacted.',
     }),
-    smsConsent: z.boolean().optional(),
     botField: z.string().optional(),
-  })
-  .superRefine((data, ctx) => {
-    if (data.phone?.trim() && data.smsConsent !== true) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        message: 'When you add a mobile number, please confirm consent to receive text messages.',
-        path: ['smsConsent'],
-      })
-    }
   })
 
 type MessagingValues = z.infer<typeof messagingSchema>
@@ -59,12 +48,9 @@ export function MessagingPage() {
       phone: '',
       message: '',
       consentToContact: false,
-      smsConsent: false,
       botField: '',
     },
   })
-
-  const phoneValue = useWatch({ control: form.control, name: 'phone' })
 
   async function onSubmit(values: MessagingValues) {
     if (values.botField) return
@@ -81,7 +67,7 @@ export function MessagingPage() {
         message: values.message,
         consentToContact: true,
         agreePrivacyPolicy: true,
-        ...(values.phone?.trim() ? { phone: values.phone.trim(), smsConsent: true } : {}),
+        ...(values.phone?.trim() ? { phone: values.phone.trim() } : {}),
       },
     })
   }
@@ -107,55 +93,8 @@ export function MessagingPage() {
         }
       />
 
-      <div className="mt-10 grid gap-6 lg:grid-cols-[1fr_1.05fr]">
-        <Card className="lg:order-1">
-          <CardGlow />
-          <div className="relative space-y-6">
-            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.22em] text-patriot-red">
-              <ShieldCheck className="h-4 w-4" /> Compliance overview
-            </div>
-            <p className="text-sm leading-relaxed text-patriot-text">
-              The checklist below follows{' '}
-              <strong className="font-semibold text-patriot-navy">EnSpot Political’s &quot;Text Message Compliance for
-              Websites&quot;</strong> worksheet (10DLC registration and campaign vetting context). It is an aid only—not
-              legal advice. Your counsel should approve final language.
-            </p>
-            <section className="space-y-2">
-              <h2 className="font-display text-lg font-bold tracking-wide text-patriot-navy">General website</h2>
-              <ul className="list-disc space-y-1 pl-5 text-sm text-patriot-text">
-                <li>Site is live, secure (valid SSL), and uses its own domain.</li>
-                <li>Site matches the organization or brand being registered.</li>
-                <li>No malware.</li>
-                <li>
-                  Includes <strong className="font-semibold text-patriot-navy">on-site contact</strong> information or a
-                  form (not only an external contact link) to reach the organization.
-                </li>
-              </ul>
-            </section>
-            <section className="space-y-2">
-              <h2 className="font-display text-lg font-bold tracking-wide text-patriot-navy">Privacy policy</h2>
-              <p className="text-sm leading-relaxed text-patriot-text">
-                A dedicated Privacy Policy page must{' '}
-                <strong className="font-semibold text-patriot-navy">explicitly state that you do not share, sell, rent,
-                or disclose</strong> personal data with anyone outside your organization’s operations, except as the
-                policy describes (e.g. required law) or for processors bound to you—see our policy for full wording.
-              </p>
-            </section>
-            <section className="space-y-2">
-              <h2 className="font-display text-lg font-bold tracking-wide text-patriot-navy">Opt-in forms &amp; SMS</h2>
-              <p className="text-sm leading-relaxed text-patriot-text">
-                You should offer at least one data collection or opt-in path. For any form that collects{' '}
-                <strong className="font-semibold text-patriot-navy">phone numbers</strong>, EnSpot requires a{' '}
-                <strong className="font-semibold text-patriot-navy">checkbox above the submit button</strong> that
-                includes: message &amp; data rate disclosures, frequency, HELP and STOP instructions, and{' '}
-                <strong className="font-semibold text-patriot-navy">linked</strong> Privacy Policy and Terms &amp;
-                Conditions. We use their recommended pattern on this site when mobile numbers are collected.
-              </p>
-            </section>
-          </div>
-        </Card>
-
-        <Card className="lg:order-2">
+      <div className="mx-auto mt-10 max-w-3xl">
+        <Card>
           <CardGlow />
           <div className="relative">
             <div className="text-xs font-bold uppercase tracking-[0.22em] text-patriot-red">Start a conversation</div>
@@ -183,7 +122,6 @@ export function MessagingPage() {
                   phone: '',
                   message: '',
                   consentToContact: false,
-                  smsConsent: false,
                   botField: '',
                 })
               })}
@@ -232,7 +170,7 @@ export function MessagingPage() {
               </Field>
 
               <div className="md:col-span-2">
-                <Field label="Mobile phone (optional)" hint="Required EnSpot-style consent checkbox below if provided.">
+                <Field label="Mobile phone (optional)">
                   <Input {...form.register('phone')} autoComplete="tel" />
                 </Field>
               </div>
@@ -251,7 +189,7 @@ export function MessagingPage() {
                     className="mt-1 h-4 w-4 accent-patriot-blue"
                   />
                   <span>
-                    <ContactConsentLabel purpose="my messaging inquiry" />
+                    <ContactConsentLabel />
                     {form.formState.errors.consentToContact?.message ? (
                       <span className="text-xs font-semibold text-patriot-red">
                         {' '}
@@ -261,29 +199,6 @@ export function MessagingPage() {
                   </span>
                 </label>
               </div>
-
-              {phoneValue?.trim() ? (
-                <div className="md:col-span-2">
-                  <label className="flex items-start gap-3 rounded-xl border border-patriot-border bg-patriot-bg-soft px-4 py-3 text-sm text-patriot-text">
-                    <input
-                      type="checkbox"
-                      {...form.register('smsConsent')}
-                      className="mt-1 h-4 w-4 accent-patriot-blue"
-                    />
-                    <span>
-                      <EnSpotSmsOptInLabel
-                        organizationName={siteConfig.legalName}
-                        purposePhrase="informational and donation-related"
-                      />
-                      {form.formState.errors.smsConsent?.message ? (
-                        <span className="mt-1 block text-xs font-semibold text-patriot-red">
-                          {form.formState.errors.smsConsent.message}
-                        </span>
-                      ) : null}
-                    </span>
-                  </label>
-                </div>
-              ) : null}
 
               <div className="md:col-span-2 flex justify-end">
                 <Button type="submit" variant="primary">
