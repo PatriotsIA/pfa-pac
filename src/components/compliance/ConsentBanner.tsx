@@ -1,6 +1,7 @@
 import { useState, useSyncExternalStore } from 'react'
 import { Button } from '../ui/Button'
 import { getStoredAnalyticsConsent, updateAnalyticsConsent } from '../../lib/analytics/googleConsent'
+import { useLegal } from '../legal/LegalContext'
 
 function subscribeToHydration() {
   return () => undefined
@@ -17,6 +18,7 @@ function getServerSnapshot() {
 export function ConsentBanner() {
   const isHydrated = useSyncExternalStore(subscribeToHydration, getClientSnapshot, getServerSnapshot)
   const [hasSavedChoice, setHasSavedChoice] = useState(false)
+  const { openLegal } = useLegal()
 
   if (!isHydrated || hasSavedChoice || getStoredAnalyticsConsent() !== null) return null
 
@@ -39,9 +41,13 @@ export function ConsentBanner() {
             We use Google Analytics through Google Tag Manager to understand site traffic and improve our outreach.
             You can choose whether analytics storage is allowed. Advertising storage, ad personalization, and ad user
             data stay off. See our{' '}
-            <a className="font-semibold text-patriot-navy underline decoration-patriot-blue/40 underline-offset-4" href="/privacy">
+            <button
+              type="button"
+              className="font-semibold text-patriot-navy underline decoration-patriot-blue/40 underline-offset-4"
+              onClick={() => openLegal('privacy')}
+            >
               privacy policy
-            </a>
+            </button>
             .
           </p>
         </div>

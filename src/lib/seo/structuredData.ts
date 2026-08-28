@@ -12,12 +12,11 @@ export function organizationJsonLd() {
     '@id': absoluteSiteUrl('/#organization'),
     name: siteConfig.legalName,
     url: siteConfig.url,
-    logo: absoluteSiteUrl(siteConfig.brand.pacLogoSrc),
     email: siteConfig.contact.email,
     telephone: siteConfig.contact.phoneDial,
     address: {
       '@type': 'PostalAddress',
-      streetAddress: '1000 S. Jefferson Street',
+      streetAddress: '1000 S. Jefferson St.',
       addressLocality: 'Amarillo',
       addressRegion: 'TX',
       postalCode: '79101',

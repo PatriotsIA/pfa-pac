@@ -7,29 +7,6 @@ const ssrDir = path.join(process.cwd(), 'dist-ssr')
 
 const routes = [
   '/',
-  '/about',
-  '/issues',
-  '/counties',
-  // News pages are temporarily hidden from the frontend.
-  // '/news',
-  '/operation-show-up',
-  '/projects',
-  '/donate',
-  '/volunteer',
-  '/contact',
-  '/messaging',
-  '/privacy',
-  '/terms',
-  '/texas',
-  '/texas/potter',
-  '/texas/potter/about',
-  '/texas/potter/elections',
-  '/texas/potter/news',
-  '/texas/potter/events',
-  '/texas/potter/tv',
-  '/texas/potter/partners',
-  '/texas/potter/contact',
-  '/texas/potter/submit-event',
 ]
 
 async function findEntryServer() {

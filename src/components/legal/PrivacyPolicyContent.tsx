@@ -1,0 +1,124 @@
+import { siteConfig } from '../../config/site'
+
+const effective = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+
+export function PrivacyPolicyContent() {
+  return (
+    <div className="space-y-8 text-sm leading-relaxed text-patriot-text">
+      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-patriot-muted">
+        Effective date: {effective}
+      </p>
+
+      <p>
+        {siteConfig.legalName} (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) is committed to protecting the privacy of visitors
+        and users (&quot;you&quot; or &quot;your&quot;) of our political committee website. This Privacy Policy outlines our
+        practices regarding the collection, use, and disclosure of personal information through our website. By
+        accessing and using our website, you consent to the terms of this Privacy Policy.
+      </p>
+
+      <section className="space-y-3">
+        <h3 className="font-display text-xl font-bold tracking-wide text-patriot-navy">1. Information we collect</h3>
+        <p className="font-semibold text-patriot-navy">a) Personal information</p>
+        <p>
+          We may collect personal information you voluntarily provide, such as your name, email address, postal
+          address, phone number, and any other information you submit through our website&apos;s forms.
+        </p>
+        <p className="font-semibold text-patriot-navy">b) Text messaging opt-in data</p>
+        <p>
+          If you choose to opt in to receive text messages from us, we may collect your phone number and related
+          data required for text messaging services.
+        </p>
+        <p className="font-semibold text-patriot-navy">c) Automatically collected information</p>
+        <p>
+          When you visit our website, we may automatically collect certain information about your device, browser,
+          and usage patterns. This information may include IP addresses, cookies, and other tracking technologies
+          when those tools are enabled for this deployment.
+        </p>
+      </section>
+
+      <section className="space-y-3">
+        <h3 className="font-display text-xl font-bold tracking-wide text-patriot-navy">2. Use of information</h3>
+        <p className="font-semibold text-patriot-navy">a) General uses</p>
+        <p>We may use the personal information you provide to:</p>
+        <ul className="list-disc space-y-1 pl-5">
+          <li>Communicate with you, respond to your inquiries, and provide information about our committee;</li>
+          <li>Send updates, newsletters, fundraising and volunteer communications, and other committee-related information;</li>
+          <li>Analyze and improve our website&apos;s performance, content, and user experience;</li>
+          <li>Comply with legal obligations (including reporting requirements for political committees) and enforce our rights and agreements.</li>
+        </ul>
+        <p className="font-semibold text-patriot-navy">b) Text messaging opt-in data</p>
+        <p>
+          Your phone number and related data collected for text messaging services will be used to send you
+          committee-related text messages and updates you have consented to receive.
+        </p>
+      </section>
+
+      <section className="space-y-3">
+        <h3 className="font-display text-xl font-bold tracking-wide text-patriot-navy">3. Sharing of information</h3>
+        <p className="font-semibold text-patriot-navy">a) General</p>
+        <p>
+          <strong className="text-patriot-navy">
+            We will not share, sell, rent, or disclose your personal information to any third parties,
+          </strong>{' '}
+          except as described in this Privacy Policy or when required by law. For clarity, we may engage service
+          providers (such as website hosting, form intake, email delivery, or SMS delivery vendors) solely to
+          operate our programs on our behalf, under contractual obligations consistent with this Policy—they may
+          not use your data for their own marketing.
+        </p>
+        <p className="font-semibold text-patriot-navy">b) Text messaging opt-in data</p>
+        <p>
+          <strong className="text-patriot-navy">
+            We will not share or sell your text messaging opt-in data, consent, or related personal information with
+            any third parties,
+          </strong>{' '}
+          unless required by law.
+        </p>
+      </section>
+
+      <section className="space-y-3">
+        <h3 className="font-display text-xl font-bold tracking-wide text-patriot-navy">4. Data security</h3>
+        <p>
+          We take reasonable measures to protect the security of your personal information and employ
+          industry-standard security technologies where appropriate. However, no method of transmission over the
+          internet or electronic storage is 100% secure, and we cannot guarantee absolute security.
+        </p>
+      </section>
+
+      <section className="space-y-3">
+        <h3 className="font-display text-xl font-bold tracking-wide text-patriot-navy">5. Third-party services</h3>
+        <p>
+          Our website may contain links to third-party websites or services. We are not responsible for the
+          privacy practices or content of such third parties. We encourage you to review the privacy policies of
+          those third parties when you leave our site.
+        </p>
+      </section>
+
+      <section className="space-y-3">
+        <h3 className="font-display text-xl font-bold tracking-wide text-patriot-navy">6. Children&apos;s privacy</h3>
+        <p>
+          Our website is not intended for use by individuals under the age of 13. We do not knowingly collect
+          personal information from children under 13. If we become aware that we have collected personal
+          information from a child under 13 without appropriate consent, we will take steps to remove such information.
+        </p>
+      </section>
+
+      <section className="space-y-3">
+        <h3 className="font-display text-xl font-bold tracking-wide text-patriot-navy">7. Updates to this privacy policy</h3>
+        <p>
+          We may update this Privacy Policy from time to time to reflect changes in our practices or for other
+          operational, legal, or regulatory reasons. Changes will be effective upon posting of the revised Privacy
+          Policy on our website. We encourage you to review this page periodically.
+        </p>
+      </section>
+
+      <section className="space-y-3">
+        <h3 className="font-display text-xl font-bold tracking-wide text-patriot-navy">8. Contact us</h3>
+        <p>
+          If you have any questions or concerns regarding this Privacy Policy or our privacy practices, please
+          contact us at {siteConfig.contact.email}, by phone at Phone: {siteConfig.contact.phone}, or by mail at{' '}
+          {siteConfig.contact.mailingAddress}.
+        </p>
+      </section>
+    </div>
+  )
+}

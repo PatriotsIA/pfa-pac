@@ -1,10 +1,10 @@
 const defaultAnedotCheckoutUrl = 'https://secure.anedot.com/patriots-for-action/donate'
 
 export const donationDisclosure =
-  'Paid for by Patriots for Action PAC, Daniel L. Rogers, Treasurer. Texas Ethics Commission Filer ID 00090846. Contributions are not tax-deductible. Not authorized by any candidate or candidate\'s committee.'
+  'Political advertising paid for by Patriots for Action PAC, Daniel L. Rogers, Treasurer, 1000 S. Jefferson St., Amarillo, Texas 79101. Contributions are not tax-deductible. Patriots for Action PAC does not accept contributions from corporations or labor organizations. 866-756-1776 Email: contribute@patriotsforaction.org.'
 
 export const pacPaidForDisclosure =
-  'Paid for by Patriots for Action PAC, Daniel L. Rogers, Treasurer. Texas Ethics Commission Filer ID 00090846. Contributions are not tax-deductible. Not authorized by any candidate or candidate\'s committee.'
+  'Political advertising paid for by Patriots for Action PAC, Daniel L. Rogers, Treasurer, 1000 S. Jefferson St., Amarillo, Texas 79101. Contributions are not tax-deductible. Patriots for Action PAC does not accept contributions from corporations or labor organizations. 866-756-1776 Email: contribute@patriotsforaction.org.'
 
 export const issueProjects = [
   {
