@@ -37,29 +37,6 @@ function escapeXml(value) {
 
 const staticRoutes = [
   { path: '/', priority: '1.0', changefreq: 'weekly' },
-  { path: '/about', priority: '0.8', changefreq: 'monthly' },
-  { path: '/issues', priority: '0.8', changefreq: 'monthly' },
-  { path: '/counties', priority: '0.7', changefreq: 'monthly' },
-  // News pages are temporarily hidden from the frontend.
-  // { path: '/news', priority: '0.8', changefreq: 'weekly' },
-  { path: '/operation-show-up', priority: '0.8', changefreq: 'monthly' },
-  { path: '/projects', priority: '0.6', changefreq: 'monthly' },
-  { path: '/volunteer', priority: '0.9', changefreq: 'monthly' },
-  { path: '/donate', priority: '0.9', changefreq: 'monthly' },
-  { path: '/contact', priority: '0.7', changefreq: 'monthly' },
-  { path: '/messaging', priority: '0.5', changefreq: 'monthly' },
-  { path: '/privacy', priority: '0.3', changefreq: 'yearly' },
-  { path: '/terms', priority: '0.3', changefreq: 'yearly' },
-  { path: '/texas', priority: '0.8', changefreq: 'weekly' },
-  { path: '/texas/potter', priority: '0.9', changefreq: 'weekly' },
-  { path: '/texas/potter/about', priority: '0.7', changefreq: 'monthly' },
-  { path: '/texas/potter/elections', priority: '0.8', changefreq: 'weekly' },
-  { path: '/texas/potter/news', priority: '0.8', changefreq: 'daily' },
-  { path: '/texas/potter/events', priority: '0.8', changefreq: 'daily' },
-  { path: '/texas/potter/tv', priority: '0.7', changefreq: 'weekly' },
-  { path: '/texas/potter/partners', priority: '0.6', changefreq: 'monthly' },
-  { path: '/texas/potter/contact', priority: '0.7', changefreq: 'monthly' },
-  { path: '/texas/potter/submit-event', priority: '0.6', changefreq: 'monthly' },
 ]
 
 // News pages are temporarily hidden from the frontend.

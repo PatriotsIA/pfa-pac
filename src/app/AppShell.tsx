@@ -3,12 +3,13 @@ import { RouterProvider } from 'react-router-dom'
 import type { DataRouter } from 'react-router'
 import { Analytics } from '../lib/analytics/Analytics'
 import { ConsentBanner } from '../components/compliance/ConsentBanner'
+import { LegalProvider } from '../components/legal/LegalProvider'
 
 export function AppShell({ router }: { router: DataRouter }) {
   const isBrowser = typeof window !== 'undefined'
 
   return (
-    <>
+    <LegalProvider>
       <Analytics />
       <RouterProvider router={router} />
       <ConsentBanner />
@@ -25,7 +26,7 @@ export function AppShell({ router }: { router: DataRouter }) {
           }}
         />
       ) : null}
-    </>
+    </LegalProvider>
   )
 }
 

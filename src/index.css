@@ -14,8 +14,8 @@
   --color-patriot-red-dark: #8a0f18;
   --color-patriot-white: #ffffff;
 
-  --font-display: Outfit, ui-sans-serif, system-ui, sans-serif;
-  --font-sans: Outfit, ui-sans-serif, system-ui, sans-serif;
+  --font-display: ui-sans-serif, system-ui, sans-serif;
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
 
   --shadow-glow-red: 0 0 0 1px rgba(190, 30, 45, 0.25), 0 14px 44px rgba(190, 30, 45, 0.1);
   --shadow-glow-blue: 0 0 0 1px rgba(96, 148, 225, 0.25), 0 14px 44px rgba(96, 148, 225, 0.12);
@@ -38,7 +38,7 @@
   body {
     margin: 0;
     font-family: var(--font-sans);
-    background: var(--color-patriot-bg-soft);
+    background: var(--color-patriot-bg);
     color: var(--color-patriot-text);
   }
 
@@ -58,19 +58,7 @@
 
 @layer components {
   .page-shell {
-    @apply relative min-h-dvh overflow-x-hidden;
-    background: linear-gradient(
-      180deg,
-      var(--color-patriot-bg-soft) 0%,
-      var(--color-patriot-bg) 52%,
-      var(--color-patriot-bg-warm) 110%
-    );
-    background-image: radial-gradient(
-      120% 95% at 50% 0%,
-      rgba(96, 148, 225, 0.22) 0%,
-      rgba(190, 30, 45, 0.1) 40%,
-      rgba(245, 247, 254, 0) 72%
-    );
+    @apply relative min-h-dvh overflow-x-hidden bg-patriot-bg;
   }
 
   .markdown {

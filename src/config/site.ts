@@ -2,22 +2,20 @@ export const siteConfig = {
   name: 'Patriots for Action PAC',
   legalName: 'Patriots for Action PAC',
   url: 'https://patriotsforaction.org',
-  tagline: 'Empowering citizens. Preserving Liberty.',
+  tagline: 'A Texas Political Action Committee',
   description:
-    'A Texas political action committee focused on voter education, election outreach, and practical civic action.',
+    'Patriots for Action PAC organizes and funds a statewide voter-turnout effort in Texas.',
   contact: {
-    email: 'giving@patriotsforaction.org',
+    email: 'contribute@patriotsforaction.org',
     /** Display (after “Phone: ” in UI where labeled) */
-    phone: '(866) 756 1776',
+    phone: '866-756-1776',
     /** E.164 for <a href="tel:…"> */
     phoneDial: '+18667561776',
-    mailingAddress: '1000 S. Jefferson Street, Amarillo, TX 79101',
+    mailingAddress: '1000 S. Jefferson St., Amarillo, Texas 79101',
   },
   links: {
     texasHub: 'https://patriotsinaction.com/',
-    community:
-      'https://community.patriotsinaction.com/collections/22475?sort=by_hosts',
-    /** Patriot Merch links for Operation Show Up products. */
+    community: 'https://community.patriotsinaction.com/collections/22475?sort=by_hosts',
     operationShowUpPatriotMerch:
       'https://shop.patriotsinaction.com/products/operation-show-up?variant=53583746826606',
     operationShowUpColoringBook:

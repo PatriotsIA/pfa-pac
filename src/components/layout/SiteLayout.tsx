@@ -1,13 +1,10 @@
 import { Outlet } from 'react-router-dom'
-import { NavBar } from './NavBar'
-import { Footer } from './Footer'
-import { ScrollProgress } from '../motion/ScrollProgress'
-import { BackToTop } from '../motion/BackToTop'
 import { ScrollToTop } from './ScrollToTop'
+import { Footer } from './Footer'
 
 export function SiteLayout() {
   return (
-    <div className="page-shell">
+    <div className="page-shell flex min-h-dvh flex-col">
       <ScrollToTop />
       <a
         href="#main-content"
@@ -15,18 +12,14 @@ export function SiteLayout() {
       >
         Skip to content
       </a>
-      <ScrollProgress />
-      <NavBar />
       <main
         id="main-content"
         tabIndex={-1}
-        className="relative mx-auto w-full max-w-6xl px-4 pb-24 pt-10 focus:outline-none sm:px-6 lg:px-8"
+        className="relative mx-auto w-full flex-1 px-4 focus:outline-none sm:px-6 lg:px-8"
       >
         <Outlet />
       </main>
       <Footer />
-      <BackToTop />
     </div>
   )
 }
-
