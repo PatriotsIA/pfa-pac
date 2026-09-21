@@ -51,7 +51,9 @@ export async function sendSiteFormEmail(params: {
   const name = String(params.data.name ?? '').trim() || 'Website visitor'
   const title =
     String(params.emailSubjectTitle ?? params.formLabel).trim() || params.formLabel
-  const time = new Date().toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' })
+  const submittedAt = new Date()
+  const time = submittedAt.toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' })
+  const email = String(params.data.email ?? '').trim()
   const message = [`Form: ${params.formLabel}`, '', formatMessageBody(params.data)].join('\n')
 
   await emailjs.send(
@@ -59,9 +61,13 @@ export async function sendSiteFormEmail(params: {
     templateId.trim(),
     {
       name,
-      title,
+      title: `Patriots for Action PAC: ${title}`,
       message,
       time,
+      email,
+      reply_to: email,
+      page_url: typeof window !== 'undefined' ? window.location.href : '',
+      submitted_at: submittedAt.toISOString(),
     },
     { publicKey: publicKey.trim() },
   )
